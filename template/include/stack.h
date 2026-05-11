@@ -24,8 +24,11 @@
 
 /** @brief The stack implementation. */
 struct stack {
+	/** @cond */
 	char _[sizeof(size_t) * 3 + sizeof(void *)];
+	/** @endcond */
 };
+
 
 /**
  * @brief Initializes a new empty stack.

@@ -2,10 +2,13 @@
 
 #include <assert.h>
 #include <stdlib.h>
+#include <time.h>
 
 
 int main()
 {
+	srand(time(NULL));
+
 	struct stack s;
 
 	for (int _fuzz = 0; _fuzz < 16; _fuzz++) {
