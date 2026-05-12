@@ -1,4 +1,4 @@
-PROJECT_NAME           = "Compiler Construction"
+PROJECT_NAME           = "Derleyici Tasarımı"
 OUTPUT_DIRECTORY       = "docs-autogen/"
 MARKDOWN_SUPPORT       = YES
 SOURCE_BROWSER         = YES
@@ -12,3 +12,4 @@ QUIET                  = YES
 DOTFILE_DIRS           = docs/
 DOT_IMAGE_FORMAT       = svg
 HAVE_DOT               = YES
+OUTPUT_LANGUAGE        = Turkish

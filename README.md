@@ -10,7 +10,7 @@ Genelde yazılım dilinin çalışacak düzeye gelmesiyle ilgileneceğiz. İşin
 de önemli, ancak pratik bir şekilde gramere kafa yormayı öncelemek bence daha
 makul.
 
-> Neden Bunları Öğrenelim?
+## Neden Bunları Öğrenelim?
 Eh, diller her yerde. Sadece "yazılım dili" olmanın ötesinde, "text format"
 olarak anılan kayıt formatlarına da "dil" demek mümkün. Birbiriyle haberleşen
 programlar yazarken, ya da basitinden shell yazarken kendinizi bir gramer dil
@@ -20,6 +20,6 @@ Ayrıca yazılım dili teorisini anlamayı da güzel bir egzersiz olarak görüy
 Yazılım dillerini "syntax"tan öte "semantic" olarak algılamak, insana yazılım
 için eşsiz bir bakış açısı katıyor.
 
-> Öncesinde Ne Bilmeliyim?
+## Öncesinde Ne Bilmeliyim?
 C, biraz da data structures. C'nin syntax&semantics'ine iyi bir hakimiyet işi
 kolaylaştıracaktır. Ancak yine de aşırı bir bilgi birikimi gerekmiyor.

@@ -1,0 +1,66 @@
+/**
+@page taslak Taslak Kullanımı
+
+Bu taslak, C projeleri için derleme, test ve dokümantasyon içeren minimal bir
+geliştirme ortamı sunar.
+
+
+@section taslak_yapi_sec Yapı
+
+`src/` klasörü, tüm C kaynak kolarınızı barındırır. `main.c`, main fonksiyonunu
+içeren, programın giriş noktasıdır.
+
+Test programları, `tests/` klasörüne yazılır. Bu klasördeki her C dosyası kendi
+başına bir programdır ve main fonksiyonu içerir, bu sayede projede
+geliştirirken izole bir bölümü daha rahat doğrulayıp test edebilirsiniz.
+`tests/` içinde yazacağınız programlar; src/'da yazdığınız, `main.c` dışındaki
+fonksiyonlara erişebilir.
+
+
+@section taslak_veri_yapilari_sec Veri Yapıları
+
+Taslak, genel kullanım için basit veri yapıları sunar.
+
+| stack | açıklama |
+|--|--|
+| `stack_init()` | @copybrief stack_init |
+| `stack_destroy()` | @copybrief stack_destroy |
+| `stack_pop()` | @copybrief stack_pop |
+| `stack_push()` | @copybrief stack_push |
+| `stack_top()` | @copybrief stack_top |
+| `stack_at()` | @copybrief stack_at |
+| `stack_len()` | @copybrief stack_len |
+
+| map | açıklama |
+|--|--|
+| `map_init()` | @copybrief map_init |
+| `map_destroy()` | @copybrief map_destroy |
+| `map_get()` | @copybrief map_get |
+| `map_insert()` | @copybrief map_insert |
+| `map_delete()` | @copybrief map_delete |
+| `map_iter()` | @copybrief map_iter |
+| `map_iter_next()` | @copybrief map_iter_next |
+
+@see @ref stack.h, @ref map.h
+
+
+@section taslak_derleme_sec Derleme
+
+Sadece proje klasöründeyken `make` yazın:
+
+```
+$ make
+... bin/main ve bin/<tüm-testler>, bin/ içinde bütün programlar derlenir
+```
+
+Bir fonksiyonu yazdıktan sonra, bütün programı aynı anda çalıştırmak yerine
+test yazarak doğrulama yapacağız.
+
+
+@section taslak_dokumantasyon_sec Dokümantasyon
+
+`doxygen` kullanarak `docs-autogen/` klasörüne HTML dokümantasyonunu
+oluşturabilirsiniz. Bu taslak ile gelen fonksiyon ve struct'ların kullanımı
+için dokümantasyona göz atabilirsiniz.
+
+*/
