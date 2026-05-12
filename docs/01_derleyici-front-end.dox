@@ -3,15 +3,16 @@
 
 Klasik örnektir, defalarca derslerde denk gelmişsinizdir:
 
-Matematiksel ifadeleri *expression tree* olarak göstermek, o gösterim
+Matematiksel ifadeleri *expression tree* olarak göstermek, o gösterimi
 * *evaluate* etmek: `1 + 3 / ((2 + 1) * 4³)`
 
 @dotfile dot/ast-expression-tree.dot
 
-Bu *expression tree* yapısını *in-order traverse* ederek sonucu bulabiliriz.
-Her seferinde karşımıza bu kadar basit gramer yapıları çıkacak değil. Yazılım
-dillerinde matematiksel ifadelerden başka yapılar da mevcut, örneğin aşağıdaki
-kod parçasını ağaca oturtmak istersek,
+Bu *expression tree* yapısını <a
+href="https://en.wikipedia.org/wiki/Tree_traversal#In-order,_LNR">*in-order
+traverse*</a> ederek sonucu bulabiliriz. Her seferinde karşımıza bu kadar basit
+gramer yapıları çıkacak değil. Yazılım dillerinde matematiksel ifadelerden başka
+yapılar da mevcut, örneğin aşağıdaki kod parçasını ağaca oturtmak istersek,
 
 ```c
 if (6 == 6) {
@@ -23,7 +24,7 @@ if (6 == 6) {
 Aslında epey kolay! Metin formundaki kodu *bir şekilde* ağaç yapısına
 dönüştürdüğümüzde değer hesaplamak için *tree traversal* yeterli oluyor! Peki,
 bu ağacı nasıl oluşturacağız? Asıl soruna geliyoruz: *lexing* ve sonrasında
-*parsing*.
+* *parsing*.
 
 @dot
 digraph navigation {
@@ -43,10 +44,10 @@ digraph navigation {
 
 @section front_end_lexical_analysis Lexical Analysis
 
-*String* üzerinde çalışmak genel olarak zor. Ağaca oturtma sürecinde bir
+* *String* üzerinde çalışmak genel olarak zor. Ağaca oturtma sürecinde bir
 sayının değeri, değişkenin ya da fonksiyonun ismi bizi ilgilendirmiyor.
-*Tokenizer* ile metin işleme sürecinde syntax elemanlarının anlamını çıkarırız.
-Mesela, `if (x == 12) b = 21;`i ele alalım.
+* *Tokenizer* ile metin işleme sürecinde lexeme denen syntax parçalarının
+anlamını çıkarırız. Mesela, `if (x == 12) b = 21;`i ele alalım.
 
 | lexeme | token | seminfo |
 |--|--|--|
@@ -62,9 +63,9 @@ Mesela, `if (x == 12) b = 21;`i ele alalım.
 | ; | SEMI |  |
 
 Genelde, bütün metni tutmak yerine gereksiz detayları atlayarak ham token
-bilgisini tutmayı tercih ederiz. `token` isminde bir `enum` tanımlayıp onu
-seminfo `union` tanımlayarak gramer yapılarını daha özlü bir şekilde temsil
-etmek mümkündür:
+bilgisini tutmayı tercih ederiz. `token` isminde bir `enum` ve seminfo isminde
+bir `union` tanımlayarak gramer yapılarını daha özlü bir şekilde temsil etmek
+mümkündür:
 
 ```c
 enum token {
@@ -76,24 +77,29 @@ enum token {
 union seminfo {
     char *id;
     size_t num;
-}
+};
 ```
 
-`if` keywordü, sayılar ve isimlere odaklanacak olursak, aşağıdaki
-* *state machine* görseli metinden token üretme kurallarını uyguluyor:
+Sadece `if` keywordüne, sayılara ve isimlere odaklanacak olursak, aşağıdaki
+görseldeki *state machineler* metinden token üretme kurallarını uygulamaya
+yeterli olacaktır:
 
 @dotfile dot/dfa-lexer.dot
 
 Her bir token için 3 ayrı *state machine* başlatmak uygulanabilir değil. Tek
-bir *state macine* olacak şekilde yeniden düzenleme yapmamız gerekiyor. Bunu,
-yeni *starting state* ekleyip onu eski starting statelere *epsilon transition*
+bir *state machine* olacak şekilde yeniden düzenleme yapmamız gerekiyor. Bunu,
+yeni *starting state* ekleyip onu eski starting statelere <a
+href="https://en.wikipedia.org/wiki/Epsilon_transition">*epsilon transition*</a>
 ile bağlayarak yapabiliriz:
 
 @dotfile dot/nfa-lexer.dot
 
-Ancak şu anda lexerimiz *nondeterministic finite state machine* (NFA) oldu.
-Bunun implementasyonunu yapmamız mümkün değil, tekrardan
-* *deterministic finite state macine* (DFA) oluşturmamız gerekiyor. DFA-NFA
+Ancak şu anda lexerimiz <a
+href="https://en.wikipedia.org/wiki/Nondeterministic_finite_automaton">
+* *nondeterministic finite state machine*</a> (NFA) oldu.
+Bunun implementasyonunu yapmamız mümkün değil, tekrardan <a
+href="https://en.wikipedia.org/wiki/Deterministic_finite_automaton">
+* *deterministic finite state macine*</a> (DFA) oluşturmamız gerekiyor. DFA-NFA
 dönüşümleri bu dersin konusu değil, sadece örnek olsun diye veriyorum:
 
 @dotfile dot/dfa-combined-lexer.dot
