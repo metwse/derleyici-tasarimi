@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="tr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Derleyici Tasarımı: include/map.h Kaynak Dosyası</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Derleyici Tasarımı
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Oluşturan Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Ara');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Yüklüyor...</div>
+<div class="SRStatus" id="Searching">Arıyor...</div>
+<div class="SRStatus" id="NoMatches">Eşleşme Yok</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">map.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="map_8h.html">Bu dosyanın dokümantasyonuna git.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#ifndef MAP_H</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#define MAP_H</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &lt;stddef.h&gt;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="foldopen" id="foldopen00018" data-start="{" data-end="};">
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="structmap.html">   18</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structmap.html">map</a> {</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        <span class="keyword">struct </span><a class="code hl_struct" href="structmap__entry.html">map_entry</a> *entries;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        <span class="keywordtype">size_t</span> cap;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        <span class="keywordtype">size_t</span> used;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        <span class="keywordtype">size_t</span> value_size;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>};</div>
+</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="foldopen" id="foldopen00028" data-start="{" data-end="};">
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="structmap__it.html">   28</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structmap__it.html">map_it</a> {</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        <span class="keyword">struct </span><a class="code hl_struct" href="structmap.html">map</a> *m;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        <span class="keywordtype">size_t</span> i;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>};</div>
+</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="foldopen" id="foldopen00036" data-start="{" data-end="};">
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="structmap__entry.html">   36</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structmap__entry.html">map_entry</a> {</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="structmap__entry.html#aedb7448103d4d4e18e13086b34035884">   37</a></span>        <span class="keywordtype">void</span> *<a class="code hl_variable" href="structmap__entry.html#aedb7448103d4d4e18e13086b34035884">key</a>  ;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="structmap__entry.html#a558c0f2acccb56673d45aba7db399551">   38</a></span>        <span class="keywordtype">size_t</span> <a class="code hl_variable" href="structmap__entry.html#a558c0f2acccb56673d45aba7db399551">keylen</a>  ;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="structmap__entry.html#ab9d5c8c1ae40692f18eccfdeef8d8369">   39</a></span>        <span class="keywordtype">char</span> <a class="code hl_variable" href="structmap__entry.html#ab9d5c8c1ae40692f18eccfdeef8d8369">value</a>[]  ;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>};</div>
+</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="map_8h.html#a1dbec0654dc6da754bd79053882d9b90">   49</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="map_8h.html#a1dbec0654dc6da754bd79053882d9b90">map_init</a>(<span class="keyword">struct</span> <a class="code hl_struct" href="structmap.html">map</a> *<a class="code hl_struct" href="structmap.html">map</a>, <span class="keywordtype">size_t</span> value_size);</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="map_8h.html#a0b7d4ab29383d6183dd7ce1c95b38865">   52</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="map_8h.html#a0b7d4ab29383d6183dd7ce1c95b38865">map_destroy</a>(<span class="keyword">struct</span> <a class="code hl_struct" href="structmap.html">map</a> *<a class="code hl_struct" href="structmap.html">map</a>);</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="map_8h.html#af5b62e28d55607a6b242fd70a8b97f6d">   59</a></span><span class="keywordtype">void</span> *<a class="code hl_function" href="map_8h.html#af5b62e28d55607a6b242fd70a8b97f6d">map_get</a>(<span class="keyword">struct</span> <a class="code hl_struct" href="structmap.html">map</a> *<a class="code hl_struct" href="structmap.html">map</a>, <span class="keyword">const</span> <span class="keywordtype">void</span> *key);</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="map_8h.html#ab61c37aaaf3a19a6bf24da8f1d35379b">   62</a></span><span class="keywordtype">void</span> *<a class="code hl_function" href="map_8h.html#ab61c37aaaf3a19a6bf24da8f1d35379b">map_get2</a>(<span class="keyword">struct</span> <a class="code hl_struct" href="structmap.html">map</a> *<a class="code hl_struct" href="structmap.html">map</a>, <span class="keyword">const</span> <span class="keywordtype">void</span> *key, <span class="keywordtype">size_t</span> keylen);</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="map_8h.html#ab90ba1082a15c5e99bf9ee2bfa9f7221">   71</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="map_8h.html#ab90ba1082a15c5e99bf9ee2bfa9f7221">map_insert</a>(<span class="keyword">struct</span> <a class="code hl_struct" href="structmap.html">map</a> *<a class="code hl_struct" href="structmap.html">map</a>, <span class="keyword">const</span> <span class="keywordtype">void</span> *key, <span class="keyword">const</span> <span class="keywordtype">void</span> *value);</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="map_8h.html#a297eb0f9400291169c15f0be21107c70">   79</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="map_8h.html#a297eb0f9400291169c15f0be21107c70">map_insert2</a>(<span class="keyword">struct</span> <a class="code hl_struct" href="structmap.html">map</a> *<a class="code hl_struct" href="structmap.html">map</a>, <span class="keyword">const</span> <span class="keywordtype">void</span> *key, <span class="keywordtype">size_t</span> keylen, <span class="keyword">const</span> <span class="keywordtype">void</span> *value);</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno"><a class="line" href="map_8h.html#afeac31b0d35b3bfef3501a9b50138e9c">   90</a></span><span class="keywordtype">void</span> *<a class="code hl_function" href="map_8h.html#afeac31b0d35b3bfef3501a9b50138e9c">map_delete</a>(<span class="keyword">struct</span> <a class="code hl_struct" href="structmap.html">map</a> *<a class="code hl_struct" href="structmap.html">map</a>, <span class="keyword">const</span> <span class="keywordtype">void</span> *key);</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno"><a class="line" href="map_8h.html#a5a15405c4f813f0ff7ab14128d68bfc1">   99</a></span><span class="keywordtype">void</span> *<a class="code hl_function" href="map_8h.html#a5a15405c4f813f0ff7ab14128d68bfc1">map_delete2</a>(<span class="keyword">struct</span> <a class="code hl_struct" href="structmap.html">map</a> *<a class="code hl_struct" href="structmap.html">map</a>, <span class="keyword">const</span> <span class="keywordtype">void</span> *key, <span class="keywordtype">size_t</span> keylen);</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno"><a class="line" href="map_8h.html#a2e250829ff7dda4aa89ce44c07c21274">  102</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="map_8h.html#a2e250829ff7dda4aa89ce44c07c21274">map_iter</a>(<span class="keyword">struct</span> <a class="code hl_struct" href="structmap.html">map</a> *<a class="code hl_struct" href="structmap.html">map</a>, <span class="keyword">struct</span> <a class="code hl_struct" href="structmap__it.html">map_it</a> *it);</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno"><a class="line" href="map_8h.html#aaf4a6fd0ac5a07653fe1e8b4a602b30c">  109</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structmap__entry.html">map_entry</a> *<a class="code hl_function" href="map_8h.html#aaf4a6fd0ac5a07653fe1e8b4a602b30c">map_iter_next</a>(<span class="keyword">struct</span> <a class="code hl_struct" href="structmap__it.html">map_it</a> *it);</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span> </div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="amap_8h_html_a0b7d4ab29383d6183dd7ce1c95b38865"><div class="ttname"><a href="map_8h.html#a0b7d4ab29383d6183dd7ce1c95b38865">map_destroy</a></div><div class="ttdeci">void map_destroy(struct map *map)</div><div class="ttdoc">map tarafından ayrılmış hafızayı temizler.</div></div>
+<div class="ttc" id="amap_8h_html_a1dbec0654dc6da754bd79053882d9b90"><div class="ttname"><a href="map_8h.html#a1dbec0654dc6da754bd79053882d9b90">map_init</a></div><div class="ttdeci">void map_init(struct map *map, size_t value_size)</div><div class="ttdoc">Yeni bir map oluşturur.</div></div>
+<div class="ttc" id="amap_8h_html_a297eb0f9400291169c15f0be21107c70"><div class="ttname"><a href="map_8h.html#a297eb0f9400291169c15f0be21107c70">map_insert2</a></div><div class="ttdeci">void map_insert2(struct map *map, const void *key, size_t keylen, const void *value)</div><div class="ttdoc">map'e key-value ikilisini ekler.</div></div>
+<div class="ttc" id="amap_8h_html_a2e250829ff7dda4aa89ce44c07c21274"><div class="ttname"><a href="map_8h.html#a2e250829ff7dda4aa89ce44c07c21274">map_iter</a></div><div class="ttdeci">void map_iter(struct map *map, struct map_it *it)</div><div class="ttdoc">map'teki entryleri tek tek çekecek iteration handle hazırlar.</div></div>
+<div class="ttc" id="amap_8h_html_a5a15405c4f813f0ff7ab14128d68bfc1"><div class="ttname"><a href="map_8h.html#a5a15405c4f813f0ff7ab14128d68bfc1">map_delete2</a></div><div class="ttdeci">void * map_delete2(struct map *map, const void *key, size_t keylen)</div><div class="ttdoc">Key-value ikilisini map'ten siler, valueyu döner.</div></div>
+<div class="ttc" id="amap_8h_html_aaf4a6fd0ac5a07653fe1e8b4a602b30c"><div class="ttname"><a href="map_8h.html#aaf4a6fd0ac5a07653fe1e8b4a602b30c">map_iter_next</a></div><div class="ttdeci">struct map_entry * map_iter_next(struct map_it *it)</div><div class="ttdoc">Iteration handledan sıradaki entryyi çeker.</div></div>
+<div class="ttc" id="amap_8h_html_ab61c37aaaf3a19a6bf24da8f1d35379b"><div class="ttname"><a href="map_8h.html#ab61c37aaaf3a19a6bf24da8f1d35379b">map_get2</a></div><div class="ttdeci">void * map_get2(struct map *map, const void *key, size_t keylen)</div><div class="ttdoc">Key ile eşleşen valueyı döner, key bulunamazsa NULL döner.</div></div>
+<div class="ttc" id="amap_8h_html_ab90ba1082a15c5e99bf9ee2bfa9f7221"><div class="ttname"><a href="map_8h.html#ab90ba1082a15c5e99bf9ee2bfa9f7221">map_insert</a></div><div class="ttdeci">void map_insert(struct map *map, const void *key, const void *value)</div><div class="ttdoc">map'e key-value ikilisini ekler.</div></div>
+<div class="ttc" id="amap_8h_html_af5b62e28d55607a6b242fd70a8b97f6d"><div class="ttname"><a href="map_8h.html#af5b62e28d55607a6b242fd70a8b97f6d">map_get</a></div><div class="ttdeci">void * map_get(struct map *map, const void *key)</div><div class="ttdoc">Key ile eşleşen valueyı döner, key bulunamazsa NULL döner.</div></div>
+<div class="ttc" id="amap_8h_html_afeac31b0d35b3bfef3501a9b50138e9c"><div class="ttname"><a href="map_8h.html#afeac31b0d35b3bfef3501a9b50138e9c">map_delete</a></div><div class="ttdeci">void * map_delete(struct map *map, const void *key)</div><div class="ttdoc">Key-value ikilisini map'ten siler, valueyu döner.</div></div>
+<div class="ttc" id="astructmap__entry_html"><div class="ttname"><a href="structmap__entry.html">map_entry</a></div><div class="ttdoc">map'te tutulan key-value ikilisi, entry.</div><div class="ttdef"><b>Definition</b> <a href="map_8h_source.html#l00036">map.h:36</a></div></div>
+<div class="ttc" id="astructmap__entry_html_a558c0f2acccb56673d45aba7db399551"><div class="ttname"><a href="structmap__entry.html#a558c0f2acccb56673d45aba7db399551">map_entry::keylen</a></div><div class="ttdeci">size_t keylen</div><div class="ttdef"><b>Definition</b> <a href="map_8h_source.html#l00038">map.h:38</a></div></div>
+<div class="ttc" id="astructmap__entry_html_ab9d5c8c1ae40692f18eccfdeef8d8369"><div class="ttname"><a href="structmap__entry.html#ab9d5c8c1ae40692f18eccfdeef8d8369">map_entry::value</a></div><div class="ttdeci">char value[]</div><div class="ttdef"><b>Definition</b> <a href="map_8h_source.html#l00039">map.h:39</a></div></div>
+<div class="ttc" id="astructmap__entry_html_aedb7448103d4d4e18e13086b34035884"><div class="ttname"><a href="structmap__entry.html#aedb7448103d4d4e18e13086b34035884">map_entry::key</a></div><div class="ttdeci">void * key</div><div class="ttdef"><b>Definition</b> <a href="map_8h_source.html#l00037">map.h:37</a></div></div>
+<div class="ttc" id="astructmap__it_html"><div class="ttname"><a href="structmap__it.html">map_it</a></div><div class="ttdoc">map entrylerini tek tek çekebilmek için iteration handle.</div><div class="ttdef"><b>Definition</b> <a href="map_8h_source.html#l00028">map.h:28</a></div></div>
+<div class="ttc" id="astructmap_html"><div class="ttname"><a href="structmap.html">map</a></div><div class="ttdoc">map.</div><div class="ttdef"><b>Definition</b> <a href="map_8h_source.html#l00018">map.h:18</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Oluşturan&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

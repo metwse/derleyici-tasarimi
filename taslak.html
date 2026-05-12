@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="tr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Derleyici Tasarımı: Taslak Kullanımı</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Derleyici Tasarımı
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Oluşturan Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Ara');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Yüklüyor...</div>
+<div class="SRStatus" id="Searching">Arıyor...</div>
+<div class="SRStatus" id="NoMatches">Eşleşme Yok</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div><div class="header">
+  <div class="headertitle"><div class="title">Taslak Kullanımı</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p>Bu taslak, C projeleri için derleme, test ve dokümantasyon içeren minimal bir geliştirme ortamı sunar.</p>
+<h1><a class="anchor" id="taslak_yapi_sec"></a>
+Yapı</h1>
+<p><code>src/</code> klasörü, tüm C kaynak kolarınızı barındırır. <code>main.c</code>, main fonksiyonunu içeren, programın giriş noktasıdır.</p>
+<p>Test programları, <code>tests/</code> klasörüne yazılır. Bu klasördeki her C dosyası kendi başına bir programdır ve main fonksiyonu içerir, bu sayede projede geliştirirken izole bir bölümü daha rahat doğrulayıp test edebilirsiniz. <code>tests/</code> içinde yazacağınız programlar; src/'da yazdığınız, <code>main.c</code> dışındaki fonksiyonlara erişebilir.</p>
+<h1><a class="anchor" id="taslak_veri_yapilari_sec"></a>
+Veri Yapıları</h1>
+<p>Taslak, genel kullanım için basit veri yapıları sunar.</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">stack   </th><th class="markdownTableHeadNone">açıklama    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code><a class="el" href="stack_8h.html#a38a36940e77bd5a01164995581c309dc" title="Yeni bir stack oluşturur.">stack_init()</a></code>   </td><td class="markdownTableBodyNone">Yeni bir stack oluşturur.      </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code><a class="el" href="stack_8h.html#a622d2f02337527a1941edf764f4c6753" title="stack tarafından ayrılmış hafızayı temizler.">stack_destroy()</a></code>   </td><td class="markdownTableBodyNone">stack tarafından ayrılmış hafızayı temizler.      </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code><a class="el" href="stack_8h.html#a34d1a32b67de7cda86d796764ce32628" title="En üstteki elemanı (top) stack&#39;ten silip döner.">stack_pop()</a></code>   </td><td class="markdownTableBodyNone">En üstteki elemanı (<code>top</code>) stack'ten silip döner.      </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code><a class="el" href="stack_8h.html#aeeb51fe685bd0742571390df2251b6bb" title="stack&#39;in en üstüne elamanı ekler.">stack_push()</a></code>   </td><td class="markdownTableBodyNone">stack'in en üstüne elamanı ekler.      </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code><a class="el" href="stack_8h.html#a9193bfd37b7c928b6a440c5f10d1fcfd" title="stack&#39;in en üstündeki elemanı döner.">stack_top()</a></code>   </td><td class="markdownTableBodyNone">stack'in en üstündeki elemanı döner.      </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code><a class="el" href="stack_8h.html#a956389c33287dec1ffa38bf26aff9149" title="Baştan indexinci elemanı döner.">stack_at()</a></code>   </td><td class="markdownTableBodyNone">Baştan <code>index</code>inci elemanı döner.      </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code><a class="el" href="stack_8h.html#a94d74fef6960660c745dd8fb3e990c1e" title="Toplam eleman sayısını döner.">stack_len()</a></code>   </td><td class="markdownTableBodyNone">Toplam eleman sayısını döner.     </td></tr>
+</table>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">map   </th><th class="markdownTableHeadNone">açıklama    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code><a class="el" href="map_8h.html#a1dbec0654dc6da754bd79053882d9b90" title="Yeni bir map oluşturur.">map_init()</a></code>   </td><td class="markdownTableBodyNone">Yeni bir map oluşturur.      </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code><a class="el" href="map_8h.html#a0b7d4ab29383d6183dd7ce1c95b38865" title="map tarafından ayrılmış hafızayı temizler.">map_destroy()</a></code>   </td><td class="markdownTableBodyNone">map tarafından ayrılmış hafızayı temizler.      </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code><a class="el" href="map_8h.html#af5b62e28d55607a6b242fd70a8b97f6d" title="Key ile eşleşen valueyı döner, key bulunamazsa NULL döner.">map_get()</a></code>   </td><td class="markdownTableBodyNone"><code>Key</code> ile eşleşen <code>value</code>yı döner, <code>key</code> bulunamazsa <code>NULL</code> döner.      </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code><a class="el" href="map_8h.html#ab90ba1082a15c5e99bf9ee2bfa9f7221" title="map&#39;e key-value ikilisini ekler.">map_insert()</a></code>   </td><td class="markdownTableBodyNone">map'e <code>key-value</code> ikilisini ekler.      </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code><a class="el" href="map_8h.html#afeac31b0d35b3bfef3501a9b50138e9c" title="Key-value ikilisini map&#39;ten siler, valueyu döner.">map_delete()</a></code>   </td><td class="markdownTableBodyNone"><code>Key-value</code> ikilisini map'ten siler, <code>value</code>yu döner.      </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code><a class="el" href="map_8h.html#a2e250829ff7dda4aa89ce44c07c21274" title="map&#39;teki entryleri tek tek çekecek iteration handle hazırlar.">map_iter()</a></code>   </td><td class="markdownTableBodyNone">map'teki <code>entry</code>leri tek tek çekecek <code>iteration handle</code> hazırlar.      </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code><a class="el" href="map_8h.html#aaf4a6fd0ac5a07653fe1e8b4a602b30c" title="Iteration handledan sıradaki entryyi çeker.">map_iter_next()</a></code>   </td><td class="markdownTableBodyNone"><code>Iteration handle</code>dan sıradaki <code>entry</code>yi çeker.     </td></tr>
+</table>
+<dl class="section see"><dt>Ayrıca Bakınız</dt><dd><a class="el" href="stack_8h.html">stack.h</a>, <a class="el" href="map_8h.html">map.h</a></dd></dl>
+<h1><a class="anchor" id="taslak_derleme_sec"></a>
+Derleme</h1>
+<p>Sadece proje klasöründeyken <code>make</code> yazın:</p>
+<div class="fragment"><div class="line">$ make</div>
+<div class="line">... bin/main ve bin/&lt;tüm-testler&gt;, bin/ içinde bütün programlar derlenir</div>
+</div><!-- fragment --><p>Bir fonksiyonu yazdıktan sonra, bütün programı aynı anda çalıştırmak yerine test yazarak doğrulama yapacağız.</p>
+<h1><a class="anchor" id="taslak_dokumantasyon_sec"></a>
+Dokümantasyon</h1>
+<p><code>doxygen</code> kullanarak <code>docs-autogen/</code> klasörüne HTML dokümantasyonunu oluşturabilirsiniz. Bu taslak ile gelen fonksiyon ve struct'ların kullanımı için dokümantasyona göz atabilirsiniz. </p>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Oluşturan&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>
