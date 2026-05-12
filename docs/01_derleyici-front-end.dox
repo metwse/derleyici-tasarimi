@@ -1,10 +1,9 @@
 /**
 @page derleyici_front_end_page Derleyici Front Endi
 
-Klasik örnektir, defalarca derslerde denk gelmişsinizdir:
-
-Matematiksel ifadeleri *expression tree* olarak göstermek, o gösterimi
-* *evaluate* etmek: `1 + 3 / ((2 + 1) * 4³)`
+Klasik örnektir, defalarca derslerde denk gelmişsinizdir: Matematiksel
+ifadeleri *expression tree* olarak göstermek ve o gösterimi *evaluate* etmek:
+`1 + 3 / ((2 + 1) * 4³)`
 
 @dotfile dot/ast-expression-tree.dot
 
@@ -96,17 +95,17 @@ ile bağlayarak yapabiliriz:
 
 Ancak şu anda lexerimiz <a
 href="https://en.wikipedia.org/wiki/Nondeterministic_finite_automaton">
-* *nondeterministic finite state machine*</a> (NFA) oldu.
-Bunun implementasyonunu yapmamız mümkün değil, tekrardan <a
-href="https://en.wikipedia.org/wiki/Deterministic_finite_automaton">
+* *nondeterministic finite state machine*</a> (NFA) oldu. Bunun
+implementasyonunu (en azından doğrudan) yapmamız mümkün değil,
+<a href="https://en.wikipedia.org/wiki/Deterministic_finite_automaton">
 * *deterministic finite state macine*</a> (DFA) oluşturmamız gerekiyor. DFA-NFA
 dönüşümleri bu dersin konusu değil, sadece örnek olsun diye veriyorum:
 
 @dotfile dot/dfa-combined-lexer.dot
 
 Tabii bugün elle bu kadar optimize edilmiş bir state macine kodlamayacağız.
-Sayı, identifier ve tek ya da iki karakterlik sembol/operatörleri metinden
-tokenize edecek bir lexer kodlamaya başlayalım: @subpage lexer_page
+Sayı, identifier ve sembol/operatörleri metinden tokenize edecek bir lexer
+kodlamaya başlayalım: @subpage lexer_page
 
 Sonrasında @subpage tokenizer_page ile devam edeceğiz.
 */

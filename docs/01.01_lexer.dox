@@ -1,11 +1,12 @@
 /**
 @page lexer_page Lexer
 
-İki seviyeli lexer kodlayacağız:
+Lexerimiz iki katmandan oluşacak:
 - Sayı, identifier, operatör gibi tipleri direkt toplayacak; lexeme üretecek
-  katman.
-- Bu lexemelerdeki keyword ve operatörleri çıkaracak, token üretecek üst
-  katman.
+  katman. Bu katmanda ürettiğimiz lexemeler, gramer açısından hâlâ gereksiz
+  bilgi içeriyor olacak.
+- Bu lexemelerdeki keyword ve operatörleri çıkaracak, soyut tokenler üretecek
+  üst katman.
 
 @snippet include/lexer.h Lexeme
 

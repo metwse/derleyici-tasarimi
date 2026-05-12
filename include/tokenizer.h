@@ -17,24 +17,34 @@
 
 /** @brief tokenizer. */
 struct tokenizer {
+	/** @brief Identifiere karşılık atanan sayısal ID. */
 	struct map ident_map;
-	struct lexeme current_lexeme;
+	/** @brief Identifierlere eşsiz ID'ler ataybilmek için yardımcı sayaç. */
+	size_t last_id;
 
+	/** @brief Yazılım dilindeki keywordler. */
 	struct map keywords;
+	/** @brief Yazılım dilindeki sembol ve operatörler. */
 	struct map punctuations;
 
-	size_t last_id;
+	/** @brief İşlenmekte olan lexeme. */
+	struct lexeme current_lexeme;
 };
 
 /** @brief Token. */
 struct token {
+	/** @brief Tokenlerin ekstra semantic bilgisi. */
 	union {
+		/** @brief TK_FLOAT tipi için seminfo. */
 		double num_float;
+		/** @brief TK_INT tipi için seminfo. */
 		intmax_t num_int;
+		/** @brief TK_IDENT tipi için seminfo. */
 		size_t ident_id;
 	} seminfo;
 
-	size_t tk_id;
+	/** @brief Token tipini ifade eden özgün ID. */
+	size_t id;
 };
 
 

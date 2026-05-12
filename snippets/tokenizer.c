@@ -16,10 +16,10 @@ void tokenizer_init(struct tokenizer *t)
 {
 	map_init(&t->ident_map, sizeof(size_t));
 
+	t->last_id = 0;
+
 	map_init(&t->keywords, sizeof(size_t));
 	map_init(&t->punctuations, sizeof(size_t));
-
-	t->last_id = 0;
 
 	t->current_lexeme.kind = LEXEME_EOF;
 }
@@ -49,8 +49,7 @@ void tokenizer_add_punctuation(struct tokenizer *t,
 void tokenizer_feed(struct tokenizer *t, struct lexeme lexeme)
 {
 	assert(t->current_lexeme.kind == LEXEME_EOF &&
-	       "Tokenizerda zaten bir lexeme mevcut. Önce tokenizer_next "
-	       "çağırın.");
+	       "Tokenizerda zaten bir lexeme mevcut. Önce tokenizer_next çağırın.");
 
 	t->current_lexeme = lexeme;
 }
@@ -63,9 +62,8 @@ static struct token consume_ident(struct tokenizer *t)
 			       t->current_lexeme.seminfo,
 			       t->current_lexeme.seminfo_len);
 
-	if (keyword_id) {
-		return (struct token) { .tk_id = *keyword_id };
-	}
+	if (keyword_id)
+		return (struct token) { .id = *keyword_id };
 
 	size_t *id_in_map = map_get2(&t->ident_map,
 			       t->current_lexeme.seminfo,
@@ -83,7 +81,7 @@ static struct token consume_ident(struct tokenizer *t)
 			t->current_lexeme.seminfo_len, &id);
 	}
 
-	return (struct token) { .tk_id = TK_IDENT, .seminfo.ident_id = id };
+	return (struct token) { .id = TK_IDENT, .seminfo.ident_id = id };
 }
 
 static struct token consume_num(struct tokenizer *t)
@@ -98,10 +96,10 @@ static struct token consume_num(struct tokenizer *t)
 	struct token tk;
 
 	if (t->current_lexeme.kind == LEXEME_INT) {
-		tk.tk_id = TK_INT;
+		tk.id = TK_INT;
 		tk.seminfo.num_int = strtoimax(null_terminated_num, NULL, 10);
 	} else {
-		tk.tk_id = TK_FLOAT;
+		tk.id = TK_FLOAT;
 		tk.seminfo.num_float = strtod(null_terminated_num, NULL);
 	}
 
@@ -136,14 +134,14 @@ static struct token consume_punct(struct tokenizer *t)
 	if (t->current_lexeme.seminfo_len == 0)
 		t->current_lexeme.kind = LEXEME_EOF;
 
-	return (struct token) { .tk_id = *punct_id };
+	return (struct token) { .id = *punct_id };
 }
 
 struct token tokenizer_next(struct tokenizer *t)
 {
 	switch (t->current_lexeme.kind) {
 	case LEXEME_EOF:
-		return (struct token) { .tk_id = TK_NOTOKEN };
+		return (struct token) { .id = TK_NOTOKEN };
 
 	case LEXEME_IDENT:
 		return consume_ident(t);
