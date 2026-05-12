@@ -21,7 +21,8 @@ makul.
     Eh, diller her yerde. Sadece "yazılım dili" olmanın ötesinde, "text format"
     olarak anılan kayıt formatlarına da "dil" demek mümkün. Birbiriyle
     haberleşen programlar yazarken, ya da basitinden shell yazarken kendinizi
-    bir gramer dil tasarlarken bulabilirsiniz. Dil tanımına birazdan geleceğiz.
+    bir gramer, bir dil tasarlarken bulabilirsiniz. Burada "dil" dediğimiz şeyi
+    ise birazdan tanımlayacağız.
 
 @par Öncesinde Ne Bilmeliyim?
     C, biraz da data structures. C'nin syntax ve semantics'ine iyi bir

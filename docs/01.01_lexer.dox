@@ -25,14 +25,14 @@ Esas DFA yapısı @ref lexer_next() içinde kendini gösteriyor:
 @ref lexer_next() fonksiyonunda kodun okunabilirliğini artırmak için birkaç
 basit fonksiyon tanımladım: @subpage lexer_yardimci_fonksiyonlar_page
 
-Lexeme toplayan fonksiyonları tek tek inceleyelim. Identifier ve sembol
-tomplama fonksiyonları birebir aynı şekilde çalışıyor. Aralarındaki tek fark,
-biri `ispunct` kullanırken diğeri `isalnum` kullanıyor.
+Lexeme toplayan fonksiyonları tek tek inceleyelim. Identifier ve sembol toplama
+fonksiyonları birebir aynı şekilde çalışıyor. Aralarındaki tek fark, biri
+`ispunct` kullanırken diğeri `isalnum` kullanıyor.
 
 @snippet snippets/lexer.c Identifier&sembol toplama
 
-Esas karışıklık sayı toplamada. Hem ondalık hem işaretli hem de tam sayı
-tek bir fonksiyonla toplanıyor:
+Buradaki esas karışıklık sayı tokenlerini toplamada. Hem ondalık hem işaretli
+hem de tam sayı tokenleri tek bir fonksiyonla toplanıyor:
 
 @snippet snippets/lexer.c Sayı toplama
 

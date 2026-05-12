@@ -6,8 +6,8 @@ graph ast_assignment {
 
     if_stmt [label = <⟨if⟩>];
     if_cond [label = <⟨equals⟩>];
-    cond_lhs [label = "7"];
-    cond_rhs [label = "7"];
+    cond_lhs [label = "6"];
+    cond_rhs [label = "6"];
 
     if_stmt -- if_cond;
     if_cond -- cond_lhs;
@@ -19,7 +19,7 @@ graph ast_assignment {
     asgn_lvalue [label = "var1"];
 
     add_expr [label = <+>];
-    add_num1 [label = "6"];
+    add_num1 [label = "7"];
     add_num2 [label = "func()"];
 
     asgn_stmt -- asgn_lvalue;

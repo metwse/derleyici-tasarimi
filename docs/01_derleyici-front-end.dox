@@ -3,7 +3,7 @@
 
 Klasik örnektir, defalarca derslerde denk gelmişsinizdir:
 
-Matematiksel ifadeleri *expression tree* olarak göstermek, o gösterim
+Matematiksel ifadeleri *expression tree* olarak göstermek, o gösterimi
 * *evaluate* etmek: `1 + 3 / ((2 + 1) * 4³)`
 
 @dotfile dot/ast-expression-tree.dot
@@ -23,7 +23,7 @@ if (6 == 6) {
 Aslında epey kolay! Metin formundaki kodu *bir şekilde* ağaç yapısına
 dönüştürdüğümüzde değer hesaplamak için *tree traversal* yeterli oluyor! Peki,
 bu ağacı nasıl oluşturacağız? Asıl soruna geliyoruz: *lexing* ve sonrasında
-*parsing*.
+* *parsing*.
 
 @dot
 digraph navigation {
@@ -43,10 +43,10 @@ digraph navigation {
 
 @section front_end_lexical_analysis Lexical Analysis
 
-*String* üzerinde çalışmak genel olarak zor. Ağaca oturtma sürecinde bir
+* *String* üzerinde çalışmak genel olarak zor. Ağaca oturtma sürecinde bir
 sayının değeri, değişkenin ya da fonksiyonun ismi bizi ilgilendirmiyor.
-*Tokenizer* ile metin işleme sürecinde syntax elemanlarının anlamını çıkarırız.
-Mesela, `if (x == 12) b = 21;`i ele alalım.
+* *Tokenizer* ile metin işleme sürecinde lexeme denen syntax parçalarının
+anlamını çıkarırız. Mesela, `if (x == 12) b = 21;`i ele alalım.
 
 | lexeme | token | seminfo |
 |--|--|--|
@@ -62,9 +62,9 @@ Mesela, `if (x == 12) b = 21;`i ele alalım.
 | ; | SEMI |  |
 
 Genelde, bütün metni tutmak yerine gereksiz detayları atlayarak ham token
-bilgisini tutmayı tercih ederiz. `token` isminde bir `enum` tanımlayıp onu
-seminfo `union` tanımlayarak gramer yapılarını daha özlü bir şekilde temsil
-etmek mümkündür:
+bilgisini tutmayı tercih ederiz. `token` isminde bir `enum` ve seminfo isminde
+bir `union` tanımlayarak gramer yapılarını daha özlü bir şekilde temsil etmek
+mümkündür:
 
 ```c
 enum token {
