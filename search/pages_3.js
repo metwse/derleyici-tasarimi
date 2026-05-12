@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['kullanımı_0',['Taslak Kullanımı',['../taslak.html',1,'']]]
+  ['için_20yardımcı_20fonsiyonlar_0',['Lexer için Yardımcı Fonsiyonlar',['../lexer_yardimci_fonksiyonlar_page.html',1,'lexer_page']]]
 ];

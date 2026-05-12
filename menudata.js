@@ -30,7 +30,9 @@ var menudata={children:[
 {text:"Sınıf İndeksi",url:"classes.html"},
 {text:"Sınıf Üyeleri",url:"functions.html",children:[
 {text:"Tümü",url:"functions.html"},
-{text:"Değişkenler",url:"functions_vars.html"}]}]},
+{text:"Değişkenler",url:"functions_vars.html"},
+{text:"Enümerasyonlar",url:"functions_enum.html"},
+{text:"Enümeratör",url:"functions_eval.html"}]}]},
 {text:"Dosyalar",url:"files.html",children:[
 {text:"Dosya Listesi",url:"files.html"},
 {text:"Dosya Üyeleri",url:"globals.html",children:[

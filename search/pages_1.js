@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['endi_0',['Derleyici Front Endi',['../derleyici_front_end.html',1,'']]]
+  ['endi_0',['Derleyici Front Endi',['../derleyici_front_end_page.html',1,'']]]
 ];

@@ -87,7 +87,7 @@ $(function() {
 <iframe scrolling="no" frameborder="0" src="dot_inline_dotgraph_1.svg" width="486" height="62"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 <h1><a class="anchor" id="front_end_lexical_analysis"></a>
 Lexical Analysis</h1>
-<p>String* üzerinde çalışmak genel olarak zor. Ağaca oturtma sürecinde bir sayının değeri, değişkenin ya da fonksiyonun ismi bizi ilgilendirmiyor. Tokenizer*, metin işleme sürecinde <em>syntax</em> elemanlarının anlamını çıkarırız. Mesela, <code>if (x == 12) b = 21;</code>i ele alalım.</p>
+<p>String* üzerinde çalışmak genel olarak zor. Ağaca oturtma sürecinde bir sayının değeri, değişkenin ya da fonksiyonun ismi bizi ilgilendirmiyor. Tokenizer* ile metin işleme sürecinde syntax elemanlarının anlamını çıkarırız. Mesela, <code>if (x == 12) b = 21;</code>i ele alalım.</p>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">lexeme   </th><th class="markdownTableHeadNone">token   </th><th class="markdownTableHeadNone">seminfo    </th></tr>
@@ -126,13 +126,15 @@ Lexical Analysis</h1>
 </div><!-- fragment --><p><code>if</code> keywordü, sayılar ve isimlere odaklanacak olursak, aşağıdaki <em>state machine</em> görseli metinden token üretme kurallarını uyguluyor:</p>
 <div class="dotgraph">
 <iframe scrolling="no" frameborder="0" src="dot_dfa-lexer.svg" width="374" height="263"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-<p>Her bir token için 3 ayrı <em>state macine</em> başlatmak uygulanabilir değil. Tek bir <em>state macine</em> olacak şekilde yeniden düzenleme yapmamız gerekiyor. Bunu, yeni <em>starting state</em> ekleyip onu eski starting statelere <em>epsilon transition</em> ile bağlayarak yapabiliriz:</p>
+<p>Her bir token için 3 ayrı <em>state machine</em> başlatmak uygulanabilir değil. Tek bir <em>state macine</em> olacak şekilde yeniden düzenleme yapmamız gerekiyor. Bunu, yeni <em>starting state</em> ekleyip onu eski starting statelere <em>epsilon transition</em> ile bağlayarak yapabiliriz:</p>
 <div class="dotgraph">
 <iframe scrolling="no" frameborder="0" src="dot_nfa-lexer.svg" width="500" height="287"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-<p>Ancak şu anda lexerimiz <em>nondeterministic finite state machine</em> (NFA) oldu. Bunun implementasyonunu yapmamız mümkün değil, tekrardan <em>deterministic finitie state macine</em> (DFA) oluşturmamız gerekiyor. DFA-NFA dönüşümleri bu dersin konusu değil, sadece örnek olsun diye veriyorum:</p>
+<p>Ancak şu anda lexerimiz <em>nondeterministic finite state machine</em> (NFA) oldu. Bunun implementasyonunu yapmamız mümkün değil, tekrardan <em>deterministic finite state macine</em> (DFA) oluşturmamız gerekiyor. DFA-NFA dönüşümleri bu dersin konusu değil, sadece örnek olsun diye veriyorum:</p>
 <div class="dotgraph">
-<iframe scrolling="no" frameborder="0" src="dot_dfa-combined-lexer.svg" width="646" height="278"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
- </div></div><!-- contents -->
+<iframe scrolling="no" frameborder="0" src="dot_dfa-combined-lexer.svg" width="646" height="314"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<p>Tabii bugün elle bu kadar optimize edilmiş bir state macine kodlamayacağız. Sayı, identifier ve tek ya da iki karakterlik sembol/operatörleri metinden tokenize edecek bir lexer kodlamaya başlayalım: <a class="el" href="lexer_page.html">Lexer</a></p>
+<p>Sonrasında <a class="el" href="tokenizer_page.html">Tokenizer</a> ile devam edeceğiz. </p>
+</div></div><!-- contents -->
 </div><!-- PageDoc -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

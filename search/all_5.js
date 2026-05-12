@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['lexical_20analysis_0',['Lexical Analysis',['../derleyici_front_end.html#front_end_lexical_analysis',1,'']]]
+  ['için_20yardımcı_20fonsiyonlar_0',['Lexer için Yardımcı Fonsiyonlar',['../lexer_yardimci_fonksiyonlar_page.html',1,'lexer_page']]]
 ];

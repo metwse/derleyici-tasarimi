@@ -1,11 +1,13 @@
 var indexSectionsWithContent =
 {
-  0: "adefklmstvy",
-  1: "ms",
-  2: "ms",
-  3: "ms",
-  4: "kv",
-  5: "defkt"
+  0: "acdefiklmstvy",
+  1: "lms",
+  2: "lms",
+  3: "lms",
+  4: "cksv",
+  5: "l",
+  6: "l",
+  7: "defiklty"
 };
 
 var indexSectionNames =
@@ -15,7 +17,9 @@ var indexSectionNames =
   2: "files",
   3: "functions",
   4: "variables",
-  5: "pages"
+  5: "enums",
+  6: "enumvalues",
+  7: "pages"
 };
 
 var indexSectionLabels =
@@ -25,6 +29,8 @@ var indexSectionLabels =
   2: "Dosyalar",
   3: "Fonksiyonlar",
   4: "Değişkenler",
-  5: "Sayfalar"
+  5: "Enümerasyonlar",
+  6: "Enümeratör",
+  7: "Sayfalar"
 };
 

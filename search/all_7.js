@@ -1,12 +1,17 @@
 var searchData=
 [
-  ['stack_0',['stack',['../structstack.html',1,'']]],
-  ['stack_2eh_1',['stack.h',['../stack_8h.html',1,'']]],
-  ['stack_5fat_2',['stack_at',['../stack_8h.html#a956389c33287dec1ffa38bf26aff9149',1,'stack.h']]],
-  ['stack_5fdestroy_3',['stack_destroy',['../stack_8h.html#a622d2f02337527a1941edf764f4c6753',1,'stack.h']]],
-  ['stack_5finit_4',['stack_init',['../stack_8h.html#a38a36940e77bd5a01164995581c309dc',1,'stack.h']]],
-  ['stack_5flen_5',['stack_len',['../stack_8h.html#a94d74fef6960660c745dd8fb3e990c1e',1,'stack.h']]],
-  ['stack_5fpop_6',['stack_pop',['../stack_8h.html#a34d1a32b67de7cda86d796764ce32628',1,'stack.h']]],
-  ['stack_5fpush_7',['stack_push',['../stack_8h.html#aeeb51fe685bd0742571390df2251b6bb',1,'stack.h']]],
-  ['stack_5ftop_8',['stack_top',['../stack_8h.html#a9193bfd37b7c928b6a440c5f10d1fcfd',1,'stack.h']]]
+  ['lexeme_0',['lexeme',['../structlexeme.html',1,'']]],
+  ['lexeme_5feof_1',['LEXEME_EOF',['../structlexeme.html#a76d0f0eb5eb899305ec7d40898c5c351aac8b7b8215d076599804f0aaf41692ab',1,'lexeme']]],
+  ['lexeme_5ffloat_2',['LEXEME_FLOAT',['../structlexeme.html#a76d0f0eb5eb899305ec7d40898c5c351a923b8e1ee7d1cd102f859d505d23a22e',1,'lexeme']]],
+  ['lexeme_5fident_3',['LEXEME_IDENT',['../structlexeme.html#a76d0f0eb5eb899305ec7d40898c5c351ae020080bad1136a40f6b53907559793f',1,'lexeme']]],
+  ['lexeme_5fint_4',['LEXEME_INT',['../structlexeme.html#a76d0f0eb5eb899305ec7d40898c5c351ab53c25af417c1d07d816188fe25abd94',1,'lexeme']]],
+  ['lexeme_5fkind_5',['lexeme_kind',['../structlexeme.html#a76d0f0eb5eb899305ec7d40898c5c351',1,'lexeme']]],
+  ['lexeme_5fpunct_6',['LEXEME_PUNCT',['../structlexeme.html#a76d0f0eb5eb899305ec7d40898c5c351af044d467b8dc5d12378de61299094d2b',1,'lexeme']]],
+  ['lexeme_5funknown_7',['LEXEME_UNKNOWN',['../structlexeme.html#a76d0f0eb5eb899305ec7d40898c5c351addd435474952fc9cc463a5ba69d8c8d3',1,'lexeme']]],
+  ['lexer_8',['lexer',['../structlexer.html',1,'lexer'],['../lexer_page.html',1,'Lexer']]],
+  ['lexer_20için_20yardımcı_20fonsiyonlar_9',['Lexer için Yardımcı Fonsiyonlar',['../lexer_yardimci_fonksiyonlar_page.html',1,'lexer_page']]],
+  ['lexer_2eh_10',['lexer.h',['../lexer_8h.html',1,'']]],
+  ['lexer_5finit_11',['lexer_init',['../lexer_8h.html#a702027edae6526a7b51687def11fad46',1,'lexer.h']]],
+  ['lexer_5fnext_12',['lexer_next',['../lexer_8h.html#a5691ba3e7cd10458aa508728a742a2db',1,'lexer.h']]],
+  ['lexical_20analysis_13',['Lexical Analysis',['../derleyici_front_end_page.html#front_end_lexical_analysis',1,'']]]
 ];

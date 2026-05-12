@@ -1,7 +1,4 @@
 var searchData=
 [
-  ['derleme_0',['Derleme',['../taslak.html#taslak_derleme_sec',1,'']]],
-  ['derleyici_20front_20endi_1',['Derleyici Front Endi',['../derleyici_front_end.html',1,'']]],
-  ['derleyici_20tasarımı_2',['Derleyici Tasarımı',['../index.html',1,'']]],
-  ['dokümantasyon_3',['Dokümantasyon',['../taslak.html#taslak_dokumantasyon_sec',1,'']]]
+  ['current_0',['current',['../structlexer.html#a77180d60d2b0b57591e383ffca76e289',1,'lexer']]]
 ];
