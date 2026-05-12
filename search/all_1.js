@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['key_0',['key',['../structmap__entry.html#aedb7448103d4d4e18e13086b34035884',1,'map_entry']]],
-  ['keylen_1',['keylen',['../structmap__entry.html#a558c0f2acccb56673d45aba7db399551',1,'map_entry']]],
-  ['kullanımı_2',['Taslak Kullanımı',['../taslak.html',1,'']]]
+  ['derleme_0',['Derleme',['../taslak.html#taslak_derleme_sec',1,'']]],
+  ['derleyici_20front_20endi_1',['Derleyici Front Endi',['../derleyici_front_end.html',1,'']]],
+  ['derleyici_20tasarımı_2',['Derleyici Tasarımı',['../index.html',1,'']]],
+  ['dokümantasyon_3',['Dokümantasyon',['../taslak.html#taslak_dokumantasyon_sec',1,'']]]
 ];

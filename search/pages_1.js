@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['kullanımı_0',['Taslak Kullanımı',['../taslak.html',1,'']]]
+  ['endi_0',['Derleyici Front Endi',['../derleyici_front_end.html',1,'']]]
 ];
