@@ -1,0 +1,34 @@
+digraph ast_expression_tree {
+    rankdir = LR;
+
+    node [shape = "circle"];
+    edge [labeldistance = 2, labelangle = 0, fontsize = 10];
+
+    S [label = "S"];
+
+    S -> num_S [label = "ε"];
+    S -> ident_S [label = "ε"];
+    S -> if_S [label = "ε"];
+
+    if_S [label = "S₃"];
+    if_A [label = "A₃"];
+    if_B [label = "B₃", peripheries = 2];
+
+    if_S -> if_A [label = "i"];
+    if_A -> if_B [label = "f"];
+
+    ident_S [label = "S₂"];
+    ident_A [label = "A₂", peripheries = 2];
+
+    ident_S -> ident_A [label = "(a-z|A-Z|_)"];
+    ident_A -> ident_A [label = "(a-z|A-Z|_|0-9)"];
+
+    num_S [label = "S₁"];
+    num_A [label = "A₁"];
+    num_B [label = "B₁", peripheries = 2];
+
+    num_S -> num_A [label = "(+|-)"];
+    num_S -> num_A [label = "ε"];
+    num_A -> num_B [label = "(0-9)"];
+    num_B -> num_A [label = "ε"];
+}

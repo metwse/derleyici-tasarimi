@@ -1,0 +1,101 @@
+/**
+@page derleyici_front_end Derleyici Front Endi
+
+Klasik örnektir, defalarca derslerde denk gelmişsinizdir:
+
+Matematiksel ifadeleri *expression tree* olarak göstermek, o gösterim
+* *evaluate* etmek: `1 + 3 / ((2 + 1) * 4³)`
+
+@dotfile dot/ast-expression-tree.dot
+
+Bu *expression tree* yapısını *in-order traverse* ederek sonucu bulabiliriz.
+Her seferinde karşımıza bu kadar basit gramer yapıları çıkacak değil. Yazılım
+dillerinde matematiksel ifadelerden başka yapılar da mevcut, örneğin aşağıdaki
+kod parçasını ağaca oturtmak istersek,
+
+```c
+if (6 == 6) {
+    var1 = 7 + func();
+}
+```
+@dotfile dot/ast-assignment.dot
+
+Aslında epey kolay! Metin formundaki kodu *bir şekilde* ağaç yapısına
+dönüştürdüğümüzde değer hesaplamak için *tree traversal* yeterli oluyor! Peki,
+bu ağacı nasıl oluşturacağız? Asıl soruna geliyoruz: *lexing* ve sonrasında
+*parsing*.
+
+@dot
+digraph navigation {
+    rankdir = LR;
+
+    node [shape = "box"];
+
+    A [label = "lexing\nBURADASINIZ"];
+    B [label = "parsing"];
+    C [label = "evaluation"];
+
+    A -> B;
+    B -> C;
+}
+@enddot
+
+
+@section front_end_lexical_analysis Lexical Analysis
+
+*String* üzerinde çalışmak genel olarak zor. Ağaca oturtma sürecinde bir
+sayının değeri, değişkenin ya da fonksiyonun ismi bizi ilgilendirmiyor.
+*Tokenizer*, metin işleme sürecinde *syntax* elemanlarının anlamını çıkarırız.
+Mesela, `if (x == 12) b = 21;`i ele alalım.
+
+| lexeme | token | seminfo |
+|--|--|--|
+| if | IF |  |
+| ( | LPAREN |  |
+| x | IDENT | "x" |
+| == | EQUALS |  |
+| 12 | NUM | 12  |
+| ) | RPAREN |  |
+| b | IDENT | "b" |
+| = | ASGN |  |
+| 21 | NUM | 21 |
+| ; | SEMI |  |
+
+Genelde, bütün metni tutmak yerine gereksiz detayları atlayarak ham token
+bilgisini tutmayı tercih ederiz. `token` isminde bir `enum` tanımlayıp onu
+seminfo `union` tanımlayarak gramer yapılarını daha özlü bir şekilde temsil
+etmek mümkündür:
+
+```c
+enum token {
+    TK_IF,
+    TK_LPAREN,
+    // ...
+};
+
+union seminfo {
+    char *id;
+    size_t num;
+}
+```
+
+`if` keywordü, sayılar ve isimlere odaklanacak olursak, aşağıdaki
+* *state machine* görseli metinden token üretme kurallarını uyguluyor:
+
+@dotfile dot/dfa-lexer.dot
+
+Her bir token için 3 ayrı *state macine* başlatmak uygulanabilir değil. Tek
+bir *state macine* olacak şekilde yeniden düzenleme yapmamız gerekiyor. Bunu,
+yeni *starting state* ekleyip onu eski starting statelere *epsilon transition*
+ile bağlayarak yapabiliriz:
+
+@dotfile dot/nfa-lexer.dot
+
+Ancak şu anda lexerimiz *nondeterministic finite state machine* (NFA) oldu.
+Bunun implementasyonunu yapmamız mümkün değil, tekrardan
+* *deterministic finitie state macine* (DFA) oluşturmamız gerekiyor. DFA-NFA
+dönüşümleri bu dersin konusu değil, sadece örnek olsun diye veriyorum:
+
+@dotfile dot/dfa-combined-lexer.dot
+
+*/

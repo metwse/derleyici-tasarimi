@@ -1,0 +1,30 @@
+graph ast_assignment {
+    ranksep = 0.5;
+
+    node [shape = "plaintext"];
+    edge [labeldistance = 2, labelangle = 0, fontsize = 10];
+
+    if_stmt [label = <⟨if⟩>];
+    if_cond [label = <⟨equals⟩>];
+    cond_lhs [label = "7"];
+    cond_rhs [label = "7"];
+
+    if_stmt -- if_cond;
+    if_cond -- cond_lhs;
+    if_cond -- cond_rhs;
+
+    if_stmt -- asgn_stmt;
+
+    asgn_stmt [label = <⟨assign⟩>];
+    asgn_lvalue [label = "var1"];
+
+    add_expr [label = <+>];
+    add_num1 [label = "6"];
+    add_num2 [label = "func()"];
+
+    asgn_stmt -- asgn_lvalue;
+    asgn_stmt -- add_expr;
+
+    add_expr -- add_num1;
+    add_expr -- add_num2;
+}

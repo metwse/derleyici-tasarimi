@@ -1,0 +1,37 @@
+graph ast_expression_tree {
+    ranksep = 0.5;
+
+    node [shape = "plaintext"];
+    edge [labeldistance = 2, labelangle = 0, fontsize = 10];
+
+    add_expr [label = <+>];
+    add_num1 [label = "1"];
+
+    div_expr [label = </>];
+    div_num1 [label = "3"];
+
+    mult_expr [label = <*>];
+
+    add2_expr [label = <+>];
+    add2_num1 [label = "2"];
+    add2_num2 [label = "1"];
+
+    exp_expr [label = <^>];
+    exp_num1 [label = "4"];
+    exp_num2 [label = "3"];
+
+    add_expr -- add_num1;
+    add_expr -- div_expr;
+
+    div_expr -- div_num1;
+    div_expr -- mult_expr;
+
+    mult_expr -- add2_expr;
+    mult_expr -- exp_expr;
+
+    add2_expr -- add2_num1;
+    add2_expr -- add2_num2;
+
+    exp_expr -- exp_num1;
+    exp_expr -- exp_num2;
+}
