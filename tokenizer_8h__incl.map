@@ -1,0 +1,13 @@
+<map id="include/tokenizer.h" name="include/tokenizer.h">
+<area shape="rect" id="Node000001" title="Tokenizer" alt="" coords="71,5,215,31"/>
+<area shape="rect" id="Node000002" href="$lexer_8h.html" title="Lexer" alt="" coords="5,79,71,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="128,33,68,73,65,69,125,28"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="71,152,146,177"/>
+<area shape="poly" id="edge5_Node000001_Node000003" title=" " alt="" coords="143,32,117,139,112,138,138,30"/>
+<area shape="rect" id="Node000004" href="$map_8h.html" title="Basit hashmap." alt="" coords="147,79,209,104"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="151,30,169,65,164,67,147,32"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="233,79,304,104"/>
+<area shape="poly" id="edge6_Node000001_Node000005" title=" " alt="" coords="165,28,238,69,235,74,162,33"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="52,102,90,140,86,144,48,106"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="168,106,131,144,127,140,165,102"/>
+</map>

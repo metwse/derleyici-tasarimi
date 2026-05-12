@@ -37,4 +37,5 @@ var menudata={children:[
 {text:"Dosya Listesi",url:"files.html"},
 {text:"Dosya Üyeleri",url:"globals.html",children:[
 {text:"Tümü",url:"globals.html"},
-{text:"Fonksiyonlar",url:"globals_func.html"}]}]}]}
+{text:"Fonksiyonlar",url:"globals_func.html"},
+{text:"Değişkenler",url:"globals_vars.html"}]}]}]}

@@ -113,7 +113,7 @@ Lexical Analysis</h1>
 <td class="markdownTableBodyNone">;   </td><td class="markdownTableBodyNone">SEMI   </td><td class="markdownTableBodyNone"></td></tr>
 </table>
 <p>Genelde, bütün metni tutmak yerine gereksiz detayları atlayarak ham token bilgisini tutmayı tercih ederiz. <code>token</code> isminde bir <code>enum</code> ve seminfo isminde bir <code>union</code> tanımlayarak gramer yapılarını daha özlü bir şekilde temsil etmek mümkündür:</p>
-<div class="fragment"><div class="line"><span class="keyword">enum</span> token {</div>
+<div class="fragment"><div class="line"><span class="keyword">enum</span> <a class="code hl_struct" href="structtoken.html">token</a> {</div>
 <div class="line">    TK_IF,</div>
 <div class="line">    TK_LPAREN,</div>
 <div class="line">    <span class="comment">// ...</span></div>
@@ -123,6 +123,7 @@ Lexical Analysis</h1>
 <div class="line">    <span class="keywordtype">char</span> *id;</div>
 <div class="line">    <span class="keywordtype">size_t</span> num;</div>
 <div class="line">};</div>
+<div class="ttc" id="astructtoken_html"><div class="ttname"><a href="structtoken.html">token</a></div><div class="ttdoc">Token.</div><div class="ttdef"><b>Definition</b> <a href="tokenizer_8h_source.html#l00030">tokenizer.h:30</a></div></div>
 </div><!-- fragment --><p>Sadece <code>if</code> keywordüne, sayılara ve isimlere odaklanacak olursak, aşağıdaki görseldeki <em>state machineler</em> metinden token üretme kurallarını uygulamaya yeterli olacaktır:</p>
 <div class="dotgraph">
 <iframe scrolling="no" frameborder="0" src="dot_dfa-lexer.svg" width="374" height="263"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>

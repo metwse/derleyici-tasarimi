@@ -1,0 +1,256 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="tr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Derleyici Tasarımı: include/tokenizer.h Dosya Referansı</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Derleyici Tasarımı
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Oluşturan Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Ara');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Yüklüyor...</div>
+<div class="SRStatus" id="Searching">Arıyor...</div>
+<div class="SRStatus" id="NoMatches">Eşleşme Yok</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Sınıflar</a> &#124;
+<a href="#func-members">Fonksiyonlar</a> &#124;
+<a href="#var-members">Değişkenler</a>  </div>
+  <div class="headertitle"><div class="title">tokenizer.h Dosya Referansı</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><a class="el" href="tokenizer_page.html">Tokenizer</a>  
+<a href="#details">Ayrıntılar...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="lexer_8h_source.html">lexer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="map_8h_source.html">map.h</a>&quot;</code><br />
+<code>#include &lt;stddef.h&gt;</code><br />
+<code>#include &lt;stdint.h&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+tokenizer.h için içerme bağımlılık grafiği:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="tokenizer_8h__incl.svg" width="310" height="183"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<p><a href="tokenizer_8h_source.html">Bu dosyanın kaynak koduna git.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Sınıflar</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtokenizer.html">tokenizer</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">tokenizer.  <a href="structtokenizer.html#details">Ayrıntılar...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtoken.html">token</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Token.  <a href="structtoken.html#details">Ayrıntılar...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Fonksiyonlar</h2></td></tr>
+<tr class="memitem:a73d455e90e9f0e517198663d56d6b5a3" id="r_a73d455e90e9f0e517198663d56d6b5a3"><td class="memItemLeft" align="right" valign="top"><a id="a73d455e90e9f0e517198663d56d6b5a3" name="a73d455e90e9f0e517198663d56d6b5a3"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>tokenizer_init</b> (struct <a class="el" href="structtokenizer.html">tokenizer</a> *<a class="el" href="structtokenizer.html">tokenizer</a>)</td></tr>
+<tr class="memdesc:a73d455e90e9f0e517198663d56d6b5a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Yeni bir tokenizer oluşturur. <br /></td></tr>
+<tr class="separator:a73d455e90e9f0e517198663d56d6b5a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01c5dc98d1a56c559e4bbe87ad3be1fd" id="r_a01c5dc98d1a56c559e4bbe87ad3be1fd"><td class="memItemLeft" align="right" valign="top"><a id="a01c5dc98d1a56c559e4bbe87ad3be1fd" name="a01c5dc98d1a56c559e4bbe87ad3be1fd"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>tokenizer_destroy</b> (struct <a class="el" href="structtokenizer.html">tokenizer</a> *<a class="el" href="structtokenizer.html">tokenizer</a>)</td></tr>
+<tr class="memdesc:a01c5dc98d1a56c559e4bbe87ad3be1fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tokenizerın tahsis ettiği belleği temizler. <br /></td></tr>
+<tr class="separator:a01c5dc98d1a56c559e4bbe87ad3be1fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1493eba53b25f319f9c3d18c73fc18a3" id="r_a1493eba53b25f319f9c3d18c73fc18a3"><td class="memItemLeft" align="right" valign="top"><a id="a1493eba53b25f319f9c3d18c73fc18a3" name="a1493eba53b25f319f9c3d18c73fc18a3"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>tokenizer_add_keyword</b> (struct <a class="el" href="structtokenizer.html">tokenizer</a> *<a class="el" href="structtokenizer.html">tokenizer</a>, const char *keyword, size_t id)</td></tr>
+<tr class="memdesc:a1493eba53b25f319f9c3d18c73fc18a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tokenizera bir keyword kaydeder. <br /></td></tr>
+<tr class="separator:a1493eba53b25f319f9c3d18c73fc18a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a28727c04edc110906ea054372c8a9adb" id="r_a28727c04edc110906ea054372c8a9adb"><td class="memItemLeft" align="right" valign="top"><a id="a28727c04edc110906ea054372c8a9adb" name="a28727c04edc110906ea054372c8a9adb"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>tokenizer_add_punctuation</b> (struct <a class="el" href="structtokenizer.html">tokenizer</a> *<a class="el" href="structtokenizer.html">tokenizer</a>, const char *punctuation, size_t id)</td></tr>
+<tr class="memdesc:a28727c04edc110906ea054372c8a9adb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tokenizera bir punctuation kaydeder.. <br /></td></tr>
+<tr class="separator:a28727c04edc110906ea054372c8a9adb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91b6fe31be04c8262446395e5b61c7b4" id="r_a91b6fe31be04c8262446395e5b61c7b4"><td class="memItemLeft" align="right" valign="top"><a id="a91b6fe31be04c8262446395e5b61c7b4" name="a91b6fe31be04c8262446395e5b61c7b4"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>tokenizer_feed</b> (struct <a class="el" href="structtokenizer.html">tokenizer</a> *<a class="el" href="structtokenizer.html">tokenizer</a>, struct <a class="el" href="structlexeme.html">lexeme</a> <a class="el" href="structlexeme.html">lexeme</a>)</td></tr>
+<tr class="memdesc:a91b6fe31be04c8262446395e5b61c7b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lexemeyi tokenizere gönderir. <br /></td></tr>
+<tr class="separator:a91b6fe31be04c8262446395e5b61c7b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae76c8323e13da9eaddd2a3cdbfbd6fdf" id="r_ae76c8323e13da9eaddd2a3cdbfbd6fdf"><td class="memItemLeft" align="right" valign="top"><a id="ae76c8323e13da9eaddd2a3cdbfbd6fdf" name="ae76c8323e13da9eaddd2a3cdbfbd6fdf"></a>
+struct <a class="el" href="structtoken.html">token</a>&#160;</td><td class="memItemRight" valign="bottom"><b>tokenizer_next</b> (struct <a class="el" href="structtokenizer.html">tokenizer</a> *tokenzier)</td></tr>
+<tr class="memdesc:ae76c8323e13da9eaddd2a3cdbfbd6fdf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sıradaki tokeni çek. <br /></td></tr>
+<tr class="separator:ae76c8323e13da9eaddd2a3cdbfbd6fdf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Değişkenler</h2></td></tr>
+<tr class="memitem:a6fa87d7080a9a48e43877b84d6341be3" id="r_a6fa87d7080a9a48e43877b84d6341be3"><td class="memItemLeft" align="right" valign="top">static const size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tokenizer_8h.html#a6fa87d7080a9a48e43877b84d6341be3">TK_NOTOKEN</a> = -1</td></tr>
+<tr class="separator:a6fa87d7080a9a48e43877b84d6341be3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8616b93391ec951a4d353a10315cad54" id="r_a8616b93391ec951a4d353a10315cad54"><td class="memItemLeft" align="right" valign="top">static const size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tokenizer_8h.html#a8616b93391ec951a4d353a10315cad54">TK_INT</a> = -2</td></tr>
+<tr class="separator:a8616b93391ec951a4d353a10315cad54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e3d5f8635d47064e61bd89a16aa9219" id="r_a6e3d5f8635d47064e61bd89a16aa9219"><td class="memItemLeft" align="right" valign="top">static const size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tokenizer_8h.html#a6e3d5f8635d47064e61bd89a16aa9219">TK_FLOAT</a> = -3</td></tr>
+<tr class="separator:a6e3d5f8635d47064e61bd89a16aa9219"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ffbf59a256be2852e91e6ccecafb7ad" id="r_a7ffbf59a256be2852e91e6ccecafb7ad"><td class="memItemLeft" align="right" valign="top">static const size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tokenizer_8h.html#a7ffbf59a256be2852e91e6ccecafb7ad">TK_IDENT</a> = -4</td></tr>
+<tr class="separator:a7ffbf59a256be2852e91e6ccecafb7ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Ayrıntılı tanımlama</h2>
+<div class="textblock"><p><a class="el" href="tokenizer_page.html">Tokenizer</a> </p>
+
+<p class="definition"><a class="el" href="tokenizer_8h_source.html">tokenizer.h</a> dosyasında tanımlanmıştır.</p>
+</div><h2 class="groupheader">Değişken Dokümantasyonu</h2>
+<a id="a6e3d5f8635d47064e61bd89a16aa9219" name="a6e3d5f8635d47064e61bd89a16aa9219"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e3d5f8635d47064e61bd89a16aa9219">&#9670;&#160;</a></span>TK_FLOAT</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const size_t TK_FLOAT = -3</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Ondalık token ID'si. </p>
+
+<p class="definition"><a class="el" href="tokenizer_8h_source.html">tokenizer.h</a> dosyasının <a class="el" href="tokenizer_8h_source.html#l00048">48</a> numaralı satırında tanımlanmıştır.</p>
+
+</div>
+</div>
+<a id="a7ffbf59a256be2852e91e6ccecafb7ad" name="a7ffbf59a256be2852e91e6ccecafb7ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ffbf59a256be2852e91e6ccecafb7ad">&#9670;&#160;</a></span>TK_IDENT</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const size_t TK_IDENT = -4</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Identifier token ID'si. </p>
+
+<p class="definition"><a class="el" href="tokenizer_8h_source.html">tokenizer.h</a> dosyasının <a class="el" href="tokenizer_8h_source.html#l00051">51</a> numaralı satırında tanımlanmıştır.</p>
+
+</div>
+</div>
+<a id="a8616b93391ec951a4d353a10315cad54" name="a8616b93391ec951a4d353a10315cad54"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8616b93391ec951a4d353a10315cad54">&#9670;&#160;</a></span>TK_INT</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const size_t TK_INT = -2</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Tam sayı token ID'si. </p>
+
+<p class="definition"><a class="el" href="tokenizer_8h_source.html">tokenizer.h</a> dosyasının <a class="el" href="tokenizer_8h_source.html#l00045">45</a> numaralı satırında tanımlanmıştır.</p>
+
+</div>
+</div>
+<a id="a6fa87d7080a9a48e43877b84d6341be3" name="a6fa87d7080a9a48e43877b84d6341be3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6fa87d7080a9a48e43877b84d6341be3">&#9670;&#160;</a></span>TK_NOTOKEN</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const size_t TK_NOTOKEN = -1</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Herhangi bir token bulunamadı. </p>
+
+<p class="definition"><a class="el" href="tokenizer_8h_source.html">tokenizer.h</a> dosyasının <a class="el" href="tokenizer_8h_source.html#l00042">42</a> numaralı satırında tanımlanmıştır.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Oluşturan&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>
