@@ -49,7 +49,7 @@ void tokenizer_destroy(struct tokenizer *t)
 }
 //! [Tokenizer init/destroy]
 
-//! [Tokenizer'a keyword/operatör ekleme]
+//! [Tokenizer'a keyword ve punctuation ekleme]
 void tokenizer_add_keyword(struct tokenizer *t,
 			   const char *keyword,
 			   size_t id)
@@ -63,7 +63,7 @@ void tokenizer_add_punctuation(struct tokenizer *t,
 {
 	map_insert(&t->punctuations, punctuation, &id);
 }
-//! [Tokenizer'a keyword/operatör ekleme]
+//! [Tokenizer'a keyword ve punctuation ekleme]
 
 //! [tokenizer_feed]
 void tokenizer_feed(struct tokenizer *t, struct lexeme lexeme)
@@ -129,7 +129,7 @@ static struct token consume_punct(struct tokenizer *t)
 
 	/* Uzun punctuation'lardan başlayarak tek tek punctuation map'ten ID
 	 * arar. Örneğin hem `*` hem de `**` operatörü varsa `1 ** 2` ifadesini
-	 * uygun şekilde tokenize etmek için uzun sembollerden başlamak
+	 * uygun şekilde tokenize etmek için uzun punctuation'lardan başlamak
 	 * gerekir. */
 	for (
 	     i = MAX_PUNCT_LEN > t->current_lexeme.seminfo_len ?
@@ -148,7 +148,7 @@ static struct token consume_punct(struct tokenizer *t)
 	}
 
 	/* i'in 0'a kadar inmesi, hiçbir punctuation bulunamamıştır demektir. */
-	assert(i && "Bilinmeyen punctuation.");
+	assert(i != 0 && "Bilinmeyen punctuation.");
 
 	/* punctuation lexemenin tamamı tüketilmişse current_lexemeyi temizle. */
 	if (t->current_lexeme.seminfo_len == 0)
@@ -163,7 +163,7 @@ static struct token consume_num(struct tokenizer *t)
 {
 	char num[t->current_lexeme.seminfo_len + 1];
 
-	/* Lexemeden gelen seminfo, null terminated değildir, devamında diğer
+	/* Lexeme'den gelen seminfo null terminated değildir ve devamında diğer
 	 * tokenleri içerebilir. Onu bir char[]'a kopyalayarak stringden sayı
 	 * dönüşümünü yapıyoruz. */
 	num[t->current_lexeme.seminfo_len] = '\0';

@@ -1,5 +1,5 @@
 /**
-@page derleyici_front_end_page Derleyici Front Endi
+@page derleyici_front_end_page Derleyici Front End'i
 
 Klasik örnektir, defalarca derslerde denk gelmişsinizdir: Matematiksel
 ifadeleri *expression tree* olarak göstermek ve o gösterimi *evaluate* etmek:
@@ -45,10 +45,10 @@ digraph navigation {
 
 * *String* üzerinde çalışmak genel olarak zor. Ağaca oturtma sürecinde bir
 sayının değeri, değişkenin ya da fonksiyonun ismi bizi ilgilendirmiyor.
-* *Tokenizer* ile metin işleme sürecinde lexeme denen syntax parçalarının
+* *Tokenizer* ile metin işleme sürecinde lexeme denilen syntax parçalarının
 anlamını çıkarırız. Mesela, `if (x == 12) b = 21;`i ele alalım.
 
-| lexeme | token | seminfo |
+| lexeme | token ID | seminfo |
 |--|--|--|
 | if | IF |  |
 | ( | LPAREN |  |
@@ -62,9 +62,9 @@ anlamını çıkarırız. Mesela, `if (x == 12) b = 21;`i ele alalım.
 | ; | SEMI |  |
 
 Genelde, bütün metni tutmak yerine gereksiz detayları atlayarak ham token
-bilgisini tutmayı tercih ederiz. `token` isminde bir `enum` ve seminfo isminde
-bir `union` tanımlayarak gramer yapılarını daha özlü bir şekilde temsil etmek
-mümkündür:
+bilgisini tutmayı tercih ederiz. `token_id` isminde bir `enum` ve seminfo
+isminde bir `union` tanımlayarak gramer yapılarını daha özlü bir şekilde temsil
+etmek mümkündür:
 
 ```c
 enum token_id {
@@ -79,8 +79,8 @@ union seminfo {
 };
 ```
 
-Sadece `if` keywordüne, sayılara ve isimlere odaklanacak olursak, aşağıdaki
-görseldeki *state machineler* metinden token üretme kurallarını uygulamaya
+Sadece `if` keyword'üne, sayılara ve isimlere odaklanacak olursak, aşağıdaki
+görseldeki *state machine'ler* metinden token üretme kurallarını uygulamaya
 yeterli olacaktır:
 
 @dotfile dot/dfa-lexer.dot
@@ -104,7 +104,7 @@ dönüşümleri bu dersin konusu değil, sadece örnek olsun diye veriyorum:
 @dotfile dot/dfa-combined-lexer.dot
 
 Tabii bugün elle bu kadar optimize edilmiş bir state macine kodlamayacağız.
-Sayı, identifier ve sembol/operatörleri metinden tokenize edecek bir lexer
+Sayı, identifier ve punctuation'ları metinden tokenize edecek bir lexer
 kodlamaya başlayalım: @ref lexer_page
 
 - @subpage lexer_page

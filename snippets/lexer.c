@@ -86,8 +86,8 @@ static struct lexeme collect_identifier(struct lexer *lexer)
 
 static struct lexeme collect_punctuation(struct lexer *lexer)
 {
-	/* Lexer, birden fazla karakterden oluşan sembolleri de toplayabilmek
-	 * adına punctuationları gruplar. */
+	/* Lexer, birden fazla karakterden oluşan punctuation'ları da
+	 * toplayabilmek adına punctuation'ları gruplar. */
 	while (ispunct(peek(lexer)))
 		advance(lexer);
 
@@ -119,7 +119,7 @@ struct lexeme lexer_next(struct lexer *lexer)
 		return collect_number(lexer);
 	}
 
-	/* semboller */
+	/* punctuation */
 	if (ispunct(c))
 		return collect_punctuation(lexer);
 

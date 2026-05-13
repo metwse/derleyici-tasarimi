@@ -1,16 +1,26 @@
 /**
 @page lexer_page Lexer
 
-Lexerimiz iki katmandan oluşacak:
+@par identifier
+    harf/rakam/alt çizgiden oluşan, değişken ve fonksiyon ismi olan token. `x`,
+    `b`, `func` gibi.
+
+@par punctuation
+    harf/rakam olmayan karakter grubu. `==`, `(`, `;` gibi.
+
+Lexer'ımız iki katmandan oluşacak:
 - Sayı, identifier, punctuation gibi tipleri direkt toplayacak; lexeme üretecek
   katman. Bu katmanda ürettiğimiz lexemeler, gramer açısından hâlâ gereksiz
   bilgi içeriyor olacak.
 - Bu lexemelerdeki keyword ve punctuation'ları çıkaracak, soyut tokenler
   üretecek üst katman.
 
+Lexer katmanında identifier ve punctuation'ların ne anlama geldiğini tam
+bilmiyoruz, sadece metin parçaları olarak grupluyoruz.
+
 @snippet include/lexer.h Lexeme
 
-Yukarıdaki lexemeleri, @ref lexer ile üreteceğiz:
+Bu lexemeleri, @ref lexer ile üreteceğiz:
 
 @snippet include/lexer.h Lexer fonksiyonları
 
@@ -26,9 +36,9 @@ Esas DFA yapısı @ref lexer_next() içinde kendini gösteriyor:
 @ref lexer_next() fonksiyonunda kodun okunabilirliğini artırmak için birkaç
 basit fonksiyon tanımladım: @subpage lexer_yardimci_fonksiyonlar_page
 
-Lexeme toplayan fonksiyonları tek tek inceleyelim. Identifier ve sembol toplama
-fonksiyonları birebir aynı şekilde çalışıyor. Aralarındaki tek fark, biri
-`ispunct` kullanırken diğeri `isalnum` kullanıyor.
+Lexeme toplayan fonksiyonları tek tek inceleyelim. Identifier ve punctuation
+toplama fonksiyonları birebir aynı şekilde çalışıyor. Aralarındaki tek fark,
+biri `ispunct` kullanırken diğeri `isalnum` kullanıyor.
 
 @snippet snippets/lexer.c Identifier ve punctuation toplama
 

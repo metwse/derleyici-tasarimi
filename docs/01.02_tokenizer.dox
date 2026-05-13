@@ -18,12 +18,12 @@ tokenizer kendisi tanımlamıştır:
 | @ref TK_FLOAT | @copybrief TK_FLOAT |
 | @ref TK_IDENT | @copybrief TK_IDENT |
 
-Benzer şekilde identifier'lara de sayısal ID'ler atayacağız. Tokenizer, daha
+Benzer şekilde identifier'lara da sayısal ID'ler atayacağız. Tokenizer, daha
 önce karşılaşmadığı bir identifier gelince ona sıradaki ID'yi atayacak.
 
 @see @ref taslak_veri_yapilari_sec
 
-| symbol | ID |
+| identifier | ID |
 |--|--|
 | degisken1 | 0 |
 | baska_bir_degisken | 1 |
@@ -40,8 +40,8 @@ lexemelerdeki tokenleri çıkaracak bir yapı istiyoruz, yani:
 
 @snippet include/tokenizer.h Tokenizerın esas işlevleri
 
-Bir lexemede birden fazla token olabileceği için bu yapıyı kurduk. Operatörleri
-tokenize ederken bu yapı daha da mantıklı gelecek.
+Bir lexeme'de birden fazla token olabileceği için bu yapıyı kurduk.
+Punctuation'ları tokenize ederken bu yapı daha da mantıklı gelecek.
 
 @snippet include/tokenizer.h Tokenizer tanımı
 
@@ -53,12 +53,12 @@ Keyword ve punctuation tokenlerimizi enum olarak tanımladık, ancak onların
 string karşılıklarını da tanımlamamız gerekiyor. İşte tanımladığımız `keywords`
 ve `punctuations` map'leri burada devreye girecek:
 
-@snippet tests/snippets_tokenizer.c Tokenizer'a keword/operatör kaydı
+@snippet tests/snippets_tokenizer.c Tokenizer'a keyword ve punctuation kaydı
 
 @ref tokenizer_add_keyword() ve @ref tokenizer_add_punctuation(), kodun
 okunabilirliğini artırmak için tanımlanmış basit fonksiyonlar (*thin wrapper*):
 
-@snippet snippets/tokenizer.c Tokenizer'a keyword/operatör ekleme
+@snippet snippets/tokenizer.c Tokenizer'a keyword ve punctuation ekleme
 
 Bahsettiğimiz identifier'lara sayısal ID atamaysa aşağıdaki
 fonksiyonlarla gerçekleşiyor:
@@ -76,11 +76,20 @@ lexeme tipine göre yardımcı fonksiyon çağıran dağıtıcı işlevine sahip
 
 @snippet snippets/tokenizer.c tokenizer_next
 
-Sırasıyla fonksiyonları inceleyelim:
+Tokenizer'ın karakter parçalarını anlamlandırmasını irdeleyelim. `TK_NUM`
+üretmek, nispeten daha düz mantık:
+
+@snippet snippets/tokenizer.c consume_num
+
+Lexer'da grupladığımız identifier ve punctuation'ları şimdi anlamlandıracağız.
+Lexer keyword ve identifier ayrımını yapmamıştı, şimdi tokenizer'da karakter
+grubunun keyword olup olmadığına bakıp token üreteceğiz:
 
 @snippet snippets/tokenizer.c consume_ident
+
+Tek parça olarak gruplanmış punctuation'ları böleceğiz.
+
 @snippet snippets/tokenizer.c consume_punct
-@snippet snippets/tokenizer.c consume_num
 
 Soyut syntax elemanlarını, tokenleri, ürettik. Artık yazılım dilimizin söz
 dizimini, gramerini, tasarlayabiliriz: @ref parser_page

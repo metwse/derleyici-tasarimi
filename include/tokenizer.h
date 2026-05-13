@@ -36,9 +36,9 @@ struct tokenizer {
 	/** @brief Identifier'lara eşsiz ID'ler ataybilmek için yardımcı sayaç. */
 	size_t last_id;
 
-	/** @brief Yazılım dilindeki keywordler. */
+	/** @brief Yazılım dilindeki keyword'ler. */
 	struct map keywords;
-	/** @brief Yazılım dilindeki sembol ve operatörler. */
+	/** @brief Yazılım dilindeki punctuation'lar (sembol ve operatörler). */
 	struct map punctuations;
 
 	/** @brief İşlenmekte olan lexeme. */

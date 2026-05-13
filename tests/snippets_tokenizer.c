@@ -30,14 +30,14 @@ int main()
 
 	tokenizer_init(&t);
 
-//! [Tokenizer'a keword/operatör kaydı]
+//! [Tokenizer'a keyword ve punctuation kaydı]
 tokenizer_add_keyword(&t, "if", TK_IF);
 tokenizer_add_keyword(&t, "else", TK_ELSE);
 tokenizer_add_keyword(&t, "int", TK_TY_INT);
 
 tokenizer_add_punctuation(&t, "+", TK_PLUS);
 tokenizer_add_punctuation(&t, "-", TK_MINUS);
-//! [Tokenizer'a keword/operatör kaydı]
+//! [Tokenizer'a keyword ve punctuation kaydı]
 
 	tokenizer_add_punctuation(&t, "->", TK_RARROW);
 	tokenizer_add_punctuation(&t, ">", TK_GT);
