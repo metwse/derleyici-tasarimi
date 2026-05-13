@@ -137,12 +137,8 @@ $(function() {
 <div class="line">        <span class="keywordflow">if</span> (isalpha(c) || c == <span class="charliteral">&#39;_&#39;</span>)</div>
 <div class="line">                <span class="keywordflow">return</span> collect_identifier(<a class="code hl_struct" href="structlexer.html">lexer</a>);</div>
 <div class="line"> </div>
-<div class="line">        <span class="comment">/* (+|-)?0-9 */</span></div>
-<div class="line">        <span class="keywordflow">if</span> (isdigit(c) ||</div>
-<div class="line">            ((c == <span class="charliteral">&#39;-&#39;</span> || c == <span class="charliteral">&#39;+&#39;</span>) &amp;&amp; isdigit(peek_next(<a class="code hl_struct" href="structlexer.html">lexer</a>)))) {</div>
-<div class="line">                <span class="keywordflow">if</span> (c == <span class="charliteral">&#39;-&#39;</span> || c == <span class="charliteral">&#39;+&#39;</span>)</div>
-<div class="line">                        advance(<a class="code hl_struct" href="structlexer.html">lexer</a>);</div>
-<div class="line"> </div>
+<div class="line">        <span class="comment">/* 0-9 */</span></div>
+<div class="line">        <span class="keywordflow">if</span> (isdigit(c)) {</div>
 <div class="line">                <span class="keywordflow">return</span> collect_number(<a class="code hl_struct" href="structlexer.html">lexer</a>);</div>
 <div class="line">        }</div>
 <div class="line"> </div>
@@ -150,7 +146,7 @@ $(function() {
 <div class="line">        <span class="keywordflow">if</span> (ispunct(c))</div>
 <div class="line">                <span class="keywordflow">return</span> collect_punctuation(<a class="code hl_struct" href="structlexer.html">lexer</a>);</div>
 <div class="line"> </div>
-<div class="line">        assert(0 &amp;&amp; <span class="stringliteral">&quot;bilinemeyen lexeme.&quot;</span>);  <span class="comment">// GCOVR_EXCL_LINE: not tested</span></div>
+<div class="line">        assert(0 &amp;&amp; <span class="stringliteral">&quot;Tanınmayan karakter.&quot;</span>);  <span class="comment">// GCOVR_EXCL_LINE: not tested</span></div>
 <div class="line">}</div>
 </div><!-- fragment --><p><a class="el" href="lexer_8h.html#a5691ba3e7cd10458aa508728a742a2db">lexer_next()</a> fonksiyonunda kodun okunabilirliğini artırmak için birkaç basit fonksiyon tanımladım: <a class="el" href="lexer_yardimci_fonksiyonlar_page.html">Lexer için Yardımcı Fonsiyonlar</a></p>
 <p>Lexeme toplayan fonksiyonları tek tek inceleyelim. Identifier ve sembol toplama fonksiyonları birebir aynı şekilde çalışıyor. Aralarındaki tek fark, biri <code>ispunct</code> kullanırken diğeri <code>isalnum</code> kullanıyor.</p>

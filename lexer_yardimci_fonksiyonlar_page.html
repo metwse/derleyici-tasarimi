@@ -85,25 +85,25 @@ $(function() {
 <div class="line">        };</div>
 <div class="line">}</div>
 <div class="line"> </div>
-<div class="line"><span class="comment">/* Lexerin tükenip tükenmediğini kontrol eder. */</span></div>
+<div class="line"><span class="comment">/* Lexer&#39;da okunmamış karakter kaldı mı? */</span></div>
 <div class="line"><span class="keyword">static</span> <span class="keywordtype">bool</span> is_at_end(<span class="keyword">struct</span> <a class="code hl_struct" href="structlexer.html">lexer</a> *l)</div>
 <div class="line">{</div>
 <div class="line">        <span class="keywordflow">return</span> *l-&gt;<a class="code hl_variable" href="structlexer.html#a77180d60d2b0b57591e383ffca76e289">current</a> == <span class="charliteral">&#39;\0&#39;</span>;</div>
 <div class="line">}</div>
 <div class="line"> </div>
-<div class="line"><span class="comment">/* Mevcut karaktere bakar. */</span></div>
+<div class="line"><span class="comment">/* Mevcut karakter. */</span></div>
 <div class="line"><span class="keyword">static</span> <span class="keywordtype">char</span> peek(<span class="keyword">struct</span> <a class="code hl_struct" href="structlexer.html">lexer</a> *l)</div>
 <div class="line">{</div>
 <div class="line">        <span class="keywordflow">return</span> l-&gt;<a class="code hl_variable" href="structlexer.html#a77180d60d2b0b57591e383ffca76e289">current</a>[0];</div>
 <div class="line">}</div>
 <div class="line"> </div>
-<div class="line"><span class="comment">/* Varsa bir sonraki karaktere bakar. */</span></div>
+<div class="line"><span class="comment">/* Varsa, bir sonraki karakter. */</span></div>
 <div class="line"><span class="keyword">static</span> <span class="keywordtype">char</span> peek_next(<span class="keyword">struct</span> <a class="code hl_struct" href="structlexer.html">lexer</a> *l)</div>
 <div class="line">{</div>
 <div class="line">        <span class="keywordflow">return</span> is_at_end(l) ? <span class="charliteral">&#39;\0&#39;</span> : l-&gt;<a class="code hl_variable" href="structlexer.html#a77180d60d2b0b57591e383ffca76e289">current</a>[1];</div>
 <div class="line">}</div>
 <div class="line"> </div>
-<div class="line"><span class="comment">/* Bir sonraki karaktere bakar. */</span></div>
+<div class="line"><span class="comment">/* Mevcut karakteri consume ederek bir sonraki karaktere geç. */</span></div>
 <div class="line"><span class="keyword">static</span> <span class="keywordtype">void</span> advance(<span class="keyword">struct</span> <a class="code hl_struct" href="structlexer.html">lexer</a> *l)</div>
 <div class="line">{</div>
 <div class="line">        l-&gt;<a class="code hl_variable" href="structlexer.html#a77180d60d2b0b57591e383ffca76e289">current</a>++;</div>
