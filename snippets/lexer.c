@@ -74,7 +74,7 @@ static struct lexeme collect_number(struct lexer *lexer)
 }
 //! [Sayı toplama]
 
-//! [Identifier&sembol toplama]
+//! [Identifier ve punctuation toplama]
 static struct lexeme collect_identifier(struct lexer *lexer)
 {
 	/* a-z|A-Z|_|0-9 */
@@ -93,7 +93,7 @@ static struct lexeme collect_punctuation(struct lexer *lexer)
 
 	return lexeme(lexer, LEXEME_PUNCT);
 }
-//! [Identifier&sembol toplama]
+//! [Identifier ve punctuation toplama]
 
 
 //! [lexer_next]

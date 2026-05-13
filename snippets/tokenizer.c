@@ -13,6 +13,12 @@
 #define MAX_PUNCT_LEN 3
 
 
+static void clear_lexeme(struct tokenizer *t)
+{
+	t->current_lexeme.kind = LEXEME_EOF;
+}
+
+
 //! [Tokenizer init/destroy]
 void tokenizer_init(struct tokenizer *t)
 {
@@ -26,8 +32,12 @@ void tokenizer_init(struct tokenizer *t)
 	map_init(&t->punctuations, sizeof(size_t));
 
 	/* tokenizer'ın boş olduğunu belirtmek için mevcut işlenen lexemeyi
-	 * LEXEME_EOF yapalım. */
-	t->current_lexeme.kind = LEXEME_EOF;
+	 * LEXEME_EOF yapalım.
+	 *
+	 * clear_lexeme'nin tek yaptığı
+	 * 	t->clear_lexeme.kind = LEXEME_EOF
+	 */
+	clear_lexeme(t);
 }
 
 void tokenizer_destroy(struct tokenizer *t)
@@ -55,6 +65,7 @@ void tokenizer_add_punctuation(struct tokenizer *t,
 }
 //! [Tokenizer'a keyword/operatör ekleme]
 
+//! [tokenizer_feed]
 void tokenizer_feed(struct tokenizer *t, struct lexeme lexeme)
 {
 	assert(t->current_lexeme.kind == LEXEME_EOF &&
@@ -62,66 +73,64 @@ void tokenizer_feed(struct tokenizer *t, struct lexeme lexeme)
 
 	t->current_lexeme = lexeme;
 }
+//! [tokenizer_feed]
 
+//! [tokenizer_ident_id]
+/* Null-terminated stringler için kısayol. */
+size_t tokenizer_ident_id(struct tokenizer *t, const char *ident)
+{
+	return tokenizer_ident_id2(t, ident, strlen(ident));
+}
+
+size_t tokenizer_ident_id2(struct tokenizer *t,
+			  const char *ident, size_t ident_len)
+{
+	size_t *id_in_map = map_get2(&t->ident_map, ident, ident_len);
+
+	/* Daha önce ID atanmışsa onu dön ya da yenisini ata. */
+	if (id_in_map) {
+		return *id_in_map;
+	} else {
+		size_t id = t->last_id++;
+
+		map_insert2(&t->ident_map, ident, ident_len, &id);
+
+		return id;
+	}
+}
+//! [tokenizer_ident_id]
+
+//! [consume_ident]
 static struct token consume_ident(struct tokenizer *t)
 {
-	t->current_lexeme.kind = LEXEME_EOF;
-
+	/* Identifier'ın keyword olup olmadığına bakıyoruz. */
 	size_t *keyword_id = map_get2(&t->keywords,
 			       t->current_lexeme.seminfo,
 			       t->current_lexeme.seminfo_len);
 
-	if (keyword_id)
+	clear_lexeme(t);
+	if (keyword_id) {
 		return (struct token) { .id = *keyword_id };
-
-	size_t *id_in_map = map_get2(&t->ident_map,
-			       t->current_lexeme.seminfo,
-			       t->current_lexeme.seminfo_len);
-
-	size_t id;
-
-	if (id_in_map) {
-		id = *id_in_map;
 	} else {
-		id = t->last_id++;
+		size_t ident_id = tokenizer_ident_id2(t,
+				       t->current_lexeme.seminfo,
+				       t->current_lexeme.seminfo_len);
 
-		map_insert2(&t->ident_map,
-			t->current_lexeme.seminfo,
-			t->current_lexeme.seminfo_len, &id);
+		return (struct token) { .id = TK_IDENT, .seminfo.ident_id = ident_id};
 	}
-
-	return (struct token) { .id = TK_IDENT, .seminfo.ident_id = id };
 }
+//! [consume_ident]
 
-static struct token consume_num(struct tokenizer *t)
-{
-	bool is_int = t->current_lexeme.kind == LEXEME_INT;
-
-	t->current_lexeme.kind = LEXEME_EOF;
-
-	char num[t->current_lexeme.seminfo_len + 1];
-
-	num[t->current_lexeme.seminfo_len] = '\0';
-	memcpy(num, t->current_lexeme.seminfo, t->current_lexeme.seminfo_len);
-
-	struct token tk;
-
-	if (is_int) {
-		tk.id = TK_INT;
-		tk.seminfo.num_int = strtoimax(num, NULL, 10);
-	} else {
-		tk.id = TK_FLOAT;
-		tk.seminfo.num_float = strtod(num, NULL);
-	}
-
-	return tk;
-}
-
+//! [consume_punct]
 static struct token consume_punct(struct tokenizer *t)
 {
 	size_t *punct_id;
 	size_t i;
 
+	/* Uzun punctuation'lardan başlayarak tek tek punctuation map'ten ID
+	 * arar. Örneğin hem `*` hem de `**` operatörü varsa `1 ** 2` ifadesini
+	 * uygun şekilde tokenize etmek için uzun sembollerden başlamak
+	 * gerekir. */
 	for (
 	     i = MAX_PUNCT_LEN > t->current_lexeme.seminfo_len ?
 		t->current_lexeme.seminfo_len : MAX_PUNCT_LEN;
@@ -138,14 +147,44 @@ static struct token consume_punct(struct tokenizer *t)
 		}
 	}
 
-	assert(i && "Bilinmeyen sembol.");
+	/* i'in 0'a kadar inmesi, hiçbir punctuation bulunamamıştır demektir. */
+	assert(i && "Bilinmeyen punctuation.");
 
+	/* punctuation lexemenin tamamı tüketilmişse current_lexemeyi temizle. */
 	if (t->current_lexeme.seminfo_len == 0)
-		t->current_lexeme.kind = LEXEME_EOF;
+		clear_lexeme(t);
 
 	return (struct token) { .id = *punct_id };
 }
+//! [consume_punct]
 
+//! [consume_num]
+static struct token consume_num(struct tokenizer *t)
+{
+	char num[t->current_lexeme.seminfo_len + 1];
+
+	/* Lexemeden gelen seminfo, null terminated değildir, devamında diğer
+	 * tokenleri içerebilir. Onu bir char[]'a kopyalayarak stringden sayı
+	 * dönüşümünü yapıyoruz. */
+	num[t->current_lexeme.seminfo_len] = '\0';
+	memcpy(num, t->current_lexeme.seminfo, t->current_lexeme.seminfo_len);
+
+	struct token tk;
+
+	if (t->current_lexeme.kind == LEXEME_INT) {
+		tk.id = TK_INT;
+		tk.seminfo.num_int = strtoimax(num, NULL, 10);
+	} else {
+		tk.id = TK_FLOAT;
+		tk.seminfo.num_float = strtod(num, NULL);
+	}
+
+	clear_lexeme(t);
+	return tk;
+}
+//! [consume_num]
+
+//! [tokenizer_next]
 struct token tokenizer_next(struct tokenizer *t)
 {
 	switch (t->current_lexeme.kind) {
@@ -165,3 +204,4 @@ struct token tokenizer_next(struct tokenizer *t)
 
 	assert(0);  // GCOVR_EXCL_LINE: unreachable
 }
+//! [tokenizer_next]

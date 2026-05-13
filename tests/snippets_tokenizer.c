@@ -64,9 +64,12 @@ tokenizer_add_punctuation(&t, "-", TK_MINUS);
 			assert(tk.seminfo.num_float == 1.2);
 
 		if (tk.id == TK_IDENT)
-			assert((tk.seminfo.ident_id == 0 && (i == 1 || i == 3)) ||
-			       (tk.seminfo.ident_id == 1 && i == 4) ||
-			       (tk.seminfo.ident_id == 2 && i == 13));
+			assert((tk.seminfo.ident_id == tokenizer_ident_id(&t, "test") &&
+					(i == 1 || i == 3)) ||
+			       (tk.seminfo.ident_id == tokenizer_ident_id(&t, "test2") &&
+					i == 4) ||
+			       (tk.seminfo.ident_id == tokenizer_ident_id(&t, "ifx") &&
+					i == 13));
 	}
 
 	lexer_init(&l, "-->->>->");

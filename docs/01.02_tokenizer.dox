@@ -2,25 +2,24 @@
 @page tokenizer_page Tokenizer
 
 "Gereksiz detaylardan" kurtulmayı bu aşamada yapacağız. `if`, `int` gibi
-keywordleri ya da `+`, `=` gibi operatörleri string formatında saklamaktansa
+keyword'leri ya da punctuation'ları string formatında saklamaktansa
 onlara sayısal ID'ler atayacağız.
 
 @snippet tests/snippets_tokenizer.c Token ID enum
 
-Keyword ve operatörlere karşılık gelen token ID'lerimizi, tasarlayacağımız dile
-göre bu enum içinde tanımlayacağız. Diğer tokenlerin ID'lerini de tokenizer
-kendisi tanımlamıştır:
+Keyword ve punctuation'lara karşılık gelen token ID'lerimizi, tasarlayacağımız
+dile göre bu enum içinde tanımlayacağız. Diğer tokenlerin ID'lerini de
+tokenizer kendisi tanımlamıştır:
 
-| token | ID |
+| token ID | |
 |--|--|
 | @ref TK_NOTOKEN | @copybrief TK_NOTOKEN |
 | @ref TK_INT | @copybrief TK_INT |
 | @ref TK_FLOAT | @copybrief TK_FLOAT |
 | @ref TK_IDENT | @copybrief TK_IDENT |
 
-Benzer şekilde değişken ve fonksiyon identifierlerine de sayısal ID'ler
-atayacağız. Tokenizer, daha önce karşılaşmadığı bir identifier gelince ona
-sıradaki ID'yi atayacak.
+Benzer şekilde identifier'lara de sayısal ID'ler atayacağız. Tokenizer, daha
+önce karşılaşmadığı bir identifier gelince ona sıradaki ID'yi atayacak.
 
 @see @ref taslak_veri_yapilari_sec
 
@@ -50,9 +49,9 @@ Basma kalıp init ve destroy fonksiyonlarımızı yazalaım:
 
 @snippet snippets/tokenizer.c Tokenizer init/destroy
 
-Keyword ve operatör tokenlerimizi enum olarak tanımladık, ancak onların string
-karşılıklarını da tanımlamamız gerekiyor. İşte tanımladığımız `keywords` ve
-`punctuations` map'leri burada devreye girecek:
+Keyword ve punctuation tokenlerimizi enum olarak tanımladık, ancak onların
+string karşılıklarını da tanımlamamız gerekiyor. İşte tanımladığımız `keywords`
+ve `punctuations` map'leri burada devreye girecek:
 
 @snippet tests/snippets_tokenizer.c Tokenizer'a keword/operatör kaydı
 
@@ -61,7 +60,28 @@ okunabilirliğini artırmak için tanımlanmış basit fonksiyonlar (*thin wrapp
 
 @snippet snippets/tokenizer.c Tokenizer'a keyword/operatör ekleme
 
+Bahsettiğimiz identifier'lara sayısal ID atamaysa aşağıdaki
+fonksiyonlarla gerçekleşiyor:
+
+@snippet snippets/tokenizer.c tokenizer_ident_id
+
 Şimdi tokenize etmeye başlayabiliriz.
 
+@snippet snippets/tokenizer.c tokenizer_feed
+
 @section tokenizer_tokenizing_sec Tokenizing
+
+@ref tokenizer_next() fonksiyonunu daha yakından inceleyelim. Bu fonksiyon,
+lexeme tipine göre yardımcı fonksiyon çağıran dağıtıcı işlevine sahip:
+
+@snippet snippets/tokenizer.c tokenizer_next
+
+Sırasıyla fonksiyonları inceleyelim:
+
+@snippet snippets/tokenizer.c consume_ident
+@snippet snippets/tokenizer.c consume_punct
+@snippet snippets/tokenizer.c consume_num
+
+Soyut syntax elemanlarını, tokenleri, ürettik. Artık yazılım dilimizin söz
+dizimini, gramerini, tasarlayabiliriz: @ref parser_page
 */

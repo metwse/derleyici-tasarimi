@@ -31,9 +31,9 @@ static const size_t TK_IDENT = -4;
 /** @brief tokenizer. */
 //! [Tokenizer tanımı]
 struct tokenizer {
-	/** @brief Identifiere karşılık atanan sayısal ID. */
+	/** @brief Identifier'a karşılık atanan sayısal ID. */
 	struct map ident_map;
-	/** @brief Identifierlere eşsiz ID'ler ataybilmek için yardımcı sayaç. */
+	/** @brief Identifier'lara eşsiz ID'ler ataybilmek için yardımcı sayaç. */
 	size_t last_id;
 
 	/** @brief Yazılım dilindeki keywordler. */
@@ -78,6 +78,17 @@ void tokenizer_add_keyword(struct tokenizer *tokenizer,
 /** @brief Tokenizera bir punctuation kaydeder.. */
 void tokenizer_add_punctuation(struct tokenizer *tokenizer,
 			       const char *punctuation, size_t id);
+
+/**
+ * @brief Identifier'a ait ID'yi döner.
+ *
+ * Hâlihazırda bir ID atanmamışsa identifier için yeni bir ID üretir.
+ */
+size_t tokenizer_ident_id2(struct tokenizer *tokenizer,
+			   const char *ident, size_t ident_len);
+
+/** @brief Identifier'a ait ID'yi döner. */
+size_t tokenizer_ident_id(struct tokenizer *tokenizer, const char *ident);
 
 /** @brief Lexemeyi tokenizere gönderir. */
 //! [Tokenizerın esas işlevleri]

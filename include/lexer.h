@@ -35,7 +35,7 @@ struct lexeme {
 		LEXEME_FLOAT,
 		/** Identifier. */
 		LEXEME_IDENT,
-		/** Sembol/operatör. */
+		/** Punctuation. */
 		LEXEME_PUNCT,
 	} kind/** _ */;
 };

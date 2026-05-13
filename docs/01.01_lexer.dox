@@ -2,11 +2,11 @@
 @page lexer_page Lexer
 
 Lexerimiz iki katmandan oluşacak:
-- Sayı, identifier, operatör gibi tipleri direkt toplayacak; lexeme üretecek
+- Sayı, identifier, punctuation gibi tipleri direkt toplayacak; lexeme üretecek
   katman. Bu katmanda ürettiğimiz lexemeler, gramer açısından hâlâ gereksiz
   bilgi içeriyor olacak.
-- Bu lexemelerdeki keyword ve operatörleri çıkaracak, soyut tokenler üretecek
-  üst katman.
+- Bu lexemelerdeki keyword ve punctuation'ları çıkaracak, soyut tokenler
+  üretecek üst katman.
 
 @snippet include/lexer.h Lexeme
 
@@ -30,7 +30,7 @@ Lexeme toplayan fonksiyonları tek tek inceleyelim. Identifier ve sembol toplama
 fonksiyonları birebir aynı şekilde çalışıyor. Aralarındaki tek fark, biri
 `ispunct` kullanırken diğeri `isalnum` kullanıyor.
 
-@snippet snippets/lexer.c Identifier&sembol toplama
+@snippet snippets/lexer.c Identifier ve punctuation toplama
 
 Buradaki esas karışıklık sayı tokenlerini toplamada. Hem ondalık hem de tam
 sayı tokenleri tek bir fonksiyonla toplanıyor:
