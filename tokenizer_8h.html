@@ -121,6 +121,13 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>tokenizer_add_keyword
 void&#160;</td><td class="memItemRight" valign="bottom"><b>tokenizer_add_punctuation</b> (struct <a class="el" href="structtokenizer.html">tokenizer</a> *<a class="el" href="structtokenizer.html">tokenizer</a>, const char *punctuation, size_t id)</td></tr>
 <tr class="memdesc:a28727c04edc110906ea054372c8a9adb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tokenizera bir punctuation kaydeder.. <br /></td></tr>
 <tr class="separator:a28727c04edc110906ea054372c8a9adb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a214f3e013176bd41dff1de7da7d6c886" id="r_a214f3e013176bd41dff1de7da7d6c886"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tokenizer_8h.html#a214f3e013176bd41dff1de7da7d6c886">tokenizer_ident_id2</a> (struct <a class="el" href="structtokenizer.html">tokenizer</a> *<a class="el" href="structtokenizer.html">tokenizer</a>, const char *ident, size_t ident_len)</td></tr>
+<tr class="memdesc:a214f3e013176bd41dff1de7da7d6c886"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identifier'a ait ID'yi döner.  <br /></td></tr>
+<tr class="separator:a214f3e013176bd41dff1de7da7d6c886"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72df096973fdcfa29c260fe976c3ad66" id="r_a72df096973fdcfa29c260fe976c3ad66"><td class="memItemLeft" align="right" valign="top"><a id="a72df096973fdcfa29c260fe976c3ad66" name="a72df096973fdcfa29c260fe976c3ad66"></a>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><b>tokenizer_ident_id</b> (struct <a class="el" href="structtokenizer.html">tokenizer</a> *<a class="el" href="structtokenizer.html">tokenizer</a>, const char *ident)</td></tr>
+<tr class="memdesc:a72df096973fdcfa29c260fe976c3ad66"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identifier'a ait ID'yi döner. <br /></td></tr>
+<tr class="separator:a72df096973fdcfa29c260fe976c3ad66"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a91b6fe31be04c8262446395e5b61c7b4" id="r_a91b6fe31be04c8262446395e5b61c7b4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tokenizer_8h.html#a91b6fe31be04c8262446395e5b61c7b4">tokenizer_feed</a> (struct <a class="el" href="structtokenizer.html">tokenizer</a> *<a class="el" href="structtokenizer.html">tokenizer</a>, struct <a class="el" href="structlexeme.html">lexeme</a> <a class="el" href="structlexeme.html">lexeme</a>)</td></tr>
 <tr class="memdesc:a91b6fe31be04c8262446395e5b61c7b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lexemeyi tokenizere gönderir.  <br /></td></tr>
 <tr class="separator:a91b6fe31be04c8262446395e5b61c7b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -177,6 +184,43 @@ Değişkenler</h2></td></tr>
 
 <p>Lexemeyi tokenizere gönderir. </p>
 <p>[Tokenizerın esas işlevleri] </p>
+
+</div>
+</div>
+<a id="a214f3e013176bd41dff1de7da7d6c886" name="a214f3e013176bd41dff1de7da7d6c886"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a214f3e013176bd41dff1de7da7d6c886">&#9670;&#160;</a></span>tokenizer_ident_id2()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t tokenizer_ident_id2 </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structtokenizer.html">tokenizer</a> *&#160;</td>
+          <td class="paramname"><em>tokenizer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>ident</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>ident_len</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Identifier'a ait ID'yi döner. </p>
+<p>Hâlihazırda bir ID atanmamışsa identifier için yeni bir ID üretir. </p>
 
 </div>
 </div>

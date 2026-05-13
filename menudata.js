@@ -36,6 +36,10 @@ var menudata={children:[
 {text:"Dosyalar",url:"files.html",children:[
 {text:"Dosya Listesi",url:"files.html"},
 {text:"Dosya Üyeleri",url:"globals.html",children:[
-{text:"Tümü",url:"globals.html"},
+{text:"Tümü",url:"globals.html",children:[
+{text:"l",url:"globals.html#index_l"},
+{text:"m",url:"globals.html#index_m"},
+{text:"s",url:"globals.html#index_s"},
+{text:"t",url:"globals.html#index_t"}]},
 {text:"Fonksiyonlar",url:"globals_func.html"},
 {text:"Değişkenler",url:"globals_vars.html"}]}]}]}

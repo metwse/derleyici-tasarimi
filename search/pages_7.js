@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['yardımcı_20fonsiyonlar_0',['Lexer için Yardımcı Fonsiyonlar',['../lexer_yardimci_fonksiyonlar_page.html',1,'lexer_page']]]
+  ['tasarımı_0',['Derleyici Tasarımı',['../index.html',1,'']]],
+  ['taslak_20kullanımı_1',['Taslak Kullanımı',['../taslak.html',1,'']]],
+  ['tokenizer_2',['Tokenizer',['../tokenizer_page.html',1,'derleyici_front_end_page']]]
 ];

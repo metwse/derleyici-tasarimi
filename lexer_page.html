@@ -77,8 +77,8 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p>Lexerimiz iki katmandan oluşacak:</p><ul>
-<li>Sayı, identifier, operatör gibi tipleri direkt toplayacak; lexeme üretecek katman. Bu katmanda ürettiğimiz lexemeler, gramer açısından hâlâ gereksiz bilgi içeriyor olacak.</li>
-<li>Bu lexemelerdeki keyword ve operatörleri çıkaracak, soyut tokenler üretecek üst katman.</li>
+<li>Sayı, identifier, punctuation gibi tipleri direkt toplayacak; lexeme üretecek katman. Bu katmanda ürettiğimiz lexemeler, gramer açısından hâlâ gereksiz bilgi içeriyor olacak.</li>
+<li>Bu lexemelerdeki keyword ve punctuation'ları çıkaracak, soyut tokenler üretecek üst katman.</li>
 </ul>
 <div class="fragment"><div class="line"><span class="keyword">struct </span><a class="code hl_struct" href="structlexeme.html">lexeme</a> {</div>
 <div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code hl_variable" href="structlexeme.html#a7fba035b50a3af17cab8f337892b1461">seminfo</a>;</div>
