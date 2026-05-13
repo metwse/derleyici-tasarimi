@@ -8,6 +8,21 @@
 #include <stddef.h>
 
 
+//! [Token ID enum]
+enum token_id {
+	TK_IF,
+	TK_ELSE,
+	TK_TY_INT,
+	TK_PLUS,
+	TK_MINUS,
+	// ...
+};
+//! [Token ID enum]
+
+static size_t TK_RARROW = (TK_MINUS + 1);
+static size_t TK_GT = (TK_MINUS + 2);
+
+
 int main()
 {
 	struct tokenizer t;
@@ -15,18 +30,22 @@ int main()
 
 	tokenizer_init(&t);
 
-	tokenizer_add_keyword(&t, "if", 0);
-	tokenizer_add_keyword(&t, "else", 1);
-	tokenizer_add_keyword(&t, "int", 2);
+//! [Tokenizer'a keword/operatör kaydı]
+tokenizer_add_keyword(&t, "if", TK_IF);
+tokenizer_add_keyword(&t, "else", TK_ELSE);
+tokenizer_add_keyword(&t, "int", TK_TY_INT);
 
-	tokenizer_add_punctuation(&t, "+", 3);
-	tokenizer_add_punctuation(&t, "-", 4);
-	tokenizer_add_punctuation(&t, "->", 5);
-	tokenizer_add_punctuation(&t, ">", 6);
+tokenizer_add_punctuation(&t, "+", TK_PLUS);
+tokenizer_add_punctuation(&t, "-", TK_MINUS);
+//! [Tokenizer'a keword/operatör kaydı]
+
+	tokenizer_add_punctuation(&t, "->", TK_RARROW);
+	tokenizer_add_punctuation(&t, ">", TK_GT);
 
 	size_t ids[] = {
-		0, TK_IDENT, 1, TK_IDENT, TK_IDENT, TK_INT, 4, TK_FLOAT,
-		5, 4, 2, 3, 6, TK_IDENT, TK_NOTOKEN
+		TK_IF, TK_IDENT, TK_ELSE, TK_IDENT, TK_IDENT, TK_INT,
+		TK_MINUS, TK_FLOAT, TK_RARROW, TK_MINUS, TK_TY_INT, TK_PLUS,
+		TK_GT, TK_IDENT, TK_NOTOKEN
 	};
 
 	lexer_init(&l, "if test else test test2 123-1.2-> -int+ > ifx");

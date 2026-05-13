@@ -32,8 +32,8 @@ fonksiyonları birebir aynı şekilde çalışıyor. Aralarındaki tek fark, bir
 
 @snippet snippets/lexer.c Identifier&sembol toplama
 
-Buradaki esas karışıklık sayı tokenlerini toplamada. Hem ondalık hem işaretli
-hem de tam sayı tokenleri tek bir fonksiyonla toplanıyor:
+Buradaki esas karışıklık sayı tokenlerini toplamada. Hem ondalık hem de tam
+sayı tokenleri tek bir fonksiyonla toplanıyor:
 
 @snippet snippets/lexer.c Sayı toplama
 

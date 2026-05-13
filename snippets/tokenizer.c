@@ -13,15 +13,20 @@
 #define MAX_PUNCT_LEN 3
 
 
+//! [Tokenizer init/destroy]
 void tokenizer_init(struct tokenizer *t)
 {
+	/* string -> ID (size_t), identifier ID için kullanılacak */
 	map_init(&t->ident_map, sizeof(size_t));
 
 	t->last_id = 0;
 
+	/* bunlara birazdan geleceğiz */
 	map_init(&t->keywords, sizeof(size_t));
 	map_init(&t->punctuations, sizeof(size_t));
 
+	/* tokenizer'ın boş olduğunu belirtmek için mevcut işlenen lexemeyi
+	 * LEXEME_EOF yapalım. */
 	t->current_lexeme.kind = LEXEME_EOF;
 }
 
@@ -32,20 +37,23 @@ void tokenizer_destroy(struct tokenizer *t)
 	map_destroy(&t->keywords);
 	map_destroy(&t->punctuations);
 }
+//! [Tokenizer init/destroy]
 
+//! [Tokenizer'a keyword/operatör ekleme]
 void tokenizer_add_keyword(struct tokenizer *t,
 			   const char *keyword,
 			   size_t id)
 {
-	map_insert2(&t->keywords, keyword, strlen(keyword), &id);
+	map_insert(&t->keywords, keyword, &id);
 }
 
 void tokenizer_add_punctuation(struct tokenizer *t,
 			       const char *punctuation,
 			       size_t id)
 {
-	map_insert2(&t->punctuations, punctuation, strlen(punctuation), &id);
+	map_insert(&t->punctuations, punctuation, &id);
 }
+//! [Tokenizer'a keyword/operatör ekleme]
 
 void tokenizer_feed(struct tokenizer *t, struct lexeme lexeme)
 {

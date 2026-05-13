@@ -1,3 +1,67 @@
 /**
 @page tokenizer_page Tokenizer
+
+"Gereksiz detaylardan" kurtulmayı bu aşamada yapacağız. `if`, `int` gibi
+keywordleri ya da `+`, `=` gibi operatörleri string formatında saklamaktansa
+onlara sayısal ID'ler atayacağız.
+
+@snippet tests/snippets_tokenizer.c Token ID enum
+
+Keyword ve operatörlere karşılık gelen token ID'lerimizi, tasarlayacağımız dile
+göre bu enum içinde tanımlayacağız. Diğer tokenlerin ID'lerini de tokenizer
+kendisi tanımlamıştır:
+
+| token | ID |
+|--|--|
+| @ref TK_NOTOKEN | @copybrief TK_NOTOKEN |
+| @ref TK_INT | @copybrief TK_INT |
+| @ref TK_FLOAT | @copybrief TK_FLOAT |
+| @ref TK_IDENT | @copybrief TK_IDENT |
+
+Benzer şekilde değişken ve fonksiyon identifierlerine de sayısal ID'ler
+atayacağız. Tokenizer, daha önce karşılaşmadığı bir identifier gelince ona
+sıradaki ID'yi atayacak.
+
+@see @ref taslak_veri_yapilari_sec
+
+| symbol | ID |
+|--|--|
+| degisken1 | 0 |
+| baska_bir_degisken | 1 |
+| ... | |
+
+Bunları yapınca elde edeceğimiz, tamamen soyut bir token yapısı:
+
+@snippet include/tokenizer.h Token tanımı
+
+@section tokenizer_map_subsec Tokenizer Tasarımı
+
+Önce elde etmek istediğimiz işlevi ele alarak başlayalım. Lexerin ürettiği
+lexemelerdeki tokenleri çıkaracak bir yapı istiyoruz, yani:
+
+@snippet include/tokenizer.h Tokenizerın esas işlevleri
+
+Bir lexemede birden fazla token olabileceği için bu yapıyı kurduk. Operatörleri
+tokenize ederken bu yapı daha da mantıklı gelecek.
+
+@snippet include/tokenizer.h Tokenizer tanımı
+
+Basma kalıp init ve destroy fonksiyonlarımızı yazalaım:
+
+@snippet snippets/tokenizer.c Tokenizer init/destroy
+
+Keyword ve operatör tokenlerimizi enum olarak tanımladık, ancak onların string
+karşılıklarını da tanımlamamız gerekiyor. İşte tanımladığımız `keywords` ve
+`punctuations` map'leri burada devreye girecek:
+
+@snippet tests/snippets_tokenizer.c Tokenizer'a keword/operatör kaydı
+
+@ref tokenizer_add_keyword() ve @ref tokenizer_add_punctuation(), kodun
+okunabilirliğini artırmak için tanımlanmış basit fonksiyonlar (*thin wrapper*):
+
+@snippet snippets/tokenizer.c Tokenizer'a keyword/operatör ekleme
+
+Şimdi tokenize etmeye başlayabiliriz.
+
+@section tokenizer_tokenizing_sec Tokenizing
 */

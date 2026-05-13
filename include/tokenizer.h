@@ -15,7 +15,21 @@
 #include <stdint.h>
 
 
+/** @brief @ref tokenizer_feed() ile verilen lexemenin bittiğini belirtir. */
+static const size_t TK_NOTOKEN = -1;
+
+/** @brief Tam sayı token ID'si. */
+static const size_t TK_INT = -2;
+
+/** @brief Ondalık sayı token ID'si. */
+static const size_t TK_FLOAT = -3;
+
+/** @brief Identifier token ID'si. */
+static const size_t TK_IDENT = -4;
+
+
 /** @brief tokenizer. */
+//! [Tokenizer tanımı]
 struct tokenizer {
 	/** @brief Identifiere karşılık atanan sayısal ID. */
 	struct map ident_map;
@@ -30,8 +44,10 @@ struct tokenizer {
 	/** @brief İşlenmekte olan lexeme. */
 	struct lexeme current_lexeme;
 };
+//! [Tokenizer tanımı]
 
 /** @brief Token. */
+//! [Token tanımı]
 struct token {
 	/** @brief Tokenlerin ekstra semantic bilgisi. */
 	union {
@@ -46,19 +62,7 @@ struct token {
 	/** @brief Token tipini ifade eden özgün ID. */
 	size_t id;
 };
-
-
-/** Herhangi bir token bulunamadı. */
-static const size_t TK_NOTOKEN = -1;
-
-/** Tam sayı token ID'si. */
-static const size_t TK_INT = -2;
-
-/** Ondalık token ID'si. */
-static const size_t TK_FLOAT = -3;
-
-/** Identifier token ID'si. */
-static const size_t TK_IDENT = -4;
+//! [Token tanımı]
 
 
 /** @brief Yeni bir tokenizer oluşturur. */
@@ -76,10 +80,12 @@ void tokenizer_add_punctuation(struct tokenizer *tokenizer,
 			       const char *punctuation, size_t id);
 
 /** @brief Lexemeyi tokenizere gönderir. */
+//! [Tokenizerın esas işlevleri]
 void tokenizer_feed(struct tokenizer *tokenizer, struct lexeme lexeme);
 
 /** @brief Sıradaki tokeni çek. */
 struct token tokenizer_next(struct tokenizer *tokenzier);
+//! [Tokenizerın esas işlevleri]
 
 
 #endif

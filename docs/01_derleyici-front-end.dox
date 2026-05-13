@@ -67,9 +67,9 @@ bir `union` tanımlayarak gramer yapılarını daha özlü bir şekilde temsil e
 mümkündür:
 
 ```c
-enum token {
+enum token_id {
     TK_IF,
-    TK_LPAREN,
+    TK_INT,
     // ...
 };
 
