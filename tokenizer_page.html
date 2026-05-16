@@ -77,7 +77,15 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p>"Gereksiz detaylardan" kurtulmayı bu aşamada yapacağız. <code>if</code>, <code>int</code> gibi keyword'leri ya da punctuation'ları string formatında saklamaktansa onlara sayısal ID'ler atayacağız.</p>
-<div class="fragment"></div><!-- fragment --><p>Keyword ve punctuation'lara karşılık gelen token ID'lerimizi, tasarlayacağımız dile göre bu enum içinde tanımlayacağız. Diğer tokenlerin ID'lerini de tokenizer kendisi tanımlamıştır:</p>
+<div class="fragment"><div class="line"><span class="keyword">enum</span> token_id {</div>
+<div class="line">        TK_IF,</div>
+<div class="line">        TK_ELSE,</div>
+<div class="line">        TK_TY_INT,</div>
+<div class="line">        TK_PLUS,</div>
+<div class="line">        TK_MINUS,</div>
+<div class="line">        <span class="comment">// ...</span></div>
+<div class="line">};</div>
+</div><!-- fragment --><p>Keyword ve punctuation'lara karşılık gelen token ID'lerimizi, tasarlayacağımız dile göre bu enum içinde tanımlayacağız. Diğer tokenlerin ID'lerini de tokenizer kendisi tanımlamıştır:</p>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">token ID   </th><th class="markdownTableHeadNone"></th></tr>
@@ -177,7 +185,15 @@ Tokenizer Tasarımı</h1>
 <div class="ttc" id="atokenizer_8h_html_a01c5dc98d1a56c559e4bbe87ad3be1fd"><div class="ttname"><a href="tokenizer_8h.html#a01c5dc98d1a56c559e4bbe87ad3be1fd">tokenizer_destroy</a></div><div class="ttdeci">void tokenizer_destroy(struct tokenizer *tokenizer)</div><div class="ttdoc">Tokenizerın tahsis ettiği belleği temizler.</div></div>
 <div class="ttc" id="atokenizer_8h_html_a73d455e90e9f0e517198663d56d6b5a3"><div class="ttname"><a href="tokenizer_8h.html#a73d455e90e9f0e517198663d56d6b5a3">tokenizer_init</a></div><div class="ttdeci">void tokenizer_init(struct tokenizer *tokenizer)</div><div class="ttdoc">[Token tanımı]</div></div>
 </div><!-- fragment --><p>Keyword ve punctuation tokenlerimizi enum olarak tanımladık, ancak onların string karşılıklarını da tanımlamamız gerekiyor. İşte tanımladığımız <code>keywords</code> ve <code>punctuations</code> map'leri burada devreye girecek:</p>
-<div class="fragment"></div><!-- fragment --><p><a class="el" href="tokenizer_8h.html#a1493eba53b25f319f9c3d18c73fc18a3">tokenizer_add_keyword()</a> ve <a class="el" href="tokenizer_8h.html#a28727c04edc110906ea054372c8a9adb">tokenizer_add_punctuation()</a>, kodun okunabilirliğini artırmak için tanımlanmış basit fonksiyonlar (<em>thin wrapper</em>):</p>
+<div class="fragment"><div class="line"><a class="code hl_function" href="tokenizer_8h.html#a1493eba53b25f319f9c3d18c73fc18a3">tokenizer_add_keyword</a>(&amp;t, <span class="stringliteral">&quot;if&quot;</span>, TK_IF);</div>
+<div class="line"><a class="code hl_function" href="tokenizer_8h.html#a1493eba53b25f319f9c3d18c73fc18a3">tokenizer_add_keyword</a>(&amp;t, <span class="stringliteral">&quot;else&quot;</span>, TK_ELSE);</div>
+<div class="line"><a class="code hl_function" href="tokenizer_8h.html#a1493eba53b25f319f9c3d18c73fc18a3">tokenizer_add_keyword</a>(&amp;t, <span class="stringliteral">&quot;int&quot;</span>, TK_TY_INT);</div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_function" href="tokenizer_8h.html#a28727c04edc110906ea054372c8a9adb">tokenizer_add_punctuation</a>(&amp;t, <span class="stringliteral">&quot;+&quot;</span>, TK_PLUS);</div>
+<div class="line"><a class="code hl_function" href="tokenizer_8h.html#a28727c04edc110906ea054372c8a9adb">tokenizer_add_punctuation</a>(&amp;t, <span class="stringliteral">&quot;-&quot;</span>, TK_MINUS);</div>
+<div class="ttc" id="atokenizer_8h_html_a1493eba53b25f319f9c3d18c73fc18a3"><div class="ttname"><a href="tokenizer_8h.html#a1493eba53b25f319f9c3d18c73fc18a3">tokenizer_add_keyword</a></div><div class="ttdeci">void tokenizer_add_keyword(struct tokenizer *tokenizer, const char *keyword, size_t id)</div><div class="ttdoc">Tokenizera bir keyword kaydeder.</div></div>
+<div class="ttc" id="atokenizer_8h_html_a28727c04edc110906ea054372c8a9adb"><div class="ttname"><a href="tokenizer_8h.html#a28727c04edc110906ea054372c8a9adb">tokenizer_add_punctuation</a></div><div class="ttdeci">void tokenizer_add_punctuation(struct tokenizer *tokenizer, const char *punctuation, size_t id)</div><div class="ttdoc">Tokenizera bir punctuation kaydeder..</div></div>
+</div><!-- fragment --><p><a class="el" href="tokenizer_8h.html#a1493eba53b25f319f9c3d18c73fc18a3">tokenizer_add_keyword()</a> ve <a class="el" href="tokenizer_8h.html#a28727c04edc110906ea054372c8a9adb">tokenizer_add_punctuation()</a>, kodun okunabilirliğini artırmak için tanımlanmış basit fonksiyonlar (<em>thin wrapper</em>):</p>
 <div class="fragment"><div class="line"><span class="keywordtype">void</span> <a class="code hl_function" href="tokenizer_8h.html#a1493eba53b25f319f9c3d18c73fc18a3">tokenizer_add_keyword</a>(<span class="keyword">struct</span> <a class="code hl_struct" href="structtokenizer.html">tokenizer</a> *t,</div>
 <div class="line">                           <span class="keyword">const</span> <span class="keywordtype">char</span> *keyword,</div>
 <div class="line">                           <span class="keywordtype">size_t</span> <span class="keywordtype">id</span>)</div>
@@ -192,8 +208,6 @@ Tokenizer Tasarımı</h1>
 <div class="line">        <a class="code hl_function" href="map_8h.html#ab90ba1082a15c5e99bf9ee2bfa9f7221">map_insert</a>(&amp;t-&gt;<a class="code hl_variable" href="structtokenizer.html#a924d670164bc6f65b26af096dab0f7d2">punctuations</a>, punctuation, &amp;<span class="keywordtype">id</span>);</div>
 <div class="line">}</div>
 <div class="ttc" id="amap_8h_html_ab90ba1082a15c5e99bf9ee2bfa9f7221"><div class="ttname"><a href="map_8h.html#ab90ba1082a15c5e99bf9ee2bfa9f7221">map_insert</a></div><div class="ttdeci">void map_insert(struct map *map, const void *key, const void *value)</div><div class="ttdoc">map'e key-value ikilisini ekler.</div></div>
-<div class="ttc" id="atokenizer_8h_html_a1493eba53b25f319f9c3d18c73fc18a3"><div class="ttname"><a href="tokenizer_8h.html#a1493eba53b25f319f9c3d18c73fc18a3">tokenizer_add_keyword</a></div><div class="ttdeci">void tokenizer_add_keyword(struct tokenizer *tokenizer, const char *keyword, size_t id)</div><div class="ttdoc">Tokenizera bir keyword kaydeder.</div></div>
-<div class="ttc" id="atokenizer_8h_html_a28727c04edc110906ea054372c8a9adb"><div class="ttname"><a href="tokenizer_8h.html#a28727c04edc110906ea054372c8a9adb">tokenizer_add_punctuation</a></div><div class="ttdeci">void tokenizer_add_punctuation(struct tokenizer *tokenizer, const char *punctuation, size_t id)</div><div class="ttdoc">Tokenizera bir punctuation kaydeder..</div></div>
 </div><!-- fragment --><p>Bahsettiğimiz identifier'lara sayısal ID atamaysa aşağıdaki fonksiyonlarla gerçekleşiyor:</p>
 <div class="fragment"><div class="line"><span class="comment">/* Null-terminated stringler için kısayol. */</span></div>
 <div class="line"><span class="keywordtype">size_t</span> <a class="code hl_function" href="tokenizer_8h.html#a72df096973fdcfa29c260fe976c3ad66">tokenizer_ident_id</a>(<span class="keyword">struct</span> <a class="code hl_struct" href="structtokenizer.html">tokenizer</a> *t, <span class="keyword">const</span> <span class="keywordtype">char</span> *ident)</div>
@@ -253,7 +267,7 @@ Tokenizing</h1>
 <div class="line">        assert(0);  <span class="comment">// GCOVR_EXCL_LINE: unreachable</span></div>
 <div class="line">}</div>
 <div class="ttc" id="atokenizer_8h_html_a6fa87d7080a9a48e43877b84d6341be3"><div class="ttname"><a href="tokenizer_8h.html#a6fa87d7080a9a48e43877b84d6341be3">TK_NOTOKEN</a></div><div class="ttdeci">static const size_t TK_NOTOKEN</div><div class="ttdoc">tokenizer_feed() ile verilen lexemenin bittiğini belirtir.</div><div class="ttdef"><b>Definition</b> <a href="tokenizer_8h_source.html#l00019">tokenizer.h:19</a></div></div>
-</div><!-- fragment --><p>Tokenizer'ın karakter parçalarını anlamlandırmasını irdeleyelim. <code>TK_NUM</code> üretmek, nispeten daha düz mantık:</p>
+</div><!-- fragment --><p>Tokenizer'ın karakter parçalarını anlamlandırmasını irdeleyelim. <code>TK_INT</code> ve <code>TK_FLOAT</code> üretmek, nispeten daha düz mantık:</p>
 <div class="fragment"><div class="line"><span class="keyword">static</span> <span class="keyword">struct </span><a class="code hl_struct" href="structtoken.html">token</a> consume_num(struct <a class="code hl_struct" href="structtokenizer.html">tokenizer</a> *t)</div>
 <div class="line">{</div>
 <div class="line">        <span class="keywordtype">char</span> num[t-&gt;<a class="code hl_variable" href="structtokenizer.html#a0c51ea77dd2ad2b16c6b484579d82445">current_lexeme</a>.<a class="code hl_variable" href="structlexeme.html#aa9093b6755d0a5bebe502490ec567b83">seminfo_len</a> + 1];</div>

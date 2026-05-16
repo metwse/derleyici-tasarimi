@@ -124,7 +124,7 @@ Lexical Analysis</h1>
 <div class="line">};</div>
 </div><!-- fragment --><p>Sadece <code>if</code> keyword'üne, sayılara ve isimlere odaklanacak olursak, aşağıdaki görseldeki <em>state machine'ler</em> metinden token üretme kurallarını uygulamaya yeterli olacaktır:</p>
 <div class="dotgraph">
-<iframe scrolling="no" frameborder="0" src="dot_dfa-lexer.svg" width="374" height="263"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<iframe scrolling="no" frameborder="0" src="dot_dfa-lexer.svg" width="374" height="328"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 <p>Her bir token için 3 ayrı <em>state machine</em> başlatmak uygulanabilir değil. Tek bir <em>state machine</em> olacak şekilde yeniden düzenleme yapmamız gerekiyor. Bunu, yeni <em>starting state</em> ekleyip onu eski starting statelere <a href="https://en.wikipedia.org/wiki/Epsilon_transition"><em>epsilon transition</em></a> ile bağlayarak yapabiliriz:</p>
 <div class="dotgraph">
 <iframe scrolling="no" frameborder="0" src="dot_nfa-lexer.svg" width="500" height="287"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
