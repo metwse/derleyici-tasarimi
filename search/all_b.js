@@ -11,5 +11,6 @@ var searchData=
   ['stack_5fpop_8',['stack_pop',['../stack_8h.html#a34d1a32b67de7cda86d796764ce32628',1,'stack.h']]],
   ['stack_5fpush_9',['stack_push',['../stack_8h.html#aeeb51fe685bd0742571390df2251b6bb',1,'stack.h']]],
   ['stack_5ftop_10',['stack_top',['../stack_8h.html#a9193bfd37b7c928b6a440c5f10d1fcfd',1,'stack.h']]],
-  ['start_11',['start',['../structlexer.html#a061c6a3ca100b22d7e61dc1caabac4ba',1,'lexer']]]
+  ['start_11',['start',['../structlexer.html#a061c6a3ca100b22d7e61dc1caabac4ba',1,'lexer']]],
+  ['syntax_20analysis_12',['Syntax Analysis',['../parser_page.html#parser_syntax_analysis_sec',1,'']]]
 ];

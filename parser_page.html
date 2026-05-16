@@ -78,11 +78,34 @@ $(function() {
 <div class="contents">
 <div class="textblock"><p>Şimdiye kadar neler yaptığımızı örnek metin üzerinden özet geçelim:</p>
 <div class="dotgraph">
-<iframe scrolling="no" frameborder="0" src="dot_lexical-analysis.svg" width="1227" height="306"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<iframe scrolling="no" frameborder="0" src="dot_lexical-analysis.svg" width="1235" height="306"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 <p>Girdi metnimizi önce lexeme denen metin parçalarına bölmüştük, sonrasında tokenizer'dan geçirerek sadeleştirmiştik. Identifier'lara da sayısal ID'ler atayarak <code>char *</code> tutma zahmetinden kurtulmuştuk, ayrıca aynı identifier'a aynı sayısal ID'yi atamak için bir <code>ident_map</code> oluşturmuştuk.</p>
 <div class="dotgraph">
 <iframe scrolling="no" frameborder="0" src="dot_inline_dotgraph_1.svg" width="471" height="62"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
- </div></div><!-- contents -->
+<h1><a class="anchor" id="parser_syntax_analysis_sec"></a>
+Syntax Analysis</h1>
+<p>Parsing'e başlamadan önce formal gramerlere değineceğiz. <a class="el" href="derleyici_front_end_page.html">Derleyici Front End'i</a> sayfasında gördüğümüz ağaçları hatırlayalım:</p>
+<center> <table class="doxtable">
+<tr>
+<td><div class="dotgraph">
+<iframe scrolling="no" frameborder="0" src="dot_ast-expr.svg" width="371" height="443"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe><div class="caption">
+1 + 3 / ((2 + 1) * 4³)</div>
+</div>
+  </td><td><div class="dotgraph">
+<iframe scrolling="no" frameborder="0" src="dot_ast-if-stmt.svg" width="390" height="443"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe><div class="caption">
+if (x == -1) y = 2 + func();</div>
+</div>
+   </td></tr>
+</table>
+</center><p>Bu ağaçlara, yazılım dilinin gramerinden ziyade anlamını içermesinden ötürü <em>abstract syntax tree</em> (AST) deniyor. Parser ile elde edeceğimiz ağaçlar, <em>concrete syntax tree</em> (CST) denen daha "detaylı" yapılar olacak.</p>
+<div class="dotgraph">
+<iframe scrolling="no" frameborder="0" src="dot_syntax-analyzer.svg" width="414" height="870"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<p>Bu CST'yi oluşturan gramer, </p><div class="fragment"><div class="line">⟨S⟩ → <span class="keywordtype">id</span> = ⟨E⟩ ;</div>
+<div class="line">⟨E⟩ → ⟨E⟩ + ⟨T⟩ | ⟨T⟩</div>
+<div class="line">⟨T⟩ → ⟨T⟩ * ⟨F⟩ | ⟨F⟩</div>
+<div class="line">⟨F⟩ → <span class="keywordtype">id</span></div>
+</div><!-- fragment --><p>Gramer dedik demesine ancak bu yapı insan dillerinin gramerinden biraz farklı, bu <em>formal dillerin</em> grameridir. <em>Context free grammar</em> (CFG) olarak adlandırılır. Diğer formal dil gramer sınıflarına değinmeyeceğiz. Yazılım dilimizi CFG olarak tanımayacağız. </p>
+</div></div><!-- contents -->
 </div><!-- PageDoc -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

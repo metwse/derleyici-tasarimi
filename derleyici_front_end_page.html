@@ -74,19 +74,18 @@ $(function() {
 <div class="contents">
 <div class="textblock"><p>Klasik örnektir, defalarca derslerde denk gelmişsinizdir: Matematiksel ifadeleri <em>expression tree</em> olarak göstermek ve o gösterimi <em>evaluate</em> etmek: <code>1 + 3 / ((2 + 1) * 4³)</code></p>
 <div class="dotgraph">
-<iframe scrolling="no" frameborder="0" src="dot_ast-expression-tree.svg" width="371" height="443"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<iframe scrolling="no" frameborder="0" src="dot_ast-expr.svg" width="371" height="443"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 <p>Bu <em>expression tree</em> yapısını <a href="https://en.wikipedia.org/wiki/Tree_traversal#In-order,_LNR"><em>in-order traverse</em></a> ederek sonucu bulabiliriz. Her seferinde karşımıza bu kadar basit gramer yapıları çıkacak değil. Yazılım dillerinde matematiksel ifadelerden başka yapılar da mevcut, örneğin aşağıdaki kod parçasını ağaca oturtmak istersek,</p>
-<div class="fragment"><div class="line"><span class="keywordflow">if</span> (6 == 6) {</div>
-<div class="line">    var1 = 7 + func();</div>
-<div class="line">}</div>
+<div class="fragment"><div class="line"><span class="keywordflow">if</span> (x == -1)</div>
+<div class="line">    y = 2 + func();</div>
 </div><!-- fragment --> <div class="dotgraph">
-<iframe scrolling="no" frameborder="0" src="dot_ast-assignment.svg" width="436" height="347"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<iframe scrolling="no" frameborder="0" src="dot_ast-if-stmt.svg" width="390" height="443"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 <p>Aslında epey kolay! Metin formundaki kodu <em>bir şekilde</em> ağaç yapısına dönüştürdüğümüzde değer hesaplamak için <em>tree traversal</em> yeterli oluyor! Peki, bu ağacı nasıl oluşturacağız? Asıl soruna geliyoruz: <em>lexing</em> ve sonrasında <em>parsing</em>.</p>
 <div class="dotgraph">
 <iframe scrolling="no" frameborder="0" src="dot_inline_dotgraph_2.svg" width="486" height="62"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 <h1><a class="anchor" id="front_end_lexical_analysis"></a>
 Lexical Analysis</h1>
-<p><em>String</em> üzerinde çalışmak genel olarak zor. Ağaca oturtma sürecinde bir sayının değeri, değişkenin ya da fonksiyonun ismi bizi ilgilendirmiyor. <em>Tokenizer</em> ile metin işleme sürecinde lexeme denilen syntax parçalarının anlamını çıkarırız. Mesela, <code>if (x == 12) b = 21;</code>i ele alalım.</p>
+<p><em>String</em> üzerinde çalışmak genel olarak zor. Ağaca oturtma sürecinde bir sayının değeri, değişkenin ya da fonksiyonun ismi bizi ilgilendirmiyor. <em>Tokenizer</em> ile metin işleme sürecinde lexeme denilen syntax parçalarının anlamını çıkarırız. Mesela, <code>if (x == -1) y = 2;</code>i ele alalım.</p>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">lexeme   </th><th class="markdownTableHeadNone">token ID   </th><th class="markdownTableHeadNone">seminfo    </th></tr>
@@ -97,17 +96,17 @@ Lexical Analysis</h1>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">x   </td><td class="markdownTableBodyNone">IDENT   </td><td class="markdownTableBodyNone">"x"    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">==   </td><td class="markdownTableBodyNone">EQUALS   </td><td class="markdownTableBodyNone"></td></tr>
+<td class="markdownTableBodyNone">==   </td><td class="markdownTableBodyNone">EQEQ   </td><td class="markdownTableBodyNone"></td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">12   </td><td class="markdownTableBodyNone">NUM   </td><td class="markdownTableBodyNone">12    </td></tr>
+<td class="markdownTableBodyNone">-1   </td><td class="markdownTableBodyNone">NUM   </td><td class="markdownTableBodyNone">-1    </td></tr>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">)   </td><td class="markdownTableBodyNone">RPAREN   </td><td class="markdownTableBodyNone"></td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">b   </td><td class="markdownTableBodyNone">IDENT   </td><td class="markdownTableBodyNone">"b"    </td></tr>
+<td class="markdownTableBodyNone">y   </td><td class="markdownTableBodyNone">IDENT   </td><td class="markdownTableBodyNone">"y"    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">=   </td><td class="markdownTableBodyNone">ASGN   </td><td class="markdownTableBodyNone"></td></tr>
+<td class="markdownTableBodyNone">=   </td><td class="markdownTableBodyNone">EQ   </td><td class="markdownTableBodyNone"></td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">21   </td><td class="markdownTableBodyNone">NUM   </td><td class="markdownTableBodyNone">21    </td></tr>
+<td class="markdownTableBodyNone">2   </td><td class="markdownTableBodyNone">NUM   </td><td class="markdownTableBodyNone">2    </td></tr>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">;   </td><td class="markdownTableBodyNone">SEMI   </td><td class="markdownTableBodyNone"></td></tr>
 </table>
