@@ -1,6 +1,6 @@
 #include "../include/lexer.h"
 
-#include "../snippets/lexer.c"
+#include "lexer.c"
 
 #include <assert.h>
 #include <stdbool.h>

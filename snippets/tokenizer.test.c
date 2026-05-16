@@ -1,8 +1,10 @@
 #include "../include/lexer.h"
 #include "../include/tokenizer.h"
 
-#include "../snippets/lexer.c"
-#include "../snippets/tokenizer.c"
+#include "../src/map.c"  // required-by: tokenizer.c
+
+#include "lexer.c"
+#include "tokenizer.c"
 
 #include <assert.h>
 #include <stddef.h>
