@@ -13,4 +13,4 @@ DOTFILE_DIRS           = docs/
 DOT_IMAGE_FORMAT       = svg
 HAVE_DOT               = YES
 OUTPUT_LANGUAGE        = Turkish
-EXAMPLE_PATH           = snippets/ include/ tests/
+EXAMPLE_PATH           = snippets/ include/

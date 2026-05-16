@@ -1,6 +1,15 @@
 /**
 @page parser_page Parser
 
+Şimdiye kadar neler yaptığımızı örnek metin üzerinden özet geçelim:
+
+@dotfile dot/lexical-analysis.dot
+
+Girdi metnimizi önce lexeme denen metin parçalarına bölmüştük, sonrasında
+tokenizer'dan geçirerek sadeleştirmiştik. Identifier'lara da sayısal ID'ler
+atayarak `char *` tutma zahmetinden kurtulmuştuk, ayrıca aynı identifier'a
+aynı sayısal ID'yi atamak için bir `ident_map` oluşturmuştuk.
+
 @dot
 digraph navigation {
     rankdir = LR;

@@ -1,0 +1,40 @@
+digraph lexical_analysis {
+    ranksep = 0.5;
+
+    node [shape = "plaintext"];
+
+    input [label = "input"];
+
+    input_str [label = <if (x==-1)>];
+
+    lexemes [label = "lexemes"];
+
+    l1 [label = <⟨ident, "if"⟩>]
+    l2 [label = <⟨punct, "("⟩>]
+    l3 [label = <⟨ident, "x"⟩>]
+    l4 [label = <⟨punct, "==-"⟩>]
+    l5 [label = <⟨int, "1"⟩>]
+    l6 [label = <⟨punct, ")"⟩>]
+
+    ident_map [shape = "record", label = "{ identifier | x } | { ID | 0 }"];
+    tokens [label = "tokens"];
+
+    t1 [label = <⟨IF⟩>]
+    t2 [label = <⟨LPAREN⟩>]
+    t3 [label = <⟨IDENT, 0⟩>]
+    t4 [label = <⟨EQ⟩>]
+    t5 [label = <⟨MINUS⟩>]
+    t6 [label = <⟨INT, 1⟩>]
+    t7 [label = <⟨RPAREN⟩>]
+
+    input_str -> l1 -> t1;
+    input_str -> l2 -> t2;
+    input_str -> l3 -> t3;
+    input_str -> l4 -> { t4, t5 };
+    input_str -> l5 -> t6;
+    input_str -> l6 -> t7;
+
+    input -> lexemes [label = "lexer"];
+    lexemes -> tokens [label = "tokenizer"];
+    lexemes -> ident_map [style = "invis"];
+}
