@@ -22,7 +22,7 @@ digraph lexical_analysis {
     t1 [label = <⟨IF⟩>]
     t2 [label = <⟨LPAREN⟩>]
     t3 [label = <⟨IDENT, 0⟩>]
-    t4 [label = <⟨EQ⟩>]
+    t4 [label = <⟨EQEQ⟩>]
     t5 [label = <⟨MINUS⟩>]
     t6 [label = <⟨INT, 1⟩>]
     t7 [label = <⟨RPAREN⟩>]

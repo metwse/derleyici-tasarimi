@@ -24,4 +24,41 @@ digraph navigation {
     B -> C;
 }
 @enddot
+
+@section parser_syntax_analysis_sec Syntax Analysis
+
+Parsing'e başlamadan önce formal gramerlere değineceğiz.
+@ref derleyici_front_end_page sayfasında gördüğümüz ağaçları hatırlayalım:
+
+<center>
+    <table>
+      <tr>
+        <td>
+            @dotfile dot/ast-expr.dot "1 + 3 / ((2 + 1) * 4³)"
+        </td>
+        <td>
+            @dotfile dot/ast-if-stmt.dot "if (x == -1) y = 2 + func();"
+        </td>
+      </tr>
+    </table>
+</center>
+
+Bu ağaçlara, yazılım dilinin gramerinden ziyade anlamını içermesinden ötürü
+* *abstract syntax tree* (AST) deniyor. Parser ile elde edeceğimiz ağaçlar,
+* *concrete syntax tree* (CST) denen daha "detaylı" yapılar olacak.
+
+@dotfile dot/syntax-analyzer.dot
+
+Bu CST'yi oluşturan gramer,
+```
+⟨S⟩ → id = ⟨E⟩ ;
+⟨E⟩ → ⟨E⟩ + ⟨T⟩ | ⟨T⟩
+⟨T⟩ → ⟨T⟩ * ⟨F⟩ | ⟨F⟩
+⟨F⟩ → id
+```
+
+Gramer dedik demesine ancak bu yapı insan dillerinin gramerinden biraz farklı,
+bu *formal dillerin* grameridir. *Context free grammar* (CFG) olarak
+adlandırılır. Diğer formal dil gramer sınıflarına değinmeyeceğiz. Yazılım
+dilimizi CFG olarak tanımayacağız.
 */

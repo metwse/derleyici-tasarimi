@@ -6,20 +6,21 @@ graph ast_assignment {
 
     if_stmt [label = <⟨if⟩>];
     if_cond [label = <⟨equals⟩>];
-    cond_lhs [label = "6"];
-    cond_rhs [label = "6"];
+    if_then [label = <⟨then⟩>];
+    cond_lhs [label = "x"];
+    cond_rhs [label = "-1"];
 
     if_stmt -- if_cond;
+    if_stmt -- if_then;
     if_cond -- cond_lhs;
     if_cond -- cond_rhs;
-
-    if_stmt -- asgn_stmt;
+    if_then -- asgn_stmt;
 
     asgn_stmt [label = <⟨assign⟩>];
-    asgn_lvalue [label = "var1"];
+    asgn_lvalue [label = "y"];
 
     add_expr [label = <+>];
-    add_num1 [label = "7"];
+    add_num1 [label = "2"];
     add_num2 [label = "func()"];
 
     asgn_stmt -- asgn_lvalue;

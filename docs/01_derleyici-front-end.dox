@@ -5,7 +5,7 @@ Klasik örnektir, defalarca derslerde denk gelmişsinizdir: Matematiksel
 ifadeleri *expression tree* olarak göstermek ve o gösterimi *evaluate* etmek:
 `1 + 3 / ((2 + 1) * 4³)`
 
-@dotfile dot/ast-expression-tree.dot
+@dotfile dot/ast-expr.dot
 
 Bu *expression tree* yapısını <a
 href="https://en.wikipedia.org/wiki/Tree_traversal#In-order,_LNR">*in-order
@@ -14,11 +14,10 @@ gramer yapıları çıkacak değil. Yazılım dillerinde matematiksel ifadelerde
 yapılar da mevcut, örneğin aşağıdaki kod parçasını ağaca oturtmak istersek,
 
 ```c
-if (6 == 6) {
-    var1 = 7 + func();
-}
+if (x == -1)
+    y = 2 + func();
 ```
-@dotfile dot/ast-assignment.dot
+@dotfile dot/ast-if-stmt.dot
 
 Aslında epey kolay! Metin formundaki kodu *bir şekilde* ağaç yapısına
 dönüştürdüğümüzde değer hesaplamak için *tree traversal* yeterli oluyor! Peki,
@@ -46,19 +45,19 @@ digraph navigation {
 * *String* üzerinde çalışmak genel olarak zor. Ağaca oturtma sürecinde bir
 sayının değeri, değişkenin ya da fonksiyonun ismi bizi ilgilendirmiyor.
 * *Tokenizer* ile metin işleme sürecinde lexeme denilen syntax parçalarının
-anlamını çıkarırız. Mesela, `if (x == 12) b = 21;`i ele alalım.
+anlamını çıkarırız. Mesela, `if (x == -1) y = 2;`i ele alalım.
 
 | lexeme | token ID | seminfo |
 |--|--|--|
 | if | IF |  |
 | ( | LPAREN |  |
 | x | IDENT | "x" |
-| == | EQUALS |  |
-| 12 | NUM | 12  |
+| == | EQEQ |  |
+| -1 | NUM | -1  |
 | ) | RPAREN |  |
-| b | IDENT | "b" |
-| = | ASGN |  |
-| 21 | NUM | 21 |
+| y | IDENT | "y" |
+| = | EQ |  |
+| 2 | NUM | 2 |
 | ; | SEMI |  |
 
 Genelde, bütün metni tutmak yerine gereksiz detayları atlayarak ham token

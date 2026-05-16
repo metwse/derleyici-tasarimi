@@ -1,0 +1,51 @@
+graph syntax_analyzer {
+    rankdir = TB;
+    ranksep = 0.5;
+
+    node [shape = "plaintext"];
+
+    input [label = <
+        <table border="0" cellborder="1" cellspacing="0">
+            <tr><td>lexemes</td><td>tokens</td></tr>
+            <tr><td>x</td><td>IDENT</td></tr>
+            <tr><td>=</td><td>EQ</td></tr>
+            <tr><td>y</td><td>IDENT</td></tr>
+            <tr><td>+</td><td>PLUS</td></tr>
+            <tr><td>z</td><td>IDENT</td></tr>
+            <tr><td>*</td><td>STAR</td></tr>
+            <tr><td>w</td><td>IDENT</td></tr>
+        </table>
+        >]
+
+    subgraph cluster_0 {
+        S [label = "⟨S⟩"];
+
+        id1; eq; e1; semi;
+        e2; plus; t1;
+        t3; star; f2;
+
+        e1, e2 [label = "⟨E⟩"];
+
+        t1, t2, t3 [label = "⟨T⟩"];
+
+        f1, f2, f3 [label = "⟨F⟩"];
+
+        id1, id2, id3, id4 [label = "id"];
+
+        eq [label = "="];
+        plus [label = "+"];
+        star [label = "*"];
+        semi [label = ";"];
+
+        S -- id1, eq, e1, semi;
+
+        e1 -- e2, plus, t1;
+        e2 -- t2 -- f1 -- id2;
+
+        t1 -- t3, star, f2;
+        t3 -- f3 -- id3;
+        f2-- id4;
+    }
+
+    input -- S [label = "Syntax Analysis"];
+}
