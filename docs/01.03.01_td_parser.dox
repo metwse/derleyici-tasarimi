@@ -1,0 +1,78 @@
+/**
+@page td_parser_page Top Down Parsing
+
+Yazılım dilimizi formal tanımlayarak başlayalım:
+
+```
+⟨S⟩ → id = ⟨Expr⟩ ; | print ⟨Expr⟩ ;
+
+⟨Expr⟩ → ⟨Term⟩ + ⟨Expr⟩ | ⟨Term⟩ - ⟨Expr⟩ | ⟨Term⟩
+
+⟨Term⟩ → ⟨Factor⟩ * ⟨Term⟩ | ⟨Factor⟩ / ⟨Term⟩ | ⟨Factor⟩
+
+⟨Factor⟩ → - ⟨Atom⟩ | + ⟨Atom⟩ | ⟨Atom⟩
+
+⟨Atom⟩ → id | num | ( ⟨Expr⟩ )
+```
+
+Tokenizer'ın tanımladığı `TK_INT`, `TK_FLOAT` ve `TK_IDENT`'in yanında bizim
+kendi tanımladığımız tokenlerimiz olacak:
+
+@snippet include/recursive-parser.h Token ID'leri
+
+Matematiksel ifade ve değişken içeren, basit bir dil. Bir önceki sayfada,
+benzer bir gramerin oluşturduğu ağacı göstermiştik, hatırlayın. Şimdi o ağacın
+tam nasıl oluşturulduğunu inceleyeceğiz.
+
+* *Top-Down Parsing* adı verilen yöntemde, başlangıç sembolünden başlayarak
+(örneğin `⟨S⟩`) yaprakları aşağı doğru uzanan bir ağaç oluşturulur.
+Nonterminal'ler sırasıyla daha alt kurallara genişletilir ve en uçtaki kurallar
+da tamamlanana kadar depth-first yol izlenir. `x = -5;` ifadesini ele alalım:
+
+@dotfile dot/top-down-parsing.dot
+
+Bu yöntem için önce recursive fonksiyon kullanan parser yazacağız. Sonrasında
+top-down parsing'deki sorunlarını ve elle her bir kural için fonksiyon yazmanın
+zorluğunu çözen bir kütüphane kullanacağız.
+
+
+@section Recursive Descent Parser
+
+@snippet include/recursive-parser.h Parser tanımı
+
+Parser'ın iç yapısı biraz karışık gelebilir. Parser elemanlarını yeri geldikçe
+açıklayacağız. Parser'ın esas fonksiyonlarıysa:
+
+@snippet include/recursive-parser.h Parser'ın işlevleri
+
+Top-down parser'ımız tokenleri okurken *evaluate* edecek. Şimdilik parser ve
+* *evaluation* kısmını birleşik yazacağız.
+
+@dot
+digraph navigation {
+    rankdir = LR;
+
+    node [shape = "box"];
+
+    A [label = "lexing"];
+    B [label = "parsing\nBURADASINIZ"];
+    C [label = "evaluation\nŞİMDİLİK"];
+
+    A -> B;
+    B -> C;
+}
+@enddot
+
+Basmakalıp `init/destroy` fonksiyonlarımızı tanımlayalım:
+
+@snippet snippets/recursive-parser.c Basmakalıp fonksiyonlar
+
+Lexer'da kullandığımız `advance`/`peek` tasarımını yine kullanıyoruz:
+
+@snippet snippets/recursive-parser.c advance/match
+
+Artık `parser_eval()` fonksiyonunu yazmaya başlayabiliriz:
+
+@snippet snippets/recursive-parser.c eval
+
+*/

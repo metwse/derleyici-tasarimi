@@ -44,7 +44,7 @@ graph syntax_analyzer {
 
         t1 -- t3, star, f2;
         t3 -- f3 -- id3;
-        f2-- id4;
+        f2 -- id4;
     }
 
     input -- S [label = "Syntax Analysis"];

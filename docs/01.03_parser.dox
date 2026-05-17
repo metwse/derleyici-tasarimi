@@ -131,16 +131,16 @@ digraph gramer {
 ⟨Fiil⟩ → öğreniyorum. | biliyorum.
 ```
 
-@par nonterminal
+@par nonterminal/variable (N)
     Örnekteki `⟨Sıfat⟩` veya `⟨SıfatTamlaması⟩` gibi, cümlenin yapısını
     tanımlayan ve başka kurallarla daha alt parçalara genişletilebilen yapısal
     kategorilerdir.
 
-@par terminal/token
+@par terminal/token (T)
     Örnekteki "Formal", "dilleri" veya "öğreniyorum." gibi, ağacın en ucunda
     yer alan ve artık daha alt parçalara bölünemeyen somut sözcüklere denir.
 
-@par production rules
+@par production rules (P)
     `⟨SıfatTamlaması⟩ → ⟨Sıfat⟩ ⟨İsim⟩` satırında olduğu gibi, bir
     nonterminal'in hangi öğelere (terminal veya nonterminal) dönüşebileceğini
     tanımlayan kuralların her birine denir.
@@ -148,5 +148,13 @@ digraph gramer {
 @par grammar
     Yukarıdaki tüm kuralları kapsayan ve o dildeki geçerli tüm cümlelerin hangi
     yapıtaşlarıyla nasıl türetileceğini belirleyen matematiksel/kuralsal
-    çerçevenin bütününe denir.
+    çerçevenin bütününe denir. Formal gramerler, (N, T, P) üçlüsü şeklinde
+    tanımlanır.
+
+Şimdi bu nonterminal, token ve production rules'tan tree oluşturacak sistematik
+bir yapıya ihtiyacımız var: @ref td_parser_page
+
+Alt sayfalar
+- @subpage td_parser_page
+- @subpage rdesc_page
 */

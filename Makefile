@@ -63,3 +63,4 @@ clean:
 
 -include $(OBJS:.o=.d)
 -include $(TEST_OBJS:.o=.d)
+-include $(SNIPPETS_TEST_OBJS:.o=.d)

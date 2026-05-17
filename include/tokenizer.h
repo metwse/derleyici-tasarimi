@@ -46,18 +46,21 @@ struct tokenizer {
 };
 //! [Tokenizer tanımı]
 
-/** @brief Token. */
+/** @brief Seminfo. */
 //! [Token tanımı]
+union seminfo {
+	/** @brief TK_FLOAT tipi için seminfo. */
+	double num_float;
+	/** @brief TK_INT tipi için seminfo. */
+	intmax_t num_int;
+	/** @brief TK_IDENT tipi için seminfo. */
+	size_t ident_id;
+};
+
+/** @brief Token. */
 struct token {
 	/** @brief Tokenlerin ekstra semantic bilgisi. */
-	union {
-		/** @brief TK_FLOAT tipi için seminfo. */
-		double num_float;
-		/** @brief TK_INT tipi için seminfo. */
-		intmax_t num_int;
-		/** @brief TK_IDENT tipi için seminfo. */
-		size_t ident_id;
-	} seminfo;
+	union seminfo seminfo;
 
 	/** @brief Token tipini ifade eden özgün ID. */
 	size_t id;

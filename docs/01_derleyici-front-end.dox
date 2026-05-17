@@ -106,6 +106,7 @@ Tabii bugün elle bu kadar optimize edilmiş bir state macine kodlamayacağız.
 Sayı, identifier ve punctuation'ları metinden tokenize edecek bir lexer
 kodlamaya başlayalım: @ref lexer_page
 
+Alt sayfalar
 - @subpage lexer_page
 - @subpage tokenizer_page
 - @subpage parser_page

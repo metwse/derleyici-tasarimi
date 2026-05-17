@@ -1,0 +1,26 @@
+graph top_down_parsing {
+    ranksep = 0.5;
+
+    node [shape = "plaintext"];
+    edge [labeldistance = 2, labelangle = 0, fontsize = 10];
+
+    S [label = "⟨S⟩"];
+
+    id [label = "x"];
+    eq [label = "="];
+    expr [label = "⟨Expr⟩"];
+    factor [label = "⟨Factor⟩"];
+    atom [label = "⟨Atom⟩"];
+    minus [label = "-"];
+    num [label = "5"];
+    semi [label = ";"];
+
+    S -- id [label = "1"];
+    S -- eq [label = "2"];
+    S -- expr [label = "3"];
+    expr -- factor [label = "3"];
+    factor -- atom [label = "3"];
+    atom -- minus [label = "3"];
+    atom -- num [label = "4"];
+    S -- semi [label = "5"];
+}
