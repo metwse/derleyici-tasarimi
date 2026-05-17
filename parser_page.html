@@ -82,7 +82,7 @@ $(function() {
 <iframe scrolling="no" frameborder="0" src="dot_lexical-analysis.svg" width="1235" height="306"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 <p>Girdi metnimizi önce lexeme denen metin parçalarına bölmüştük, sonrasında tokenizer'dan geçirerek sadeleştirmiştik. Identifier'lara da sayısal ID'ler atayarak <code>char *</code> tutma zahmetinden kurtulmuştuk, ayrıca aynı identifier'a aynı sayısal ID'yi atamak için bir <code>ident_map</code> oluşturmuştuk.</p>
 <div class="dotgraph">
-<iframe scrolling="no" frameborder="0" src="dot_inline_dotgraph_1.svg" width="471" height="62"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<iframe scrolling="no" frameborder="0" src="dot_inline_dotgraph_2.svg" width="471" height="62"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 <h1><a class="anchor" id="parser_syntax_analysis_sec"></a>
 Syntax Analysis</h1>
 <p>Parsing'e başlamadan önce formal gramerlere değineceğiz. <a class="el" href="derleyici_front_end_page.html">Derleyici Front End'i</a> sayfasında gördüğümüz ağaçları hatırlayalım:</p>
@@ -109,19 +109,24 @@ if (x == -1) y = 2 + func();</div>
 <p>Formal dillere niçin gramer dediğimizi biraz somutlaştıralım. Türkçenin basit bir formunu formal dil olarak tanımlayalım ve gramer olarak hatasız "Formal
 dilleri öğreniyorum." cümlesini irdeleyelim:</p>
 <div class="dotgraph">
-<iframe scrolling="no" frameborder="0" src="dot_inline_dotgraph_2.svg" width="896" height="175"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<iframe scrolling="no" frameborder="0" src="dot_inline_dotgraph_3.svg" width="896" height="175"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 <p>Aynı cümledeki kelimeleri türden kelimelerle değiştirdik ve tekrardan gramer yapısı olarak "doğru" bir cümle edindik.</p>
 <div class="dotgraph">
-<iframe scrolling="no" frameborder="0" src="dot_inline_dotgraph_3.svg" width="383" height="347"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<iframe scrolling="no" frameborder="0" src="dot_inline_dotgraph_4.svg" width="383" height="347"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 <div class="fragment"><div class="line">⟨S⟩ → ⟨SıfatTamlaması⟩ ⟨Fiil⟩</div>
 <div class="line">⟨SıfatTamlaması⟩ → ⟨Sıfat⟩ ⟨İsim⟩</div>
 <div class="line">⟨Sıfat⟩ → Formal | Yabancı</div>
 <div class="line">⟨İsim⟩ → dilleri | dil</div>
 <div class="line">⟨Fiil⟩ → öğreniyorum. | biliyorum.</div>
-</div><!-- fragment --><dl class="section user"><dt>nonterminal</dt><dd>Örnekteki <code>⟨Sıfat⟩</code> veya <code>⟨SıfatTamlaması⟩</code> gibi, cümlenin yapısını tanımlayan ve başka kurallarla daha alt parçalara genişletilebilen yapısal kategorilerdir.</dd></dl>
-<dl class="section user"><dt>terminal/token</dt><dd>Örnekteki "Formal", "dilleri" veya "öğreniyorum." gibi, ağacın en ucunda yer alan ve artık daha alt parçalara bölünemeyen somut sözcüklere denir.</dd></dl>
-<dl class="section user"><dt>production rules</dt><dd><code>⟨SıfatTamlaması⟩ → ⟨Sıfat⟩ ⟨İsim⟩</code> satırında olduğu gibi, bir nonterminal'in hangi öğelere (terminal veya nonterminal) dönüşebileceğini tanımlayan kuralların her birine denir.</dd></dl>
-<dl class="section user"><dt>grammar</dt><dd>Yukarıdaki tüm kuralları kapsayan ve o dildeki geçerli tüm cümlelerin hangi yapıtaşlarıyla nasıl türetileceğini belirleyen matematiksel/kuralsal çerçevenin bütününe denir. </dd></dl>
+</div><!-- fragment --><dl class="section user"><dt>nonterminal/variable (N)</dt><dd>Örnekteki <code>⟨Sıfat⟩</code> veya <code>⟨SıfatTamlaması⟩</code> gibi, cümlenin yapısını tanımlayan ve başka kurallarla daha alt parçalara genişletilebilen yapısal kategorilerdir.</dd></dl>
+<dl class="section user"><dt>terminal/token (T)</dt><dd>Örnekteki "Formal", "dilleri" veya "öğreniyorum." gibi, ağacın en ucunda yer alan ve artık daha alt parçalara bölünemeyen somut sözcüklere denir.</dd></dl>
+<dl class="section user"><dt>production rules (P)</dt><dd><code>⟨SıfatTamlaması⟩ → ⟨Sıfat⟩ ⟨İsim⟩</code> satırında olduğu gibi, bir nonterminal'in hangi öğelere (terminal veya nonterminal) dönüşebileceğini tanımlayan kuralların her birine denir.</dd></dl>
+<dl class="section user"><dt>grammar</dt><dd>Yukarıdaki tüm kuralları kapsayan ve o dildeki geçerli tüm cümlelerin hangi yapıtaşlarıyla nasıl türetileceğini belirleyen matematiksel/kuralsal çerçevenin bütününe denir. Formal gramerler, (N, T, P) üçlüsü şeklinde tanımlanır.</dd></dl>
+<p>Şimdi bu nonterminal, token ve production rules'tan tree oluşturacak sistematik bir yapıya ihtiyacımız var: <a class="el" href="td_parser_page.html">Top Down Parsing</a></p>
+<p>Alt sayfalar</p><ul>
+<li><a class="el" href="td_parser_page.html">Top Down Parsing</a></li>
+<li><a class="el" href="rdesc_page.html">librdesc</a> </li>
+</ul>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 <!-- start footer part -->

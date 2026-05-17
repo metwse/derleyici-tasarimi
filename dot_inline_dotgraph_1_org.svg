@@ -31,8 +31,9 @@
 <!-- C -->
 <g id="node3" class="node">
 <title>C</title>
-<polygon fill="none" stroke="black" points="345,-37 254,-37 254,-1 345,-1 345,-37"/>
-<text text-anchor="middle" x="299.5" y="-15.3" font-family="Times,serif" font-size="14.00">evaluation</text>
+<polygon fill="none" stroke="black" points="345,-38 254,-38 254,0 345,0 345,-38"/>
+<text text-anchor="middle" x="299.5" y="-22.8" font-family="Times,serif" font-size="14.00">evaluation</text>
+<text text-anchor="middle" x="299.5" y="-7.8" font-family="Times,serif" font-size="14.00">ŞİMDİLİK</text>
 </g>
 <!-- B&#45;&gt;C -->
 <g id="edge2" class="edge">

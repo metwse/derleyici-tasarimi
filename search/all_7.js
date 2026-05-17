@@ -8,10 +8,11 @@ var searchData=
   ['lexeme_5fint_5',['LEXEME_INT',['../structlexeme.html#a76d0f0eb5eb899305ec7d40898c5c351ab53c25af417c1d07d816188fe25abd94',1,'lexeme']]],
   ['lexeme_5fkind_6',['lexeme_kind',['../structlexeme.html#a76d0f0eb5eb899305ec7d40898c5c351',1,'lexeme']]],
   ['lexeme_5fpunct_7',['LEXEME_PUNCT',['../structlexeme.html#a76d0f0eb5eb899305ec7d40898c5c351af044d467b8dc5d12378de61299094d2b',1,'lexeme']]],
-  ['lexer_8',['lexer',['../structlexer.html',1,'lexer'],['../lexer_page.html',1,'Lexer']]],
+  ['lexer_8',['lexer',['../structlexer.html',1,'lexer'],['../lexer_page.html',1,'Lexer'],['../structparser.html#a20a5c2f6d3828e6c761e13d401cc567f',1,'parser::lexer']]],
   ['lexer_20için_20yardımcı_20fonsiyonlar_9',['Lexer için Yardımcı Fonsiyonlar',['../lexer_yardimci_fonksiyonlar_page.html',1,'lexer_page']]],
   ['lexer_2eh_10',['lexer.h',['../lexer_8h.html',1,'']]],
   ['lexer_5finit_11',['lexer_init',['../lexer_8h.html#a702027edae6526a7b51687def11fad46',1,'lexer.h']]],
   ['lexer_5fnext_12',['lexer_next',['../lexer_8h.html#a5691ba3e7cd10458aa508728a742a2db',1,'lexer.h']]],
-  ['lexical_20analysis_13',['Lexical Analysis',['../derleyici_front_end_page.html#front_end_lexical_analysis',1,'']]]
+  ['lexical_20analysis_13',['Lexical Analysis',['../derleyici_front_end_page.html#front_end_lexical_analysis',1,'']]],
+  ['librdesc_14',['librdesc',['../rdesc_page.html',1,'parser_page']]]
 ];

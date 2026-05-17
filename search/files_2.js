@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['stack_2eh_0',['stack.h',['../stack_8h.html',1,'']]]
+  ['recursive_2dparser_2eh_0',['recursive-parser.h',['../recursive-parser_8h.html',1,'']]]
 ];

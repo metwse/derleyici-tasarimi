@@ -83,7 +83,7 @@ $(function() {
 <iframe scrolling="no" frameborder="0" src="dot_ast-if-stmt.svg" width="390" height="443"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 <p>Aslında epey kolay! Metin formundaki kodu <em>bir şekilde</em> ağaç yapısına dönüştürdüğümüzde değer hesaplamak için <em>tree traversal</em> yeterli oluyor! Peki, bu ağacı nasıl oluşturacağız? Asıl soruna geliyoruz: <em>lexing</em> ve sonrasında <em>parsing</em>.</p>
 <div class="dotgraph">
-<iframe scrolling="no" frameborder="0" src="dot_inline_dotgraph_4.svg" width="486" height="62"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<iframe scrolling="no" frameborder="0" src="dot_inline_dotgraph_5.svg" width="486" height="62"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 <h1><a class="anchor" id="front_end_lexical_analysis"></a>
 Lexical Analysis</h1>
 <p><em>String</em> üzerinde çalışmak genel olarak zor. Ağaca oturtma sürecinde bir sayının değeri, değişkenin ya da fonksiyonun ismi bizi ilgilendirmiyor. <em>Tokenizer</em> ile metin işleme sürecinde lexeme denilen syntax parçalarının anlamını çıkarırız. Mesela, <code>if (x == -1) y = 2;</code>i ele alalım.</p>
@@ -112,16 +112,18 @@ Lexical Analysis</h1>
 <td class="markdownTableBodyNone">;   </td><td class="markdownTableBodyNone">SEMI   </td><td class="markdownTableBodyNone"></td></tr>
 </table>
 <p>Genelde, bütün metni tutmak yerine gereksiz detayları atlayarak ham token bilgisini tutmayı tercih ederiz. <code>token_id</code> isminde bir <code>enum</code> ve seminfo isminde bir <code>union</code> tanımlayarak gramer yapılarını daha özlü bir şekilde temsil etmek mümkündür:</p>
-<div class="fragment"><div class="line"><span class="keyword">enum</span> token_id {</div>
+<div class="fragment"><div class="line"><span class="keyword">enum</span> <a class="code hl_enumeration" href="recursive-parser_8h.html#a69ee603d02bdfaaa309e65e33fa9b37e">token_id</a> {</div>
 <div class="line">    TK_IF,</div>
 <div class="line">    TK_TY_INT,</div>
 <div class="line">    <span class="comment">// ...</span></div>
 <div class="line">};</div>
 <div class="line"> </div>
-<div class="line"><span class="keyword">union </span>seminfo {</div>
+<div class="line"><span class="keyword">union </span><a class="code hl_union" href="unionseminfo.html">seminfo</a> {</div>
 <div class="line">    <span class="keywordtype">char</span> *id;</div>
 <div class="line">    <span class="keywordtype">size_t</span> num;</div>
 <div class="line">};</div>
+<div class="ttc" id="arecursive-parser_8h_html_a69ee603d02bdfaaa309e65e33fa9b37e"><div class="ttname"><a href="recursive-parser_8h.html#a69ee603d02bdfaaa309e65e33fa9b37e">token_id</a></div><div class="ttdeci">token_id</div><div class="ttdoc">[Parser tanımı]</div><div class="ttdef"><b>Definition</b> <a href="recursive-parser_8h_source.html#l00035">recursive-parser.h:35</a></div></div>
+<div class="ttc" id="aunionseminfo_html"><div class="ttname"><a href="unionseminfo.html">seminfo</a></div><div class="ttdoc">[Tokenizer tanımı]</div><div class="ttdef"><b>Definition</b> <a href="tokenizer_8h_source.html#l00051">tokenizer.h:51</a></div></div>
 </div><!-- fragment --><p>Sadece <code>if</code> keyword'üne, sayılara ve isimlere odaklanacak olursak, aşağıdaki görseldeki <em>state machine'ler</em> metinden token üretme kurallarını uygulamaya yeterli olacaktır:</p>
 <div class="dotgraph">
 <iframe scrolling="no" frameborder="0" src="dot_dfa-lexer.svg" width="374" height="328"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
@@ -132,7 +134,7 @@ Lexical Analysis</h1>
 <div class="dotgraph">
 <iframe scrolling="no" frameborder="0" src="dot_dfa-combined-lexer.svg" width="646" height="314"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 <p>Tabii bugün elle bu kadar optimize edilmiş bir state macine kodlamayacağız. Sayı, identifier ve punctuation'ları metinden tokenize edecek bir lexer kodlamaya başlayalım: <a class="el" href="lexer_page.html">Lexer</a></p>
-<ul>
+<p>Alt sayfalar</p><ul>
 <li><a class="el" href="lexer_page.html">Lexer</a></li>
 <li><a class="el" href="tokenizer_page.html">Tokenizer</a></li>
 <li><a class="el" href="parser_page.html">Parser</a> </li>

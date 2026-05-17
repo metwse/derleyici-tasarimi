@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['stack_0',['stack',['../structstack.html',1,'']]]
+  ['parser_0',['parser',['../structparser.html',1,'']]]
 ];
