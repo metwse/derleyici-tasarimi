@@ -36,7 +36,7 @@ top-down parsing'deki sorunlarını ve elle her bir kural için fonksiyon yazman
 zorluğunu çözen bir kütüphane kullanacağız.
 
 
-@section Recursive Descent Parser
+@section rd_parser_sec Recursive Descent Parser
 
 @snippet include/recursive-parser.h Parser tanımı
 
@@ -69,10 +69,45 @@ Basmakalıp `init/destroy` fonksiyonlarımızı tanımlayalım:
 
 Lexer'da kullandığımız `advance`/`peek` tasarımını yine kullanıyoruz:
 
-@snippet snippets/recursive-parser.c advance/match
+@snippet snippets/recursive-parser.c consume/match
 
 Artık `parser_eval()` fonksiyonunu yazmaya başlayabiliriz:
 
 @snippet snippets/recursive-parser.c eval
 
+
+@section rd_parser_fonksiyonlar_subsec Evaluation Fonksiyonları
+
+Dilimizde iki çeşit *statement* var: `print` ve `asgn`. `print`, bir ifadeyi
+evaluate edip terminale yazdırırken `asgn`, onu değişkene kaydediyor.
+
+@snippet snippets/recursive-parser.c print/asgn
+
+Benzer mantıkla tanımlanmış `expr`, `term` ve `factor` kurallarını match
+ediyoruz:
+
+@snippet snippets/recursive-parser.c expr/term/factor
+
+Son olarak da sayısal değer ifade eden en küçük birimleri, `atom`ları evaluate
+ediyoruz.
+
+@snippet snippets/recursive-parser.c atom
+
+@section rd_parser_bug_sec İşlem Önceliği...
+Bu kadar! Artık değişken ve matematiksel ifade içeren bir yazılım dilimiz
+var... sanıyorsanız yanılıyorsunuz. Yazdığımız koda şu ifadeyi verirsek büyük
+bir hüsrana uğrarız:
+`print 10 - 2 - 3;`
+
+Bu işlemin matematiksel sonucu *5* olmalıdır. Fakat bizim parser'ımız ekrana
+*11* yazdırır!
+
+Neden mi? Çünkü sonsuz döngüden (Left-Recursion) kurtulmak için `eval_expr`
+fonksiyonumuzu sağ-özyinelemeli (right-recursive) yaptık. Böylece parser
+ifadeyi `10 - (2 - 3)` şeklinde, matematikteki Left-Associative kuralının tam
+tersi olan Right-Associative kuralıyla hesapladı. Manuel parser'larda bu sorunu
+çözmek kodu spagettiye çevirir. Bir sonraki aşamada dili `if`/`while` ile
+genişletmeden önce, hem parsing'i evaluation'dan ayırıp CST kurmak hem de bu
+"İşlem Önceliği" hatasından zarifçe kurtulmak için tekerleği yeniden icat
+etmeyeceğiz: @ref rdesc_page
 */

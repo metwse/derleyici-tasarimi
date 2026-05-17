@@ -14,7 +14,7 @@ int main()
 	parser_eval(&p, "a = 1;"
 			"b = +2.3 + -3 / (4 * 2) * b + undefined;"
 			"a = 3 - 2;"
-			"print a;"
+			"print a * 2;"
 			"print d;");
 
 	parser_destroy(&p);
