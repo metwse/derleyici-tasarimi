@@ -32,6 +32,8 @@ gramerimizi sadece çıkarma (`-`), çarpma (`*`) ve sayılardan (`INT`)
 oluşacak şekilde sadeleştirelim:
 
 ```
+⟨S⟩ → ⟨Expr⟩ ;
+
 ⟨Expr⟩ → ⟨Term⟩ ⟨ExprRest⟩
 
 ⟨ExprRest⟩ → - ⟨Term⟩ ⟨ExprRest⟩ | ε
@@ -60,4 +62,33 @@ birbirini çağıran fonksiyonlar yok!
 - `EPSILON`: Production rule'ın boş (ε) geçilebileceğini belirtir.
 
 @snippet snippets/rdesc-parser.c Gramer tablosu
+
+Sonrasında, bu tabloyu kullanarak `struct rdesc` oluşturuyoruz:
+
+@snippet snippets/rdesc-parser.test.c rdesc init
+
+Bu kadar! Sonrasında rdesc'e token göndermeye başlayabiliriz:
+
+@snippet snippets/rdesc-parser.test.c rdesc pump
+
+`rdesc_pump()`, pompalama sonrasında kuralın tamamlanıp tamamlanmamasına göre
+`RDESC_CONTINUE` ve `RDESC_READY` döner. rdesc, kuralı match ettikten sonra
+ekrana yazdıralım:
+
+@snippet snippets/rdesc-parser.test.c rdesc print
+
+@dotfile dot/rdesc-match.dot
+
+Bu CST'yi, left-associative çıkarma işlemine sahip olacak şekilde döndürmek
+için `rdesc_flip()` çağırmamız yeterli:
+
+@snippet snippets/rdesc-parser.test.c rdesc flip&print
+
+@dotfile dot/rdesc-match-flip.dot
+
+Bu CST'yi traverse edip evaluate etmenin detaylarına ineceğiz.
+`rdesc_dump_cst()` fonksiyonuna verdiğimiz `node_printer()`'ın tanımını tek
+bir node'ı traverse etme örneği olarak verebiliriz:
+
+@snippet snippets/rdesc-parser.c Node print
 */

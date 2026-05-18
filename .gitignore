@@ -1,4 +1,6 @@
 docs-autogen/
 .cache/
 bin/
+vendor/
 compile_commands.json
+rdesc

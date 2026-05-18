@@ -1,10 +1,11 @@
-CFLAGS = -Wall -Wextra -std=c11 --coverage -MMD -MD -O0 -g3
+CFLAGS = -I. -Wall -Wextra -std=c11 --coverage -MMD -MD -O0 -g3
 
 SRC_DIR = src
 TEST_DIR = tests
 SNIPPETS_DIR = snippets
 BIN_DIR = bin
 OBJ_DIR = $(BIN_DIR)/obj
+RDESC_DIR := vendor/rdesc
 
 SRCS = $(wildcard $(SRC_DIR)/*.c)
 TEST_SRCS = $(wildcard $(TEST_DIR)/*.c)
@@ -28,25 +29,39 @@ SNIPPET_TEST_TARGETS = $(patsubst $(SNIPPETS_DIR)/%.test.c,\
 
 default: all
 
+
+RDESC_MODE := debug
+RDESC_FEATURES := full
+
+$(RDESC_DIR)/rdesc.mk:
+	git clone https://github.com/metwse/rdesc.git $(RDESC_DIR) \
+		--branch=v0.3.0-preview
+
+include $(RDESC_DIR)/rdesc.mk
+
+rdesc: $(RDESC)
+	ln -s $(RDESC_INCLUDE_DIR) $@
+
+
 .SECONDARY:
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR) rdesc
 	$(CC) $(CFLAGS) -c $< -o $@
 
 .SECONDARY:
-$(OBJ_DIR)/%.test.o: $(TEST_DIR)/%.c | $(OBJ_DIR)
+$(OBJ_DIR)/%.test.o: $(TEST_DIR)/%.c | $(OBJ_DIR) rdesc
 	$(CC) $(CFLAGS) -c $< -o $@
 
 .SECONDARY:
-$(OBJ_DIR)/%.snippet.test.o: $(SNIPPETS_DIR)/%.test.c | $(OBJ_DIR)
+$(OBJ_DIR)/%.snippet.test.o: $(SNIPPETS_DIR)/%.test.c | $(OBJ_DIR) rdesc
 	$(CC) $(CFLAGS) -c $< -o $@
 
-$(TARGET): $(OBJS) | $(BIN_DIR)
+$(TARGET): $(OBJS) $(RDESC) | $(BIN_DIR) rdesc
 	$(CC) $(CFLAGS) $^ -o $@
 
-$(BIN_DIR)/%.test: $(OBJ_DIR)/%.test.o $(NONMAIN_OBJS) | $(BIN_DIR)
+$(BIN_DIR)/%.test: $(OBJ_DIR)/%.test.o $(NONMAIN_OBJS) $(RDESC) | $(BIN_DIR) rdesc
 	$(CC) $(CFLAGS) $^ -o $@
 
-$(BIN_DIR)/%.snippet.test: $(OBJ_DIR)/%.snippet.test.o | $(BIN_DIR)
+$(BIN_DIR)/%.snippet.test: $(OBJ_DIR)/%.snippet.test.o $(RDESC) | $(BIN_DIR) rdesc
 	$(CC) $(CFLAGS) $^ -o $@
 
 $(OBJ_DIR) $(BIN_DIR):
