@@ -76,7 +76,7 @@ $(function() {
   <div class="headertitle"><div class="title">Mental Model</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><code>print 10 - 2 - 3</code> statement'ının evaluation'unu yakından incelersek:</p>
+<div class="textblock"><p><code>print 10 - 2 - 3;</code> statement'ının evaluation'unu yakından incelersek:</p>
 <div class="dotgraph">
 <iframe scrolling="no" frameborder="0" src="dot_implicit-parse-tree.svg" width="1359" height="275"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 <p>Fazla kalabalık, biraz sadeleştirilmiş hâli,</p>
@@ -143,7 +143,7 @@ $(function() {
 </div><!-- fragment --><div class="dotgraph">
 <iframe scrolling="no" frameborder="0" src="dot_implicit-parse-tree-infinite-loop.svg" width="1135" height="203"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 <p>Başta gramer tanımını, ⟨Expr⟩'dan hemen sonra ⟨Expr⟩ gelmeyecek şekilde yaptık. </p><div class="fragment"><div class="line">⟨Expr⟩ → ⟨Term⟩ + ⟨Expr⟩ | ⟨Term⟩ - ⟨Expr⟩ | ⟨Term⟩</div>
-</div><!-- fragment --><p>Neden mi? Çünkü sonsuz döngüden (Left-Recursion) kurtulmak için <code>eval_expr</code> fonksiyonumuzu sağ-özyinelemeli (right-recursive) yapmak zorundaydık! Ancak parser ifadeyi <code>10 - (2 - 3)</code> şeklinde, matematikteki Left-Associative kuralının tam tersi olan Right-Associative kuralıyla parse etmiş oldu. Manuel parser'larda bu sorunu çözmek kodu spagettiye çevirir. Bir sonraki aşamada dili <code>if</code>/<code>while</code> ile genişletmeden önce, hem parsing'i evaluation'dan ayırıp CST kurmak hem de bu "İşlem Önceliği" hatasından zarifçe kurtulmak için tekerleği yeniden icat etmeyeceğiz: <a class="el" href="rdesc_page.html">librdesc</a> </p>
+</div><!-- fragment --><p>Neden mi? Çünkü sonsuz döngüden (Left-Recursion) kurtulmak için <code>eval_expr</code> fonksiyonumuzu right-recursive yapmak zorundaydık! Ancak parser ifadeyi <code>10 - (2 - 3)</code> şeklinde, matematikteki Left-Associative kuralının tam tersi olan Right-Associative kuralıyla parse etmiş oldu. Manuel parser'larda bu sorunu çözmek kodu spagettiye çevirir. Bir sonraki aşamada dili <code>if</code>/<code>while</code> ile genişletmeden önce, hem parsing'i evaluation'dan ayırıp CST kurmak hem de bu "İşlem Önceliği" hatasından zarifçe kurtulmak için tekerleği yeniden icat etmeyeceğiz: <a class="el" href="rdesc_page.html">librdesc</a> </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 <!-- start footer part -->

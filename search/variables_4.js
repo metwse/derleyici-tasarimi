@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['num_5ffloat_0',['num_float',['../unionseminfo.html#a912262d0c837ce3c024bd2e8a74d39bb',1,'seminfo']]],
-  ['num_5fint_1',['num_int',['../unionseminfo.html#a3d15aa2ad642d3a62513f9ef33d65e09',1,'seminfo']]]
+  ['last_5fid_0',['last_id',['../structtokenizer.html#a86c72300c47da8d8e38b7d28b071d1f1',1,'tokenizer']]],
+  ['lexer_1',['lexer',['../structparser.html#a20a5c2f6d3828e6c761e13d401cc567f',1,'parser']]]
 ];

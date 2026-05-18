@@ -1,9 +1,6 @@
 var searchData=
 [
-  ['tk_5ffloat_0',['TK_FLOAT',['../tokenizer_8h.html#a6e3d5f8635d47064e61bd89a16aa9219',1,'tokenizer.h']]],
-  ['tk_5fident_1',['TK_IDENT',['../tokenizer_8h.html#a7ffbf59a256be2852e91e6ccecafb7ad',1,'tokenizer.h']]],
-  ['tk_5fint_2',['TK_INT',['../tokenizer_8h.html#a8616b93391ec951a4d353a10315cad54',1,'tokenizer.h']]],
-  ['tk_5fnotoken_3',['TK_NOTOKEN',['../tokenizer_8h.html#a6fa87d7080a9a48e43877b84d6341be3',1,'tokenizer.h']]],
-  ['token_4',['token',['../structparser.html#a8cc4a0c1cdb444ec9c4adaa86939679a',1,'parser']]],
-  ['tokenizer_5',['tokenizer',['../structparser.html#a96f7bf8944ff197eca5dd90184d9fb9c',1,'parser']]]
+  ['seminfo_0',['seminfo',['../structlexeme.html#a7fba035b50a3af17cab8f337892b1461',1,'lexeme::seminfo'],['../structtoken.html#a935806a9496be798e8b35b7d42ed5003',1,'token::seminfo']]],
+  ['seminfo_5flen_1',['seminfo_len',['../structlexeme.html#aa9093b6755d0a5bebe502490ec567b83',1,'lexeme']]],
+  ['start_2',['start',['../structlexer.html#a061c6a3ca100b22d7e61dc1caabac4ba',1,'lexer']]]
 ];

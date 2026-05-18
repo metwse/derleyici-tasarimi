@@ -1,9 +1,7 @@
 var searchData=
 [
-  ['parser_0',['parser',['../structparser.html',1,'parser'],['../parser_page.html',1,'Parser'],['../td_parser_page.html#rd_parser_sec',1,'Recursive Descent Parser']]],
-  ['parser_5fdestroy_1',['parser_destroy',['../recursive-parser_8h.html#a15065272fef3f4913a93198614a503fd',1,'recursive-parser.h']]],
-  ['parser_5feval_2',['parser_eval',['../recursive-parser_8h.html#a3a3324cd588cbd87bcf9d3e2f6221f99',1,'recursive-parser.h']]],
-  ['parser_5finit_3',['parser_init',['../recursive-parser_8h.html#af223e18a3c6dd41e49414ffc6821711f',1,'recursive-parser.h']]],
-  ['parsing_4',['Top-Down Parsing',['../td_parser_page.html',1,'parser_page']]],
-  ['punctuations_5',['punctuations',['../structtokenizer.html#a924d670164bc6f65b26af096dab0f7d2',1,'tokenizer']]]
+  ['nt_5fcount_0',['NT_COUNT',['../rdesc-parser_8h.html#ac9b28ede377316f9fb2d4266526a09d1',1,'rdesc-parser.h']]],
+  ['nt_5fid_1',['nt_id',['../rdesc-parser_8h.html#af93c51282f8ad7270e9aa72dc7d0c175',1,'rdesc-parser.h']]],
+  ['num_5ffloat_2',['num_float',['../unionseminfo.html#a912262d0c837ce3c024bd2e8a74d39bb',1,'seminfo']]],
+  ['num_5fint_3',['num_int',['../unionseminfo.html#a3d15aa2ad642d3a62513f9ef33d65e09',1,'seminfo']]]
 ];
