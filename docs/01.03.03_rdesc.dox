@@ -1,3 +1,63 @@
 /**
 @page rdesc_page librdesc
+
+`librdesc`'in çözümü:
+- Madem left-recursion sonsuz döngüye sebep oluyor, biz de grameri
+  right-associative olarak tanımlarız.
+- Call stack'taki fonsiyon çağrılarının oluşturduğu ağacı kolay bir şekilde
+  döndüremiyorsak, biz de kendi stack implementasyonumuz üzerinden parse
+  edelim. Kendi stack'imizde istediğimiz gibi döndürme yaparız.
+
+librdesc GitHub repository: https://github.com/metwse/rdesc/ <br />
+librdesc online documentation: https://metwse.github.io/rdesc/
+
+O zaman `librdesc`'i indirerek başlayalım:
+```sh
+git clone https://github.com/metwse/rdesc --branch=v0.3.0-preview
+
+cd rdesc/
+
+sudo make FEATURES='full' -j install
+```
+
+@section rdesc_grammar_sec Grameri rdesc Makrolarına Dökmek
+
+Kendi stack implementasyonunu kullanıp CST kuran bu parser'ı çalıştırmak için,
+kütüphanenin `rule_macros.h` başlığındaki makroları kullanacağız.
+
+Önceki sayfalarda sonsuz döngüye girmemek için gramerimizi mecburen
+right-recursive olarak tasarlamıştık. Şimdi bu right-recursive yapıyı `_REST`
+isimli yardımcı nonterminal'lerle ifade edelim. Anlaşılırlığı artırmak için
+gramerimizi sadece çıkarma (`-`), çarpma (`*`) ve sayılardan (`INT`)
+oluşacak şekilde sadeleştirelim:
+
+```
+⟨Expr⟩ → ⟨Term⟩ ⟨ExprRest⟩
+
+⟨ExprRest⟩ → - ⟨Term⟩ ⟨ExprRest⟩ | ε
+
+⟨Term⟩ → ⟨Atom⟩ ⟨TermRest⟩
+
+⟨TermRest⟩ → * ⟨Atom⟩ ⟨TermRest⟩ | ε
+
+⟨Atom⟩ → int
+```
+
+Önceki gramer yapımızı librdesc ile kullanmanın önünde bir engel yoktu, ancak
+librdesc'in bazı özelliklerini kullanabilmek için şimdiden bu değisikliği
+yaptık.
+
+Gramer için gerekli declaration'ları header'da yapalım:
+
+@snippet include/rdesc-parser.h Gramer declaration
+
+Grameri, formal gösterimine neredeyse birebir benzeyen bir tabloya
+dönüştürmek için, librdesc'in sağladığı makroları kullanacağız. Spagetti gibi
+birbirini çağıran fonksiyonlar yok!
+
+- `r(...)`: Production rule'ı başlatır.
+- `alt`: Production rule alternatiflerini (`|`) ayırır.
+- `EPSILON`: Production rule'ın boş (ε) geçilebileceğini belirtir.
+
+@snippet snippets/rdesc-parser.c Gramer tablosu
 */

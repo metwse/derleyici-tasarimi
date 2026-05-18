@@ -1,7 +1,7 @@
 /**
 @page mental_model_page Mental Model
 
-`print 10 - 2 - 3` statement'ının evaluation'unu yakından incelersek:
+`print 10 - 2 - 3;` statement'ının evaluation'unu yakından incelersek:
 
 @dotfile dot/implicit-parse-tree.dot
 
@@ -74,11 +74,11 @@ Başta gramer tanımını, ⟨Expr⟩'dan hemen sonra ⟨Expr⟩ gelmeyecek şek
 ```
 
 Neden mi? Çünkü sonsuz döngüden (Left-Recursion) kurtulmak için `eval_expr`
-fonksiyonumuzu sağ-özyinelemeli (right-recursive) yapmak zorundaydık! Ancak
-parser ifadeyi `10 - (2 - 3)` şeklinde, matematikteki Left-Associative
-kuralının tam tersi olan Right-Associative kuralıyla parse etmiş oldu. Manuel
-parser'larda bu sorunu çözmek kodu spagettiye çevirir. Bir sonraki aşamada
-dili `if`/`while` ile genişletmeden önce, hem parsing'i evaluation'dan ayırıp
-CST kurmak hem de bu "İşlem Önceliği" hatasından zarifçe kurtulmak için
-tekerleği yeniden icat etmeyeceğiz: @ref rdesc_page
+fonksiyonumuzu right-recursive yapmak zorundaydık! Ancak parser ifadeyi
+`10 - (2 - 3)` şeklinde, matematikteki Left-Associative kuralının tam tersi
+olan Right-Associative kuralıyla parse etmiş oldu. Manuel parser'larda bu
+sorunu çözmek kodu spagettiye çevirir. Bir sonraki aşamada dili `if`/`while`
+ile genişletmeden önce, hem parsing'i evaluation'dan ayırıp CST kurmak hem de
+bu "İşlem Önceliği" hatasından zarifçe kurtulmak için tekerleği yeniden icat
+etmeyeceğiz: @ref rdesc_page
 */
