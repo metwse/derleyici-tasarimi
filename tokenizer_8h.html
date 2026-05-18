@@ -146,16 +146,16 @@ struct <a class="el" href="structtoken.html">token</a>&#160;</td><td class="memI
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Değişkenler</h2></td></tr>
-<tr class="memitem:a6fa87d7080a9a48e43877b84d6341be3" id="r_a6fa87d7080a9a48e43877b84d6341be3"><td class="memItemLeft" align="right" valign="top">static const size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tokenizer_8h.html#a6fa87d7080a9a48e43877b84d6341be3">TK_NOTOKEN</a> = -1</td></tr>
+<tr class="memitem:a6fa87d7080a9a48e43877b84d6341be3" id="r_a6fa87d7080a9a48e43877b84d6341be3"><td class="memItemLeft" align="right" valign="top">static const size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tokenizer_8h.html#a6fa87d7080a9a48e43877b84d6341be3">TK_NOTOKEN</a> = INT16_MAX - 1</td></tr>
 <tr class="memdesc:a6fa87d7080a9a48e43877b84d6341be3"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="tokenizer_8h.html#a91b6fe31be04c8262446395e5b61c7b4">tokenizer_feed()</a> ile verilen lexemenin bittiğini belirtir.  <br /></td></tr>
 <tr class="separator:a6fa87d7080a9a48e43877b84d6341be3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8616b93391ec951a4d353a10315cad54" id="r_a8616b93391ec951a4d353a10315cad54"><td class="memItemLeft" align="right" valign="top">static const size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tokenizer_8h.html#a8616b93391ec951a4d353a10315cad54">TK_INT</a> = -2</td></tr>
+<tr class="memitem:a8616b93391ec951a4d353a10315cad54" id="r_a8616b93391ec951a4d353a10315cad54"><td class="memItemLeft" align="right" valign="top">static const size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tokenizer_8h.html#a8616b93391ec951a4d353a10315cad54">TK_INT</a> = INT16_MAX - 2</td></tr>
 <tr class="memdesc:a8616b93391ec951a4d353a10315cad54"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tam sayı token ID'si.  <br /></td></tr>
 <tr class="separator:a8616b93391ec951a4d353a10315cad54"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6e3d5f8635d47064e61bd89a16aa9219" id="r_a6e3d5f8635d47064e61bd89a16aa9219"><td class="memItemLeft" align="right" valign="top">static const size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tokenizer_8h.html#a6e3d5f8635d47064e61bd89a16aa9219">TK_FLOAT</a> = -3</td></tr>
+<tr class="memitem:a6e3d5f8635d47064e61bd89a16aa9219" id="r_a6e3d5f8635d47064e61bd89a16aa9219"><td class="memItemLeft" align="right" valign="top">static const size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tokenizer_8h.html#a6e3d5f8635d47064e61bd89a16aa9219">TK_FLOAT</a> = INT16_MAX - 3</td></tr>
 <tr class="memdesc:a6e3d5f8635d47064e61bd89a16aa9219"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ondalık sayı token ID'si.  <br /></td></tr>
 <tr class="separator:a6e3d5f8635d47064e61bd89a16aa9219"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7ffbf59a256be2852e91e6ccecafb7ad" id="r_a7ffbf59a256be2852e91e6ccecafb7ad"><td class="memItemLeft" align="right" valign="top">static const size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tokenizer_8h.html#a7ffbf59a256be2852e91e6ccecafb7ad">TK_IDENT</a> = -4</td></tr>
+<tr class="memitem:a7ffbf59a256be2852e91e6ccecafb7ad" id="r_a7ffbf59a256be2852e91e6ccecafb7ad"><td class="memItemLeft" align="right" valign="top">static const size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tokenizer_8h.html#a7ffbf59a256be2852e91e6ccecafb7ad">TK_IDENT</a> = INT16_MAX - 4</td></tr>
 <tr class="memdesc:a7ffbf59a256be2852e91e6ccecafb7ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identifier token ID'si.  <br /></td></tr>
 <tr class="separator:a7ffbf59a256be2852e91e6ccecafb7ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -264,7 +264,7 @@ Değişkenler</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const size_t TK_FLOAT = -3</td>
+          <td class="memname">const size_t TK_FLOAT = INT16_MAX - 3</td>
         </tr>
       </table>
   </td>
@@ -290,7 +290,7 @@ Değişkenler</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const size_t TK_IDENT = -4</td>
+          <td class="memname">const size_t TK_IDENT = INT16_MAX - 4</td>
         </tr>
       </table>
   </td>
@@ -316,7 +316,7 @@ Değişkenler</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const size_t TK_INT = -2</td>
+          <td class="memname">const size_t TK_INT = INT16_MAX - 2</td>
         </tr>
       </table>
   </td>
@@ -342,7 +342,7 @@ Değişkenler</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const size_t TK_NOTOKEN = -1</td>
+          <td class="memname">const size_t TK_NOTOKEN = INT16_MAX - 1</td>
         </tr>
       </table>
   </td>

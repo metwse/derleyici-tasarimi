@@ -1,5 +1,7 @@
 <map id="include/rdesc&#45;parser.h" name="include/rdesc&#45;parser.h">
-<area shape="rect" id="Node000001" title="librdesc" alt="" coords="5,5,171,31"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="22,79,154,104"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="91,31,91,65,85,65,85,31"/>
+<area shape="rect" id="Node000001" title="librdesc" alt="" coords="17,5,183,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,79,72,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="92,33,60,70,56,66,88,29"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="97,79,229,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="112,29,145,66,141,70,108,33"/>
 </map>

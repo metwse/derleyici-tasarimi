@@ -76,6 +76,7 @@ $(function() {
   <div class="summary">
 <a href="#define-members">Makrolar</a> &#124;
 <a href="#enum-members">Enümerasyonlar</a> &#124;
+<a href="#func-members">Fonksiyonlar</a> &#124;
 <a href="#var-members">Değişkenler</a>  </div>
   <div class="headertitle"><div class="title">rdesc-parser.h Dosya Referansı</div></div>
 </div><!--header-->
@@ -83,18 +84,19 @@ $(function() {
 
 <p><a class="el" href="rdesc_page.html">librdesc</a>  
 <a href="#details">Ayrıntılar...</a></p>
-<div class="textblock"><code>#include &lt;rdesc/grammar.h&gt;</code><br />
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;rdesc/grammar.h&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 rdesc-parser.h için içerme bağımlılık grafiği:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="rdesc-parser_8h__incl.svg" width="176" height="110"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="rdesc-parser_8h__incl.svg" width="235" height="110"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 <p><a href="rdesc-parser_8h_source.html">Bu dosyanın kaynak koduna git.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Makrolar</h2></td></tr>
-<tr class="memitem:ac9b28ede377316f9fb2d4266526a09d1" id="r_ac9b28ede377316f9fb2d4266526a09d1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rdesc-parser_8h.html#ac9b28ede377316f9fb2d4266526a09d1">NT_COUNT</a>&#160;&#160;&#160;5</td></tr>
+<tr class="memitem:ac9b28ede377316f9fb2d4266526a09d1" id="r_ac9b28ede377316f9fb2d4266526a09d1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rdesc-parser_8h.html#ac9b28ede377316f9fb2d4266526a09d1">NT_COUNT</a>&#160;&#160;&#160;6</td></tr>
 <tr class="memdesc:ac9b28ede377316f9fb2d4266526a09d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">[Gramer declaration]  <br /></td></tr>
 <tr class="separator:ac9b28ede377316f9fb2d4266526a09d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adf030161c13251406f3c38b0c167c43c" id="r_adf030161c13251406f3c38b0c167c43c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rdesc-parser_8h.html#adf030161c13251406f3c38b0c167c43c">MAX_ALT_COUNT</a>&#160;&#160;&#160;2</td></tr>
@@ -106,25 +108,34 @@ Makrolar</h2></td></tr>
 Enümerasyonlar</h2></td></tr>
 <tr class="memitem:a89eb09a8df613d18bf79d07502137fd7" id="r_a89eb09a8df613d18bf79d07502137fd7"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rdesc-parser_8h.html#a89eb09a8df613d18bf79d07502137fd7">tk_id</a> { <b>TK_MINUS</b>
 , <b>TK_STAR</b>
+, <b>TK_SEMI</b>
  }</td></tr>
 <tr class="memdesc:a89eb09a8df613d18bf79d07502137fd7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Token ID.  <a href="rdesc-parser_8h.html#a89eb09a8df613d18bf79d07502137fd7">Ayrıntılar...</a><br /></td></tr>
 <tr class="separator:a89eb09a8df613d18bf79d07502137fd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af93c51282f8ad7270e9aa72dc7d0c175" id="r_af93c51282f8ad7270e9aa72dc7d0c175"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rdesc-parser_8h.html#af93c51282f8ad7270e9aa72dc7d0c175">nt_id</a> { <br />
-&#160;&#160;<b>NT_EXPR</b>
+&#160;&#160;<b>NT_STMT</b>
+, <b>NT_EXPR</b>
 , <b>NT_EXPR_REST</b>
 , <b>NT_TERM</b>
-, <b>NT_TERM_REST</b>
 , <br />
-&#160;&#160;<b>NT_ATOM</b>
+&#160;&#160;<b>NT_TERM_REST</b>
+, <b>NT_ATOM</b>
 <br />
  }</td></tr>
 <tr class="memdesc:af93c51282f8ad7270e9aa72dc7d0c175"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nonterminal ID.  <a href="rdesc-parser_8h.html#af93c51282f8ad7270e9aa72dc7d0c175">Ayrıntılar...</a><br /></td></tr>
 <tr class="separator:af93c51282f8ad7270e9aa72dc7d0c175"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Fonksiyonlar</h2></td></tr>
+<tr class="memitem:af1198cab2f3cb32ed8414011fdacb28b" id="r_af1198cab2f3cb32ed8414011fdacb28b"><td class="memItemLeft" align="right" valign="top"><a id="af1198cab2f3cb32ed8414011fdacb28b" name="af1198cab2f3cb32ed8414011fdacb28b"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>node_printer</b> (FILE *out, struct rdesc_node node)</td></tr>
+<tr class="memdesc:af1198cab2f3cb32ed8414011fdacb28b"><td class="mdescLeft">&#160;</td><td class="mdescRight">[Gramer declaration] <br /></td></tr>
+<tr class="separator:af1198cab2f3cb32ed8414011fdacb28b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Değişkenler</h2></td></tr>
-<tr class="memitem:a8d6e8101efc478f3d83fef67f735c204" id="r_a8d6e8101efc478f3d83fef67f735c204"><td class="memItemLeft" align="right" valign="top">struct rdesc_grammar_symbol&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rdesc-parser_8h.html#a8d6e8101efc478f3d83fef67f735c204">grammar</a> [<a class="el" href="rdesc-parser_8h.html#ac9b28ede377316f9fb2d4266526a09d1">NT_COUNT</a>][<a class="el" href="rdesc-parser_8h.html#adf030161c13251406f3c38b0c167c43c">MAX_ALT_COUNT</a>+1][<a class="el" href="rdesc-parser_8h.html#a7f24a70f2904a003e5329eeaf3ee8ba3">MAX_ALT_SIZE</a>+1]</td></tr>
-<tr class="separator:a8d6e8101efc478f3d83fef67f735c204"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d604c863b6ac3e353d823700814cf53" id="r_a3d604c863b6ac3e353d823700814cf53"><td class="memItemLeft" align="right" valign="top">struct rdesc_grammar_symbol&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rdesc-parser_8h.html#a3d604c863b6ac3e353d823700814cf53">production_rules</a> [<a class="el" href="rdesc-parser_8h.html#ac9b28ede377316f9fb2d4266526a09d1">NT_COUNT</a>][<a class="el" href="rdesc-parser_8h.html#adf030161c13251406f3c38b0c167c43c">MAX_ALT_COUNT</a>+1][<a class="el" href="rdesc-parser_8h.html#a7f24a70f2904a003e5329eeaf3ee8ba3">MAX_ALT_SIZE</a>+1]</td></tr>
+<tr class="separator:a3d604c863b6ac3e353d823700814cf53"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Ayrıntılı tanımlama</h2>
 <div class="textblock"><p><a class="el" href="rdesc_page.html">librdesc</a> </p>
@@ -144,7 +155,7 @@ Değişkenler</h2></td></tr>
 </div><div class="memdoc">
 <p>_ </p>
 
-<p class="definition"><a class="el" href="rdesc-parser_8h_source.html">rdesc-parser.h</a> dosyasının <a class="el" href="rdesc-parser_8h_source.html#l00018">18</a> numaralı satırında tanımlanmıştır.</p>
+<p class="definition"><a class="el" href="rdesc-parser_8h_source.html">rdesc-parser.h</a> dosyasının <a class="el" href="rdesc-parser_8h_source.html#l00020">20</a> numaralı satırında tanımlanmıştır.</p>
 
 </div>
 </div>
@@ -161,7 +172,7 @@ Değişkenler</h2></td></tr>
 </div><div class="memdoc">
 <p>_ </p>
 
-<p class="definition"><a class="el" href="rdesc-parser_8h_source.html">rdesc-parser.h</a> dosyasının <a class="el" href="rdesc-parser_8h_source.html#l00021">21</a> numaralı satırında tanımlanmıştır.</p>
+<p class="definition"><a class="el" href="rdesc-parser_8h_source.html">rdesc-parser.h</a> dosyasının <a class="el" href="rdesc-parser_8h_source.html#l00023">23</a> numaralı satırında tanımlanmıştır.</p>
 
 </div>
 </div>
@@ -172,7 +183,7 @@ Değişkenler</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define NT_COUNT&#160;&#160;&#160;5</td>
+          <td class="memname">#define NT_COUNT&#160;&#160;&#160;6</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -180,7 +191,7 @@ Değişkenler</h2></td></tr>
 <p>[Gramer declaration] </p>
 <p>_ </p>
 
-<p class="definition"><a class="el" href="rdesc-parser_8h_source.html">rdesc-parser.h</a> dosyasının <a class="el" href="rdesc-parser_8h_source.html#l00015">15</a> numaralı satırında tanımlanmıştır.</p>
+<p class="definition"><a class="el" href="rdesc-parser_8h_source.html">rdesc-parser.h</a> dosyasının <a class="el" href="rdesc-parser_8h_source.html#l00017">17</a> numaralı satırında tanımlanmıştır.</p>
 
 </div>
 </div>
@@ -199,7 +210,7 @@ Değişkenler</h2></td></tr>
 
 <p>Nonterminal ID. </p>
 
-<p class="definition"><a class="el" href="rdesc-parser_8h_source.html">rdesc-parser.h</a> dosyasının <a class="el" href="rdesc-parser_8h_source.html#l00031">31</a> numaralı satırında tanımlanmıştır.</p>
+<p class="definition"><a class="el" href="rdesc-parser_8h_source.html">rdesc-parser.h</a> dosyasının <a class="el" href="rdesc-parser_8h_source.html#l00034">34</a> numaralı satırında tanımlanmıştır.</p>
 
 </div>
 </div>
@@ -217,13 +228,13 @@ Değişkenler</h2></td></tr>
 
 <p>Token ID. </p>
 
-<p class="definition"><a class="el" href="rdesc-parser_8h_source.html">rdesc-parser.h</a> dosyasının <a class="el" href="rdesc-parser_8h_source.html#l00024">24</a> numaralı satırında tanımlanmıştır.</p>
+<p class="definition"><a class="el" href="rdesc-parser_8h_source.html">rdesc-parser.h</a> dosyasının <a class="el" href="rdesc-parser_8h_source.html#l00026">26</a> numaralı satırında tanımlanmıştır.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Değişken Dokümantasyonu</h2>
-<a id="a8d6e8101efc478f3d83fef67f735c204" name="a8d6e8101efc478f3d83fef67f735c204"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8d6e8101efc478f3d83fef67f735c204">&#9670;&#160;</a></span>grammar</h2>
+<a id="a3d604c863b6ac3e353d823700814cf53" name="a3d604c863b6ac3e353d823700814cf53"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d604c863b6ac3e353d823700814cf53">&#9670;&#160;</a></span>production_rules</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -232,7 +243,7 @@ Değişkenler</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">struct rdesc_grammar_symbol grammar[<a class="el" href="rdesc-parser_8h.html#ac9b28ede377316f9fb2d4266526a09d1">NT_COUNT</a>][<a class="el" href="rdesc-parser_8h.html#adf030161c13251406f3c38b0c167c43c">MAX_ALT_COUNT</a>+1][<a class="el" href="rdesc-parser_8h.html#a7f24a70f2904a003e5329eeaf3ee8ba3">MAX_ALT_SIZE</a>+1]</td>
+          <td class="memname">struct rdesc_grammar_symbol production_rules[<a class="el" href="rdesc-parser_8h.html#ac9b28ede377316f9fb2d4266526a09d1">NT_COUNT</a>][<a class="el" href="rdesc-parser_8h.html#adf030161c13251406f3c38b0c167c43c">MAX_ALT_COUNT</a>+1][<a class="el" href="rdesc-parser_8h.html#a7f24a70f2904a003e5329eeaf3ee8ba3">MAX_ALT_SIZE</a>+1]</td>
         </tr>
       </table>
   </td>

@@ -37,14 +37,19 @@ var menudata={children:[
 {text:"Dosya Listesi",url:"files.html"},
 {text:"Dosya Üyeleri",url:"globals.html",children:[
 {text:"Tümü",url:"globals.html",children:[
-{text:"g",url:"globals.html#index_g"},
 {text:"l",url:"globals.html#index_l"},
 {text:"m",url:"globals.html#index_m"},
 {text:"n",url:"globals.html#index_n"},
 {text:"p",url:"globals.html#index_p"},
 {text:"s",url:"globals.html#index_s"},
 {text:"t",url:"globals.html#index_t"}]},
-{text:"Fonksiyonlar",url:"globals_func.html"},
+{text:"Fonksiyonlar",url:"globals_func.html",children:[
+{text:"l",url:"globals_func.html#index_l"},
+{text:"m",url:"globals_func.html#index_m"},
+{text:"n",url:"globals_func.html#index_n"},
+{text:"p",url:"globals_func.html#index_p"},
+{text:"s",url:"globals_func.html#index_s"},
+{text:"t",url:"globals_func.html#index_t"}]},
 {text:"Değişkenler",url:"globals_vars.html"},
 {text:"Enümerasyonlar",url:"globals_enum.html"},
 {text:"Makrolar",url:"globals_defs.html"}]}]}]}
