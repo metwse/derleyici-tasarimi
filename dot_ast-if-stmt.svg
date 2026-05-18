@@ -6,16 +6,6 @@
 <!-- Title: ast_assignment Pages: 1 -->
 <svg width="292pt" height="332pt"
  viewBox="0.00 0.00 292.00 332.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-
-<svg id="main" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" onload="init(evt)">
-<style type="text/css"><![CDATA[
-.node, .edge {opacity: 0.7;}
-.node.selected, .edge.selected {opacity: 1;}
-.edge:hover path { stroke: red; }
-.edge:hover polygon { stroke: red; fill: red; }
-]]></style>
-<script type="application/ecmascript" xlink:href="svg.min.js"/>
-<svg id="graph" class="graph">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 328)">
 <title>ast_assignment</title>
 <polygon fill="white" stroke="transparent" points="-4,4 -4,-328 288,-328 288,4 -4,4"/>
@@ -115,19 +105,4 @@
 <path fill="none" stroke="black" d="M227.15,-71.7C232.88,-60.85 240.24,-46.92 245.96,-36.1"/>
 </g>
 </g>
-</svg>
-</svg>
-
-<style type='text/css'>
-<![CDATA[
-[data-mouse-over-selected='false'] { opacity: 0.7; }
-[data-mouse-over-selected='true']  { opacity: 1.0; }
-]]>
-</style>
-<script type="application/ecmascript"><![CDATA[
-document.addEventListener('DOMContentLoaded', (event) => {
-  highlightEdges();
-  highlightAdjacentNodes();
-});
-]]></script>
 </svg>

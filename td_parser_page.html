@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Derleyici Tasarımı: Top Down Parsing</title>
+<title>Derleyici Tasarımı: Top-Down Parsing</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -13,7 +13,6 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
-<link href="style.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -74,7 +73,7 @@ $(function() {
 </div>
 </div><!-- top -->
 <div><div class="header">
-  <div class="headertitle"><div class="title">Top Down Parsing</div></div>
+  <div class="headertitle"><div class="title">Top-Down Parsing</div></div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p>Yazılım dilimizi formal tanımlayarak başlayalım:</p>
@@ -124,7 +123,7 @@ Recursive Descent Parser</h1>
 <div class="line"><span class="keywordtype">void</span> <a class="code hl_function" href="recursive-parser_8h.html#a3a3324cd588cbd87bcf9d3e2f6221f99">parser_eval</a>(<span class="keyword">struct</span> <a class="code hl_struct" href="structparser.html">parser</a> *<a class="code hl_struct" href="structparser.html">parser</a>, <span class="keyword">const</span> <span class="keywordtype">char</span> *text);</div>
 <div class="ttc" id="arecursive-parser_8h_html_a3a3324cd588cbd87bcf9d3e2f6221f99"><div class="ttname"><a href="recursive-parser_8h.html#a3a3324cd588cbd87bcf9d3e2f6221f99">parser_eval</a></div><div class="ttdeci">void parser_eval(struct parser *parser, const char *text)</div><div class="ttdoc">Metin girdisini evaluate eder.</div></div>
 <div class="ttc" id="arecursive-parser_8h_html_af223e18a3c6dd41e49414ffc6821711f"><div class="ttname"><a href="recursive-parser_8h.html#af223e18a3c6dd41e49414ffc6821711f">parser_init</a></div><div class="ttdeci">void parser_init(struct parser *parser)</div><div class="ttdoc">[Token ID'leri]</div></div>
-</div><!-- fragment --><p>Top-down parser'ımız tokenleri okurken <em>evaluate</em> edecek. Şimdilik parser ve <em>evaluation</em> kısmını birleşik yazacağız.</p>
+</div><!-- fragment --><p>Top-down parser'ımız tokenleri okurken <em>evaluate</em> edecek. Şimdilik parser ve <em>evaluation</em> kısmını birleşik yazacağız, somut bir tree yapısı olmayacak.</p>
 <div class="dotgraph">
 <iframe scrolling="no" frameborder="0" src="dot_inline_dotgraph_1.svg" width="471" height="62"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 <p>Basmakalıp <code>init/destroy</code> fonksiyonlarımızı tanımlayalım:</p>
@@ -373,8 +372,7 @@ Evaluation Fonksiyonları</h1>
 </div><!-- fragment --><h1><a class="anchor" id="rd_parser_bug_sec"></a>
 İşlem Önceliği...</h1>
 <p>Bu kadar! Artık değişken ve matematiksel ifade içeren bir yazılım dilimiz var... sanıyorsanız yanılıyorsunuz. Yazdığımız koda şu ifadeyi verirsek büyük bir hüsrana uğrarız: <code>print 10 - 2 - 3;</code></p>
-<p>Bu işlemin matematiksel sonucu <em>5</em> olmalıdır. Fakat bizim parser'ımız ekrana 11* yazdırır!</p>
-<p>Neden mi? Çünkü sonsuz döngüden (Left-Recursion) kurtulmak için <code>eval_expr</code> fonksiyonumuzu sağ-özyinelemeli (right-recursive) yaptık. Böylece parser ifadeyi <code>10 - (2 - 3)</code> şeklinde, matematikteki Left-Associative kuralının tam tersi olan Right-Associative kuralıyla hesapladı. Manuel parser'larda bu sorunu çözmek kodu spagettiye çevirir. Bir sonraki aşamada dili <code>if</code>/<code>while</code> ile genişletmeden önce, hem parsing'i evaluation'dan ayırıp CST kurmak hem de bu "İşlem Önceliği" hatasından zarifçe kurtulmak için tekerleği yeniden icat etmeyeceğiz: <a class="el" href="rdesc_page.html">librdesc</a> </p>
+<p>Bu işlemin matematiksel sonucu <em>5</em> olmalıdır. Fakat bizim parser'ımız ekrana <em>11</em> yazdırır! Top-down parsing'de parser'la evaluation'ı birlikte yazdığımız zaman işlem önceliğinin ters olmasından kurtulmanın kolay bir yolu yok. Bu sorunu nasıl çözeceğimizi, top-down parser'ların <a class="el" href="mental_model_page.html">Mental Model</a>'ini inceleyerek göreceğiz. </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 <!-- start footer part -->

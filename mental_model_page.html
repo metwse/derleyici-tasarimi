@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="tr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Derleyici Tasarımı: Mental Model</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Derleyici Tasarımı
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Oluşturan Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Ara');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Yüklüyor...</div>
+<div class="SRStatus" id="Searching">Arıyor...</div>
+<div class="SRStatus" id="NoMatches">Eşleşme Yok</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="derleyici_front_end_page.html">Derleyici Front End&#39;i</a></li><li class="navelem"><a class="el" href="parser_page.html">Parser</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div><div class="header">
+  <div class="headertitle"><div class="title">Mental Model</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><code>print 10 - 2 - 3</code> statement'ının evaluation'unu yakından incelersek:</p>
+<div class="dotgraph">
+<iframe scrolling="no" frameborder="0" src="dot_implicit-parse-tree.svg" width="1359" height="275"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<p>Fazla kalabalık, biraz sadeleştirilmiş hâli,</p>
+<div class="dotgraph">
+<iframe scrolling="no" frameborder="0" src="dot_implicit-parse-tree-simplified.svg" width="899" height="275"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<p>Yazdığımız <code><a class="el" href="recursive-parser_8h.html#a3a3324cd588cbd87bcf9d3e2f6221f99" title="Metin girdisini evaluate eder.">parser_eval()</a></code> fonksiyonu aslında <code>eval_print()</code> çağırarak bir CST oluşturuyor! Ancak ağaç, implicit bir şekilde fonksiyon çağırmalarla oluşturuluyor:</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">call stack   </th><th class="markdownTableHeadNone">recursive çağrı öncesinde   </th><th class="markdownTableHeadNone">sonrasında match edilen semboller    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">eval_atom   </td><td class="markdownTableBodyNone">3   </td><td class="markdownTableBodyNone"></td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">eval_factor   </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone"></td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">eval_term   </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone"></td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">eval_expr   </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">-    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">eval_atom   </td><td class="markdownTableBodyNone">2   </td><td class="markdownTableBodyNone"></td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">eval_factor   </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone"></td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">eval_term   </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone"></td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">eval_expr   </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">-    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">eval_atom   </td><td class="markdownTableBodyNone">10   </td><td class="markdownTableBodyNone"></td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">eval_factor   </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone"></td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">eval_term   </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone"></td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">eval_expr   </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">-    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">eval_print   </td><td class="markdownTableBodyNone">print   </td><td class="markdownTableBodyNone">;   </td></tr>
+</table>
+<p>Peki işlem önceliği niçin ters? <code>eval_expr</code>'ın oluşturduğu ağaca aşina olduğumuz bir görünümden bakalım:</p>
+<div class="dotgraph">
+<iframe scrolling="no" frameborder="0" src="dot_implicit-parse-tree-simplified-td.svg" width="455" height="347"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<p>Bunu in order traverse edecek olursak işlemin 10 - (3 - 2) şeklinde yapıldığını görüyoruz, (10 - 3) - 2 değil! Elde etmemiz gerek tree tam tersiydi:</p>
+<div class="dotgraph">
+<iframe scrolling="no" frameborder="0" src="dot_implicit-parse-tree-simplified-flip.svg" width="455" height="347"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<p>Ancak bunu top-down parser'larla elde etmek kolay değil. <code>eval_expr</code> ile <code>eval_term</code>'in yerini değiştirince parse tree elde etmek isterken sonsuz döngüye giriyoruz.</p>
+<div class="dotgraph">
+<iframe scrolling="no" frameborder="0" src="dot_implicit-parse-tree-wanted.svg" width="1359" height="275"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="fragment"><div class="line"><span class="keywordtype">double</span> eval_expr(<span class="keyword">struct</span> <a class="code hl_struct" href="structparser.html">parser</a> *p)</div>
+<div class="line">{</div>
+<div class="line">        <span class="comment">// Sonsuz döngü! eval_expr, sürekli kendini çağırıyor...</span></div>
+<div class="line">        <span class="keywordtype">double</span> lhs = eval_expr(p);</div>
+<div class="line"> </div>
+<div class="line">        <span class="keywordflow">if</span> (match(p, TK_PLUS)) {</div>
+<div class="line">                <span class="keywordtype">double</span> rhs = eval_term(p);</div>
+<div class="line"> </div>
+<div class="line">                lhs += rhs;</div>
+<div class="line">        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (match(p, TK_MINUS)) {</div>
+<div class="line">                <span class="keywordtype">double</span> rhs = eval_term(p);</div>
+<div class="line"> </div>
+<div class="line">                lhs -= rhs;</div>
+<div class="line">        }</div>
+<div class="line"> </div>
+<div class="line">        <span class="keywordflow">return</span> lhs;</div>
+<div class="line">}</div>
+<div class="ttc" id="astructparser_html"><div class="ttname"><a href="structparser.html">parser</a></div><div class="ttdoc">Parser.</div><div class="ttdef"><b>Definition</b> <a href="recursive-parser_8h_source.html#l00019">recursive-parser.h:19</a></div></div>
+</div><!-- fragment --><div class="dotgraph">
+<iframe scrolling="no" frameborder="0" src="dot_implicit-parse-tree-infinite-loop.svg" width="1135" height="203"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<p>Başta gramer tanımını, ⟨Expr⟩'dan hemen sonra ⟨Expr⟩ gelmeyecek şekilde yaptık. </p><div class="fragment"><div class="line">⟨Expr⟩ → ⟨Term⟩ + ⟨Expr⟩ | ⟨Term⟩ - ⟨Expr⟩ | ⟨Term⟩</div>
+</div><!-- fragment --><p>Neden mi? Çünkü sonsuz döngüden (Left-Recursion) kurtulmak için <code>eval_expr</code> fonksiyonumuzu sağ-özyinelemeli (right-recursive) yapmak zorundaydık! Ancak parser ifadeyi <code>10 - (2 - 3)</code> şeklinde, matematikteki Left-Associative kuralının tam tersi olan Right-Associative kuralıyla parse etmiş oldu. Manuel parser'larda bu sorunu çözmek kodu spagettiye çevirir. Bir sonraki aşamada dili <code>if</code>/<code>while</code> ile genişletmeden önce, hem parsing'i evaluation'dan ayırıp ST kurmak hem de bu "İşlem Önceliği" hatasından zarifçe kurtulmak için tekerleği yeniden icat etmeyeceğiz: <a class="el" href="rdesc_page.html">librdesc</a> </p>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Oluşturan&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

@@ -5,5 +5,5 @@ var searchData=
   ['derleyici_20tasarımı_2',['Derleyici Tasarımı',['../index.html',1,'']]],
   ['descent_20parser_3',['Recursive Descent Parser',['../td_parser_page.html#rd_parser_sec',1,'']]],
   ['dokümantasyon_4',['Dokümantasyon',['../taslak.html#taslak_dokumantasyon_sec',1,'']]],
-  ['down_20parsing_5',['Top Down Parsing',['../td_parser_page.html',1,'parser_page']]]
+  ['down_20parsing_5',['Top-Down Parsing',['../td_parser_page.html',1,'parser_page']]]
 ];

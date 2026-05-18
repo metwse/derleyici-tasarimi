@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['parser_0',['Parser',['../parser_page.html',1,'derleyici_front_end_page']]],
-  ['parsing_1',['Top Down Parsing',['../td_parser_page.html',1,'parser_page']]]
+  ['mental_20model_0',['Mental Model',['../mental_model_page.html',1,'parser_page']]],
+  ['model_1',['Mental Model',['../mental_model_page.html',1,'parser_page']]]
 ];

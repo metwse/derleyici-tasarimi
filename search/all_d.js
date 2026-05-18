@@ -20,5 +20,5 @@ var searchData=
   ['tokenizer_5finit_17',['tokenizer_init',['../tokenizer_8h.html#a73d455e90e9f0e517198663d56d6b5a3',1,'tokenizer.h']]],
   ['tokenizer_5fnext_18',['tokenizer_next',['../tokenizer_8h.html#ae76c8323e13da9eaddd2a3cdbfbd6fdf',1,'tokenizer.h']]],
   ['tokenizing_19',['Tokenizing',['../tokenizer_page.html#tokenizer_tokenizing_sec',1,'']]],
-  ['top_20down_20parsing_20',['Top Down Parsing',['../td_parser_page.html',1,'parser_page']]]
+  ['top_20down_20parsing_20',['Top-Down Parsing',['../td_parser_page.html',1,'parser_page']]]
 ];

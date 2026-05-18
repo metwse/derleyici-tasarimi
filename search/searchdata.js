@@ -7,7 +7,7 @@ var indexSectionsWithContent =
   4: "ciklnpstv",
   5: "lt",
   6: "l",
-  7: "defiklpty"
+  7: "defiklmpty"
 };
 
 var indexSectionNames =
