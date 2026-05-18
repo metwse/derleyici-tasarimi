@@ -1,0 +1,18 @@
+/**
+@page treewalk_interpreter_page Tree-Walk Interpreter
+
+@dot
+digraph navigation {
+    rankdir = LR;
+
+    node [shape = "box"];
+
+    A [label = "lexing"];
+    B [label = "parsing\nBİRAZ DAHA"];
+    C [label = "evaluation\nBURADASINIZ"];
+
+    A -> B;
+    B -> C;
+}
+@enddot
+*/

@@ -4,7 +4,7 @@
 `librdesc`'in çözümü:
 - Madem left-recursion sonsuz döngüye sebep oluyor, biz de grameri
   right-associative olarak tanımlarız.
-- Call stack'taki fonsiyon çağrılarının oluşturduğu ağacı kolay bir şekilde
+- Call stack'taki fonksiyon çağrılarının oluşturduğu ağacı kolay bir şekilde
   döndüremiyorsak, biz de kendi stack implementasyonumuz üzerinden parse
   edelim. Kendi stack'imizde istediğimiz gibi döndürme yaparız.
 
@@ -19,6 +19,11 @@ cd rdesc/
 
 sudo make FEATURES='full' -j install
 ```
+
+Tabii proje taslağını kullanıyorsanız librdesc otomatik indirilecek. Ancak
+tavsiyem yine de sisteme kurmanızdır, böylece tüm metin editörlerinin librdesc
+fonksiyonlarını görüp uygun önerilerde bulunabilir.
+
 
 @section rdesc_grammar_sec Grameri rdesc Makrolarına Dökmek
 
@@ -46,7 +51,7 @@ oluşacak şekilde sadeleştirelim:
 ```
 
 Önceki gramer yapımızı librdesc ile kullanmanın önünde bir engel yoktu, ancak
-librdesc'in bazı özelliklerini kullanabilmek için şimdiden bu değisikliği
+librdesc'in bazı özelliklerini kullanabilmek için şimdiden bu değişikliği
 yaptık.
 
 Gramer için gerekli declaration'ları header'da yapalım:
@@ -80,7 +85,7 @@ ekrana yazdıralım:
 @dotfile dot/rdesc-match.dot
 
 Bu CST'yi, left-associative çıkarma işlemine sahip olacak şekilde döndürmek
-için `rdesc_flip()` çağırmamız yeterli:
+için `rdesc_flip_left()` çağırmamız yeterli:
 
 @snippet snippets/rdesc-parser.test.c rdesc flip&print
 
@@ -91,4 +96,7 @@ Bu CST'yi traverse edip evaluate etmenin detaylarına ineceğiz.
 bir node'ı traverse etme örneği olarak verebiliriz:
 
 @snippet snippets/rdesc-parser.c Node print
+
+Artık tam-teşekküllü bir dil kodlamaya başlayabiliriz:
+@ref treewalk_interpreter_page
 */
