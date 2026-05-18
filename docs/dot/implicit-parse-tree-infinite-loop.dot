@@ -1,0 +1,21 @@
+graph implicit_parse_tree {
+    ranksep = 0.5;
+    rankdir = LR;
+
+    node [shape = "plaintext"];
+
+    eval_print [label = "eval_print()"];
+    match_semi [label = ";"];
+    eval_expr1 [label = "eval_expr()"];
+    match_print [label = "print"];
+
+    eval_expr2 [label = "eval_expr()"]
+    eval_expr3 [label = "eval_expr()"]
+    eval_expr4 [label = "eval_expr()"]
+    eval_expr5 [label = "eval_expr()"]
+    eval_exprn [label = "..."]
+
+    eval_print -- { match_print, eval_expr1, match_semi };
+
+    eval_expr1 -- eval_expr2 -- eval_expr3 -- eval_expr4 -- eval_expr5 -- eval_exprn;
+}

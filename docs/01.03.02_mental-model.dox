@@ -1,0 +1,84 @@
+/**
+@page mental_model_page Mental Model
+
+`print 10 - 2 - 3` statement'ının evaluation'unu yakından incelersek:
+
+@dotfile dot/implicit-parse-tree.dot
+
+Fazla kalabalık, biraz sadeleştirilmiş hâli,
+
+@dotfile dot/implicit-parse-tree-simplified.dot
+
+Yazdığımız `parser_eval()` fonksiyonu aslında `eval_print()` çağırarak bir CST
+oluşturuyor! Ancak ağaç, implicit bir şekilde fonksiyon çağırmalarla
+oluşturuluyor:
+
+| call stack | recursive çağrı öncesinde | sonrasında match edilen semboller |
+|--|--|--|
+| eval_atom | 3 |  |
+| eval_factor |  |  |
+| eval_term |  |  |
+| eval_expr |  | - |
+| eval_atom | 2 |  |
+| eval_factor |  |  |
+| eval_term |  |  |
+| eval_expr |  | - |
+| eval_atom | 10 |  |
+| eval_factor |  |  |
+| eval_term |  |  |
+| eval_expr |  | - |
+| eval_print | print | ; |
+
+Peki işlem önceliği niçin ters? `eval_expr`'ın oluşturduğu ağaca aşina
+olduğumuz bir görünümden bakalım:
+
+@dotfile dot/implicit-parse-tree-simplified-td.dot
+
+Bunu in order traverse edecek olursak işlemin 10 - (3 - 2) şeklinde
+yapıldığını görüyoruz, (10 - 3) - 2 değil! Elde etmemiz gerek tree tam
+tersiydi:
+
+@dotfile dot/implicit-parse-tree-simplified-flip.dot
+
+Ancak bunu top-down parser'larla elde etmek kolay değil. `eval_expr` ile
+`eval_term`'in yerini değiştirince parse tree elde etmek isterken sonsuz
+döngüye giriyoruz.
+
+@dotfile dot/implicit-parse-tree-wanted.dot
+
+```c
+double eval_expr(struct parser *p)
+{
+	// Sonsuz döngü! eval_expr, sürekli kendini çağırıyor...
+	double lhs = eval_expr(p);
+
+	if (match(p, TK_PLUS)) {
+		double rhs = eval_term(p);
+
+		lhs += rhs;
+	} else if (match(p, TK_MINUS)) {
+		double rhs = eval_term(p);
+
+		lhs -= rhs;
+	}
+
+	return lhs;
+}
+```
+
+@dotfile dot/implicit-parse-tree-infinite-loop.dot
+
+Başta gramer tanımını, ⟨Expr⟩'dan hemen sonra ⟨Expr⟩ gelmeyecek şekilde yaptık.
+```
+⟨Expr⟩ → ⟨Term⟩ + ⟨Expr⟩ | ⟨Term⟩ - ⟨Expr⟩ | ⟨Term⟩
+```
+
+Neden mi? Çünkü sonsuz döngüden (Left-Recursion) kurtulmak için `eval_expr`
+fonksiyonumuzu sağ-özyinelemeli (right-recursive) yapmak zorundaydık! Ancak
+parser ifadeyi `10 - (2 - 3)` şeklinde, matematikteki Left-Associative
+kuralının tam tersi olan Right-Associative kuralıyla parse etmiş oldu. Manuel
+parser'larda bu sorunu çözmek kodu spagettiye çevirir. Bir sonraki aşamada
+dili `if`/`while` ile genişletmeden önce, hem parsing'i evaluation'dan ayırıp
+ST kurmak hem de bu "İşlem Önceliği" hatasından zarifçe kurtulmak için
+tekerleği yeniden icat etmeyeceğiz: @ref rdesc_page
+*/

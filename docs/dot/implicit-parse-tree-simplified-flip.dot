@@ -1,0 +1,27 @@
+graph implicit_parse_tree_simplified_flip {
+    ranksep = 0.5;
+    rankdir = TD;
+
+    node [shape = "plaintext"];
+
+    edge [labeldistance = 2, labelangle = 0, fontsize = 10];
+
+    eval_expr1 [label = "eval_expr()"];
+
+    eval_expr2 [label = "eval_expr()"]
+    match_minus1 [label = "-"]
+    match_int1 [label = "3"]
+
+
+    eval_expr3 [label = "eval_expr()"]
+    match_minus2 [label = "-"]
+    match_int2 [label = "2"]
+
+    match_int3 [label = "10"]
+
+    eval_expr1 -- { eval_expr2, match_minus1, match_int1  };
+
+    eval_expr2 -- { eval_expr3, match_minus2, match_int2  };
+
+    eval_expr3 -- match_int3;
+}

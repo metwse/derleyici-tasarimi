@@ -14,5 +14,3 @@ DOT_IMAGE_FORMAT       = svg
 HAVE_DOT               = YES
 OUTPUT_LANGUAGE        = Turkish
 EXAMPLE_PATH           = snippets/ include/
-HTML_EXTRA_STYLESHEET  = docs/style.css
-INTERACTIVE_SVG        = YES

@@ -1,5 +1,5 @@
 /**
-@page td_parser_page Top Down Parsing
+@page td_parser_page Top-Down Parsing
 
 Yazılım dilimizi formal tanımlayarak başlayalım:
 
@@ -46,7 +46,7 @@ açıklayacağız. Parser'ın esas fonksiyonlarıysa:
 @snippet include/recursive-parser.h Parser'ın işlevleri
 
 Top-down parser'ımız tokenleri okurken *evaluate* edecek. Şimdilik parser ve
-* *evaluation* kısmını birleşik yazacağız.
+* *evaluation* kısmını birleşik yazacağız, somut bir tree yapısı olmayacak.
 
 @dot
 digraph navigation {
@@ -100,14 +100,8 @@ bir hüsrana uğrarız:
 `print 10 - 2 - 3;`
 
 Bu işlemin matematiksel sonucu *5* olmalıdır. Fakat bizim parser'ımız ekrana
-*11* yazdırır!
-
-Neden mi? Çünkü sonsuz döngüden (Left-Recursion) kurtulmak için `eval_expr`
-fonksiyonumuzu sağ-özyinelemeli (right-recursive) yaptık. Böylece parser
-ifadeyi `10 - (2 - 3)` şeklinde, matematikteki Left-Associative kuralının tam
-tersi olan Right-Associative kuralıyla hesapladı. Manuel parser'larda bu sorunu
-çözmek kodu spagettiye çevirir. Bir sonraki aşamada dili `if`/`while` ile
-genişletmeden önce, hem parsing'i evaluation'dan ayırıp CST kurmak hem de bu
-"İşlem Önceliği" hatasından zarifçe kurtulmak için tekerleği yeniden icat
-etmeyeceğiz: @ref rdesc_page
+* *11* yazdırır! Top-down parsing'de parser'la evaluation'ı birlikte yazdığımız
+zaman işlem önceliğinin ters olmasından kurtulmanın kolay bir yolu yok. Bu
+sorunu nasıl çözeceğimizi, top-down parser'ların @ref mental_model_page'ini
+inceleyerek göreceğiz.
 */
