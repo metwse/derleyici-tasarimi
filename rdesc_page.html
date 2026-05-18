@@ -78,7 +78,7 @@ $(function() {
 <div class="contents">
 <div class="textblock"><p><code>librdesc</code>'in çözümü:</p><ul>
 <li>Madem left-recursion sonsuz döngüye sebep oluyor, biz de grameri right-associative olarak tanımlarız.</li>
-<li>Call stack'taki fonsiyon çağrılarının oluşturduğu ağacı kolay bir şekilde döndüremiyorsak, biz de kendi stack implementasyonumuz üzerinden parse edelim. Kendi stack'imizde istediğimiz gibi döndürme yaparız.</li>
+<li>Call stack'taki fonksiyon çağrılarının oluşturduğu ağacı kolay bir şekilde döndüremiyorsak, biz de kendi stack implementasyonumuz üzerinden parse edelim. Kendi stack'imizde istediğimiz gibi döndürme yaparız.</li>
 </ul>
 <p>librdesc GitHub repository: <a href="https://github.com/metwse/rdesc/">https://github.com/metwse/rdesc/</a> <br  />
  librdesc online documentation: <a href="https://metwse.github.io/rdesc/">https://metwse.github.io/rdesc/</a></p>
@@ -87,7 +87,8 @@ $(function() {
 <div class="line">cd rdesc/</div>
 <div class="line"> </div>
 <div class="line">sudo make FEATURES=&#39;full&#39; -j install</div>
-</div><!-- fragment --><h1><a class="anchor" id="rdesc_grammar_sec"></a>
+</div><!-- fragment --><p>Tabii proje taslağını kullanıyorsanız librdesc otomatik indirilecek. Ancak tavsiyem yine de sisteme kurmanızdır, böylece tüm metin editörlerinin librdesc fonksiyonlarını görüp uygun önerilerde bulunabilir.</p>
+<h1><a class="anchor" id="rdesc_grammar_sec"></a>
 Grameri rdesc Makrolarına Dökmek</h1>
 <p>Kendi stack implementasyonunu kullanıp CST kuran bu parser'ı çalıştırmak için, kütüphanenin <code>rule_macros.h</code> başlığındaki makroları kullanacağız.</p>
 <p>Önceki sayfalarda sonsuz döngüye girmemek için gramerimizi mecburen right-recursive olarak tasarlamıştık. Şimdi bu right-recursive yapıyı <code>_REST</code> isimli yardımcı nonterminal'lerle ifade edelim. Anlaşılırlığı artırmak için gramerimizi sadece çıkarma (<code>-</code>), çarpma (<code>*</code>) ve sayılardan (<code>INT</code>) oluşacak şekilde sadeleştirelim:</p>
@@ -102,7 +103,7 @@ Grameri rdesc Makrolarına Dökmek</h1>
 <div class="line">⟨TermRest⟩ → * ⟨Atom⟩ ⟨TermRest⟩ | ε</div>
 <div class="line"> </div>
 <div class="line">⟨Atom⟩ → <span class="keywordtype">int</span></div>
-</div><!-- fragment --><p>Önceki gramer yapımızı librdesc ile kullanmanın önünde bir engel yoktu, ancak librdesc'in bazı özelliklerini kullanabilmek için şimdiden bu değisikliği yaptık.</p>
+</div><!-- fragment --><p>Önceki gramer yapımızı librdesc ile kullanmanın önünde bir engel yoktu, ancak librdesc'in bazı özelliklerini kullanabilmek için şimdiden bu değişikliği yaptık.</p>
 <p>Gramer için gerekli declaration'ları header'da yapalım:</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;rdesc/grammar.h&gt;</span></div>
 <div class="line"> </div>
@@ -218,7 +219,7 @@ Grameri rdesc Makrolarına Dökmek</h1>
 <div class="ttc" id="ardesc-parser_8h_html_af1198cab2f3cb32ed8414011fdacb28b"><div class="ttname"><a href="rdesc-parser_8h.html#af1198cab2f3cb32ed8414011fdacb28b">node_printer</a></div><div class="ttdeci">void node_printer(FILE *out, struct rdesc_node node)</div><div class="ttdoc">[Gramer declaration]</div></div>
 </div><!-- fragment --><div class="dotgraph">
 <iframe scrolling="no" frameborder="0" src="dot_rdesc-match.svg" width="902" height="639"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-<p>Bu CST'yi, left-associative çıkarma işlemine sahip olacak şekilde döndürmek için <code>rdesc_flip()</code> çağırmamız yeterli:</p>
+<p>Bu CST'yi, left-associative çıkarma işlemine sahip olacak şekilde döndürmek için <code>rdesc_flip_left()</code> çağırmamız yeterli:</p>
 <div class="fragment"><div class="line">rdesc_flip_left(rdesc_get_root(&amp;<a class="code hl_struct" href="structparser.html">parser</a>), 0);</div>
 <div class="line"> </div>
 <div class="line">rdesc_dump_cst(stdout, rdesc_get_root(&amp;<a class="code hl_struct" href="structparser.html">parser</a>), <a class="code hl_function" href="rdesc-parser_8h.html#af1198cab2f3cb32ed8414011fdacb28b">node_printer</a>);</div>
@@ -252,7 +253,8 @@ Grameri rdesc Makrolarına Dökmek</h1>
 <div class="line">                fprintf(out, <span class="stringliteral">&quot;[label=\&quot;%s\&quot;]&quot;</span>, nt_names[rid(node)]);</div>
 <div class="line">        }</div>
 <div class="line">}</div>
-</div><!-- fragment --> </div></div><!-- contents -->
+</div><!-- fragment --><p>Artık tam-teşekküllü bir dil kodlamaya başlayabiliriz: <a class="el" href="treewalk_interpreter_page.html">Tree-Walk Interpreter</a> </p>
+</div></div><!-- contents -->
 </div><!-- PageDoc -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
