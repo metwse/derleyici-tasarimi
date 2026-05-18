@@ -34,8 +34,8 @@ olduğumuz bir görünümden bakalım:
 
 @dotfile dot/implicit-parse-tree-simplified-td.dot
 
-Bunu in order traverse edecek olursak işlemin 10 - (3 - 2) şeklinde
-yapıldığını görüyoruz, (10 - 3) - 2 değil! Elde etmemiz gerek tree tam
+Bunu in order traverse edecek olursak işlemin 10 - (2 - 3) şeklinde
+yapıldığını görüyoruz, (10 - 2) - 3 değil! Elde etmemiz gerek tree tam
 tersiydi:
 
 @dotfile dot/implicit-parse-tree-simplified-flip.dot
@@ -79,6 +79,6 @@ parser ifadeyi `10 - (2 - 3)` şeklinde, matematikteki Left-Associative
 kuralının tam tersi olan Right-Associative kuralıyla parse etmiş oldu. Manuel
 parser'larda bu sorunu çözmek kodu spagettiye çevirir. Bir sonraki aşamada
 dili `if`/`while` ile genişletmeden önce, hem parsing'i evaluation'dan ayırıp
-ST kurmak hem de bu "İşlem Önceliği" hatasından zarifçe kurtulmak için
+CST kurmak hem de bu "İşlem Önceliği" hatasından zarifçe kurtulmak için
 tekerleği yeniden icat etmeyeceğiz: @ref rdesc_page
 */
